@@ -1,0 +1,20 @@
+/* =========================================================
+   THEME · DEFAULT (Waygroup · naranja + cyan + navy)
+   ---------------------------------------------------------
+   ✅ ESTE ARCHIVO SE EDITA PARA CAMBIAR LA MARCA DEL CURSO
+   Solo 3 colores definen toda la paleta:
+     • --c-acento  → botones, gradientes, énfasis
+     • --c-info    → datos, chips, eyebrows, contraste
+     • --c-deep    → fondo del sidebar/hero en versiones dark
+   El resto del sistema (soft surfaces, glows, hovers, etc.)
+   se calcula automáticamente desde core.css con color-mix().
+   ---------------------------------------------------------
+   Alternativa: usar cualquier preset de assets/css/presets/
+   reemplazando este archivo en el <link rel="stylesheet">.
+   ========================================================= */
+
+:root {
+  --c-acento: #F37021;   /* Naranja Waygroup · acción principal */
+  --c-info:   #38E1FF;   /* Cyan instrumental · datos / acentos info */
+  --c-deep:   #0F2B47;   /* Navy estructural · fondo sidebar/hero dark */
+}

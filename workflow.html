@@ -1,0 +1,1192 @@
+<!doctype html>
+<html lang="es" data-version="hibrida">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Workflow · Cómo crear un curso desde el template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
+<link rel="stylesheet" href="assets/css/core.css" />
+<style>
+  .wf-app { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+  @media (max-width: 1024px) { .wf-app { grid-template-columns: 1fr; } }
+  .wf-side { position: sticky; top: 0; height: 100vh; background: var(--bg-sidebar); color: var(--sb-text); overflow-y: auto; padding: 22px 16px; }
+  .wf-side h2 { color: var(--sb-text); margin: 0 0 4px; font-size: 1rem; }
+  .wf-side small { display: block; color: var(--sb-text-mut); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 22px; }
+  .wf-side a { display: block; padding: 7px 10px; color: var(--sb-text-mut); text-decoration: none; border-radius: 7px; font-size: .86rem; transition: all .15s; }
+  .wf-side a:hover { background: color-mix(in srgb, currentColor 4%, transparent); color: var(--sb-text); }
+  .wf-side a.is-active { background: var(--acento-strong); color: var(--sb-text); }
+  .wf-side h4 { color: var(--c-acento); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; margin: 18px 0 8px; padding: 0 8px; }
+  .wf-main { background: var(--bg-app); }
+  .wf-topbar { height: var(--topbar-h); background: var(--bg-surface); border-bottom: 1px solid var(--border-c); position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+  .wf-topbar h1 { margin: 0; font-size: 1.05rem; }
+  .wf-section { padding: 56px 32px; max-width: 920px; margin: 0 auto; }
+  .wf-section + .wf-section { border-top: 1px dashed var(--border-c); }
+  .wf-section__eyebrow { display: inline-block; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--c-acento); margin-bottom: 8px; }
+  .wf-section h2 { margin: 0 0 8px; font-size: 1.9rem; }
+  .wf-section__lead { color: var(--text-mut); font-size: 1.1rem; margin: 0 0 32px; }
+
+  .wf-step-card {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 18px;
+    padding: 20px 24px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-c);
+    border-radius: var(--r-md);
+    margin-bottom: 14px;
+  }
+  .wf-step-num {
+    width: 56px; height: 56px;
+    background: var(--grad-brand);
+    color: white;
+    border-radius: 14px;
+    display: grid; place-items: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--c-acento) 30%, transparent);
+  }
+  .wf-step-card h3 { margin: 0 0 4px; font-size: 1.1rem; }
+  .wf-step-card p { margin: 0; color: var(--text-mut); font-size: .95rem; }
+  .wf-step-card .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: .65rem;
+    color: var(--c-acento);
+    background: var(--acento-soft);
+    padding: 2px 8px;
+    border-radius: var(--r-pill);
+    letter-spacing: .12em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .wf-checklist { background: var(--bg-surface); border: 1px solid var(--border-c); border-radius: var(--r-md); padding: 24px 28px; }
+  .wf-checklist ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .wf-checklist li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; font-size: .92rem; }
+  .wf-checklist li iconify-icon { color: var(--success); font-size: 1.15rem; margin-top: 2px; }
+  .wf-checklist li strong { font-family: var(--font-display); color: var(--text-head); display: block; margin-bottom: 2px; }
+
+  /* Bloques de ejemplo: ANTES vs DESPUÉS */
+  .wf-example {
+    margin: 28px 0;
+    border: 1px solid var(--border-c);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--bg-surface);
+  }
+  .wf-example__head {
+    background: var(--bg-muted);
+    padding: 14px 22px;
+    display: flex; align-items: center; gap: 12px;
+    border-bottom: 1px solid var(--border-c);
+  }
+  .wf-example__head iconify-icon { color: var(--c-acento); font-size: 1.3rem; }
+  .wf-example__head strong { font-family: var(--font-display); font-size: 1rem; color: var(--text-head); }
+  .wf-example__head .tag {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    background: var(--acento-soft);
+    color: var(--c-acento);
+    padding: 3px 10px;
+    border-radius: var(--r-pill);
+    letter-spacing: .1em;
+  }
+  .wf-example__body { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-c); }
+  @media (max-width: 768px) { .wf-example__body { grid-template-columns: 1fr; } }
+  .wf-example__col { background: var(--bg-surface); padding: 24px; min-width: 0; }
+  .wf-example__col-title {
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--text-mut);
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .wf-example__col--before .wf-example__col-title iconify-icon { color: #6B7280; }
+  .wf-example__col--after  .wf-example__col-title iconify-icon { color: var(--c-acento); }
+  .wf-example__col pre {
+    background: var(--bg-sidebar);
+    color: var(--sb-text);
+    padding: 16px 18px;
+    border-radius: var(--r-md);
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+  }
+  .wf-example__col pre .hd { color: var(--c-acento); font-weight: 700; }
+  .wf-example__col pre .lb { color: var(--c-info); }
+  .wf-example__col pre .hint { color: #FCD34D; }
+  .wf-example__col pre .num { color: var(--c-info); }
+  .wf-result-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .wf-result-list li {
+    padding: 10px 14px;
+    background: var(--bg-muted);
+    border-left: 3px solid var(--c-acento);
+    border-radius: 6px;
+    font-size: .88rem;
+  }
+  .wf-result-list li code { font-family: var(--font-mono); font-size: .85em; color: var(--c-acento); background: none; padding: 0; }
+
+  .wf-pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .wf-pill {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    padding: 5px 12px;
+    border-radius: var(--r-pill);
+    background: var(--bg-muted);
+    color: var(--text-pri);
+    border: 1px solid var(--border-c);
+  }
+  .wf-pill--required { background: var(--acento-soft); color: var(--c-acento); border-color: color-mix(in srgb, var(--c-acento) 30%, transparent); }
+
+  .wf-do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+  @media (max-width: 700px) { .wf-do-dont { grid-template-columns: 1fr; } }
+  .wf-do, .wf-dont { padding: 18px 22px; border-radius: var(--r-md); border-left: 3px solid; }
+  .wf-do { background: color-mix(in srgb, var(--success) 6%, transparent); border-color: var(--success); }
+  .wf-dont { background: color-mix(in srgb, var(--danger) 6%, transparent); border-color: var(--danger); }
+  .wf-do strong, .wf-dont strong { display: block; margin-bottom: 8px; font-family: var(--font-display); font-size: .85rem; }
+  .wf-do strong { color: var(--success); }
+  .wf-dont strong { color: var(--danger); }
+  .wf-do ul, .wf-dont ul { padding-left: 18px; margin: 0; }
+  .wf-do li, .wf-dont li { font-size: .9rem; margin-bottom: 4px; }
+</style>
+</head>
+<body class="wg-body">
+<div class="wf-app">
+
+  <aside class="wf-side">
+    <h2>🔄 Workflow</h2>
+    <small>Crear curso · paso a paso</small>
+    <a href="index.html"><iconify-icon icon="mdi:arrow-left"></iconify-icon> Volver al template</a>
+
+    <h4>Proceso</h4>
+    <a href="#vision">1 · Visión general</a>
+    <a href="#fases">2 · Las 4 fases</a>
+    <a href="#input">3 · Qué necesito de vos</a>
+
+    <h4>Formato Word ideal</h4>
+    <a href="#estructura">4 · Estructura general</a>
+    <a href="#cabecera">5 · Cabecera del curso</a>
+    <a href="#pantalla-tipo">6 · Anatomía de una pantalla</a>
+    <a href="#hint-explicado">7 · ¿Qué es un hint?</a>
+    <a href="#descarga-demo">📥 Descargar Word demo</a>
+
+    <h4>Ejemplos por componente</h4>
+    <a href="#ej-portada">→ Portada</a>
+    <a href="#ej-ficha">→ Ficha técnica</a>
+    <a href="#ej-acordeon">→ Acordeón</a>
+    <a href="#ej-kpis">→ KPI cards</a>
+    <a href="#ej-vs">→ Comparativo VS</a>
+    <a href="#ej-stepper">→ Stepper / Fases</a>
+    <a href="#ej-quiz">→ Quiz</a>
+    <a href="#ej-detonante">→ Pregunta detonante</a>
+
+    <h4>Recursos extra</h4>
+    <a href="#assets">7 · Assets que me das aparte</a>
+    <a href="#faq">8 · Preguntas frecuentes</a>
+  </aside>
+
+  <main class="wf-main">
+    <div class="wf-topbar">
+      <h1><iconify-icon icon="mdi:rocket-launch" style="color:var(--c-acento); margin-right:8px;"></iconify-icon> Workflow · crear un curso</h1>
+      <div style="display:flex; gap:8px;">
+        <div class="wg-version-switch" data-wg-version-switch></div>
+        <a href="presets.html" class="wg-iconbtn"><iconify-icon icon="mdi:palette"></iconify-icon></a>
+        <a href="showcase.html" class="wg-iconbtn"><iconify-icon icon="mdi:view-grid"></iconify-icon></a>
+        <a href="manual-marca.html" class="wg-iconbtn wg-iconbtn--accent"><iconify-icon icon="mdi:palette-swatch"></iconify-icon></a>
+      </div>
+    </div>
+
+    <!-- 01 VISIÓN -->
+    <section id="vision" class="wf-section">
+      <span class="wf-section__eyebrow">01 · Introducción</span>
+      <h2>Cómo trabajamos juntos</h2>
+      <p class="wf-section__lead">
+        Vos aportás el <strong>contenido del curso</strong> en un Word estructurado.
+        Yo aplico el <strong>template</strong> y devuelvo el curso HTML listo para LMS.
+      </p>
+
+      <div class="wf-pill-row">
+        <span class="wf-pill wf-pill--required">VOS</span>
+        <span class="wf-pill">Word del curso</span>
+        <span class="wf-pill">Logo del cliente</span>
+        <span class="wf-pill">Preset visual</span>
+        <span class="wf-pill">Hints (opcional)</span>
+      </div>
+      <div class="wf-pill-row">
+        <span class="wf-pill wf-pill--required">YO</span>
+        <span class="wf-pill">Mapeo texto → componente</span>
+        <span class="wf-pill">Genero HTML</span>
+        <span class="wf-pill">QA en las 3 versiones</span>
+        <span class="wf-pill">ZIP listo</span>
+      </div>
+
+      <div class="wf-do-dont" style="margin-top: 24px;">
+        <div class="wf-do">
+          <strong>✅ Te recomiendo</strong>
+          <ul>
+            <li>Pasarme contenido en bloques bien separados por pantalla</li>
+            <li>Sugerirme el componente si tenés preferencia</li>
+            <li>Iterar pantalla por pantalla, no todo el curso de una</li>
+          </ul>
+        </div>
+        <div class="wf-dont">
+          <strong>❌ Evitá</strong>
+          <ul>
+            <li>Pasarme un Word denso sin estructura visual</li>
+            <li>Mezclar contenido de varios cursos en el mismo doc</li>
+            <li>Esperar que yo adivine la audiencia o el preset</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 LAS 4 FASES -->
+    <section id="fases" class="wf-section">
+      <span class="wf-section__eyebrow">02 · Proceso</span>
+      <h2>Las 4 fases</h2>
+      <p class="wf-section__lead">De idea a curso navegable en ~3 horas (curso de 10-14 pantallas).</p>
+
+      <div class="wf-step-card">
+        <div class="wf-step-num">1</div>
+        <div>
+          <span class="tag">5 min</span>
+          <h3>Setup</h3>
+          <p>Me das datos básicos (nombre, audiencia, preset, versión). Clono el template a <code>cursos/{nombre}/</code>, configuro <code>course.js</code>. Resultado: esqueleto navegable.</p>
+        </div>
+      </div>
+      <div class="wf-step-card">
+        <div class="wf-step-num">2</div>
+        <div>
+          <span class="tag">15–30 min</span>
+          <h3>Diseño del flujo</h3>
+          <p>Me das la lista de pantallas en orden + 1 oración por cada una. Decidimos juntos qué componente va en cada una. Resultado: mapa completo del curso.</p>
+        </div>
+      </div>
+      <div class="wf-step-card">
+        <div class="wf-step-num">3</div>
+        <div>
+          <span class="tag">1–2 horas</span>
+          <h3>Llenado de contenido</h3>
+          <p>Pantalla por pantalla, me pasás el texto crudo (ideal en el formato Word que ves más abajo). Yo lo distribuyo en los componentes y te muestro cada pantalla generada. Iteramos.</p>
+        </div>
+      </div>
+      <div class="wf-step-card">
+        <div class="wf-step-num">4</div>
+        <div>
+          <span class="tag">30 min</span>
+          <h3>QA y entrega</h3>
+          <p>Verificamos las 3 versiones (Híbrida/Clara/Oscura), contraste, mobile, navegación. Empaquetamos ZIP listo para LMS.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 QUÉ NECESITO -->
+    <section id="input" class="wf-section">
+      <span class="wf-section__eyebrow">03 · Input</span>
+      <h2>Qué necesito de vos · checklist</h2>
+      <p class="wf-section__lead">Si me das estas cosas el setup arranca al toque.</p>
+
+      <div class="wf-checklist">
+        <ul>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Datos del curso</strong> Nombre · código · subtítulo · duración estimada · audiencia/población.</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Logo del cliente</strong> SVG ideal · PNG transparente acepto.</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Preset visual</strong> 1 de los 14 disponibles · o pedime "default Waygroup".</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Versión preferida</strong> Híbrida (default) · Clara · Oscura.</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Lista de pantallas</strong> Orden + título + 1 oración. Lo definimos juntos si querés.</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Contenido por pantalla</strong> En el formato Word ideal (siguiente sección).</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Glosario · referencias · créditos</strong> Listas planas.</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Assets multimedia</strong> Audios MP3, imágenes, PDFs descargables.</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 04 ESTRUCTURA WORD -->
+    <section id="estructura" class="wf-section">
+      <span class="wf-section__eyebrow">04 · Formato Word</span>
+      <h2>Estructura ideal del Word del curso</h2>
+      <p class="wf-section__lead">
+        No necesito un formato rígido — pero si lo armás así, evitamos idas y vueltas y el primer
+        render del curso va a estar mucho más cerca de lo final.
+      </p>
+
+      <div class="wf-do-dont">
+        <div class="wf-do">
+          <strong>✅ Lo que ayuda</strong>
+          <ul>
+            <li>Usar <strong>Heading 1</strong> para cada pantalla</li>
+            <li>Usar <strong>Heading 2</strong> para subsecciones</li>
+            <li>Listas con viñetas o numeradas</li>
+            <li>Marcar [hint:&nbsp;componente] al inicio de cada pantalla</li>
+            <li>Separar pantallas con `---` o salto de página</li>
+          </ul>
+        </div>
+        <div class="wf-dont">
+          <strong>❌ Lo que dificulta</strong>
+          <ul>
+            <li>Tablas con celdas combinadas complejas</li>
+            <li>Texto corrido sin separadores</li>
+            <li>Imágenes pegadas sin caption</li>
+            <li>Notas al pie en lugar de listas</li>
+            <li>Múltiples cursos en el mismo doc</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 CABECERA -->
+    <section id="cabecera" class="wf-section">
+      <span class="wf-section__eyebrow">05 · Cabecera</span>
+      <h2>Cabecera del Word · metadatos del curso</h2>
+      <p class="wf-section__lead">Esta es la primera sección del Word. Una sola vez.</p>
+
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:file-document-outline"></iconify-icon>
+          <strong>Cabecera del Word</strong>
+          <span class="tag">PEGAR AL INICIO</span>
+        </div>
+        <div class="wf-example__body" style="grid-template-columns: 1fr;">
+          <div class="wf-example__col">
+            <pre><span class="hd"># CURSO</span>
+Nombre: RCP Básico
+Subtítulo: Entrenamiento Inmersivo AHA 2025
+Código: RCP-2025
+Cliente: Waygroup For Education LATAM
+Audiencia: Primer respondiente (lego)
+Duración: 20–30 min
+Objetivo: Capacitar al primer respondiente en identificación del paro
+          cardiorrespiratorio y ejecución del protocolo RCP + DEA.
+
+<span class="hd"># PRESET VISUAL</span>
+Preset: vital   <span class="hint">(uno de los 14 · ver presets.html)</span>
+Versión: hibrida  <span class="hint">(hibrida | clara | oscura)</span>
+Logo: adjunto-aparte (SVG o PNG)
+
+<span class="hd"># ESTRUCTURA DEL CURSO</span>
+01 · Portada
+02 · Bienvenida
+03 · Pregunta detonante
+04 · Conceptos previos
+05 · Infarto vs paro
+06 · Cadena de supervivencia
+07 · RCP de calidad
+08 · Quiz
+09 · Glosario
+10 · Créditos</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 ANATOMÍA DE UNA PANTALLA -->
+    <section id="pantalla-tipo" class="wf-section">
+      <span class="wf-section__eyebrow">06 · Pantalla tipo</span>
+      <h2>Anatomía de una pantalla en el Word</h2>
+      <p class="wf-section__lead">Plantilla mental para cualquier pantalla. Replicá esto por cada una.</p>
+
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:file-tree-outline"></iconify-icon>
+          <strong>Plantilla por pantalla</strong>
+          <span class="tag">REUSAR POR CADA UNA</span>
+        </div>
+        <div class="wf-example__body" style="grid-template-columns: 1fr;">
+          <div class="wf-example__col">
+            <pre><span class="hd">## PANTALLA NN · Título</span>
+<span class="hint">[hint: componente sugerido]</span>
+
+<span class="lb">Eyebrow:</span> texto pequeño superior (opcional)
+<span class="lb">Título:</span> H1 grande de la pantalla
+<span class="lb">Subtítulo / lead:</span> párrafo introductorio (opcional)
+
+<span class="lb">Contenido:</span>
+[acá va el cuerpo · listas, párrafos, datos, lo que aplique]
+
+<span class="lb">Callout final:</span> regla destacada, tip o advertencia (opcional)
+
+---</pre>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top: 24px;">
+        <strong>Importante:</strong> el <code>[hint:&nbsp;...]</code> es opcional. Si no me decís
+        nada, yo elijo el componente según el patrón (ver <a href="showcase.html">showcase.html</a>).
+        Pero si tenés preferencia clara, ese hint corto me ahorra interpretación.
+      </p>
+    </section>
+
+    <!-- 07 ¿QUÉ ES UN HINT? -->
+    <section id="hint-explicado" class="wf-section">
+      <span class="wf-section__eyebrow">07 · Concepto clave</span>
+      <h2>¿Qué es un "hint"? · explicación completa</h2>
+      <p class="wf-section__lead">
+        Un <strong>hint</strong> (en inglés "pista" o "sugerencia") es una nota corta
+        que vos me dejás al inicio de cada pantalla del Word para indicarme cómo querés
+        que se vea ese contenido. No es código · es texto natural entre corchetes.
+      </p>
+
+      <h3 style="margin-top: 32px;">🤔 ¿Por qué existe el hint?</h3>
+      <p>
+        El template tiene <strong>24 componentes UI distintos</strong> (acordeón, tabs,
+        KPIs, comparativos, quiz, etc. — ver <a href="showcase.html">showcase.html</a>).
+        Cada uno sirve para un tipo de contenido específico.
+      </p>
+      <p>
+        Cuando me pasás el texto de una pantalla, hay 2 caminos:
+      </p>
+
+      <div class="wf-do-dont" style="margin-top: 16px;">
+        <div class="wf-do">
+          <strong>✅ Con hint</strong>
+          <ul>
+            <li>Vos me decís el componente</li>
+            <li>Yo lo aplico tal cual</li>
+            <li>Cero ambigüedad · sale al primer intento</li>
+          </ul>
+        </div>
+        <div class="wf-dont">
+          <strong>⚠️ Sin hint</strong>
+          <ul>
+            <li>Yo intento adivinar el componente</li>
+            <li>A veces acierto, a veces no</li>
+            <li>Vamos a iterar un poco más</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 32px;">📝 Cómo se escribe un hint</h3>
+      <p>Es solo una línea de texto entre corchetes, justo después del título de la pantalla:</p>
+
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:lightbulb-on"></iconify-icon>
+          <strong>Anatomía de un hint</strong>
+          <span class="tag">FORMATO</span>
+        </div>
+        <div class="wf-example__body" style="grid-template-columns: 1fr;">
+          <div class="wf-example__col">
+            <pre><span class="hd">## PANTALLA 04 · Conceptos previos</span>
+<span class="hint">[hint: acordeón con 5 definiciones + callout final]</span>
+                ↑              ↑                       ↑
+            corchetes       componente que            extras opcionales
+            obligatorios    querés usar               (cantidad, variantes, etc.)</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 32px;">💡 Ejemplos de hints válidos (de simples a sofisticados)</h3>
+
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:format-list-bulleted"></iconify-icon>
+          <strong>Hints típicos · todos válidos</strong>
+        </div>
+        <div class="wf-example__body" style="grid-template-columns: 1fr;">
+          <div class="wf-example__col">
+            <pre><span class="hint"><span class="lb"># Simples · solo nombre del componente:</span>
+[hint: acordeón]
+[hint: quiz]
+[hint: stepper]
+[hint: comparativo VS]
+[hint: KPIs]
+[hint: tabla]
+
+<span class="lb"># Con detalle de cantidad:</span>
+[hint: acordeón con 5 ítems]
+[hint: 3 KPIs grandes]
+[hint: quiz con 6 preguntas]
+[hint: stepper de 8 pasos]
+
+<span class="lb"># Con variante o complemento:</span>
+[hint: acordeón + callout warning al final]
+[hint: KPIs arriba + tabla abajo]
+[hint: hero portada default]
+[hint: ficha técnica + grid 2 con objetivos]
+[hint: bloque detonante + 4 concept cards]
+
+<span class="lb"># Cuando NO sabés qué componente, describilo:</span>
+[hint: quiero que esto se vea destacado y grande]
+[hint: comparar 2 opciones lado a lado]
+[hint: lista de pasos numerados]
+
+<span class="lb"># Y si no querés decidir, simplemente no pongas hint:</span>
+[no escribir nada · yo elijo según el contenido]</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 32px;">🎯 Hints más comunes (cheatsheet rápida)</h3>
+      <p>Para que no tengas que pensarlo, estos son los hints que vas a usar el 90% del tiempo:</p>
+
+      <div class="wf-checklist">
+        <ul>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>3-8 definiciones</strong> → <code>[hint: acordeón]</code></div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>2 conceptos opuestos</strong> → <code>[hint: comparativo VS]</code></div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Datos numéricos clave</strong> → <code>[hint: KPIs]</code></div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Pasos secuenciales de un proceso</strong> → <code>[hint: stepper]</code></div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Pregunta evaluativa</strong> → <code>[hint: quiz]</code></div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Tabla comparativa de varias filas</strong> → <code>[hint: tabla]</code></div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Dato impactante + 4 cards de navegación</strong> → <code>[hint: bloque detonante + concept cards]</code></div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Pantalla de bienvenida con metadatos</strong> → <code>[hint: ficha técnica]</code></div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Regla destacada inline</strong> → <code>[hint: callout warning]</code></div></li>
+        </ul>
+      </div>
+
+      <h3 style="margin-top: 32px;">❓ Preguntas frecuentes sobre hints</h3>
+
+      <div class="wg-acordeon">
+        <div class="wg-acordeon__item is-open">
+          <button class="wg-acordeon__head">
+            <span><span class="num">?</span> ¿Es obligatorio poner hint?</span>
+            <iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon>
+          </button>
+          <div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">
+            <strong>NO.</strong> Si no estás segura de qué componente usar, simplemente
+            no pongás hint. Yo voy a elegir el componente que mejor se ajuste al patrón
+            de contenido (lista, comparación, números, etc.).
+          </div></div>
+        </div>
+
+        <div class="wg-acordeon__item">
+          <button class="wg-acordeon__head">
+            <span><span class="num">?</span> ¿Tengo que aprenderme los 24 componentes?</span>
+            <iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon>
+          </button>
+          <div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">
+            No. Con los <strong>9 hints de la cheatsheet</strong> de arriba cubrís el
+            90% de los casos. Para los casos especiales podés escribir el hint en
+            lenguaje natural ("quiero que esto se vea destacado y grande") y yo lo
+            interpreto.
+          </div></div>
+        </div>
+
+        <div class="wg-acordeon__item">
+          <button class="wg-acordeon__head">
+            <span><span class="num">?</span> ¿Qué pasa si pongo un hint con un nombre que no existe?</span>
+            <iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon>
+          </button>
+          <div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">
+            Te aviso antes de generar. Te muestro los componentes parecidos y elegimos
+            juntos. Nunca voy a generar algo "inventado".
+          </div></div>
+        </div>
+
+        <div class="wg-acordeon__item">
+          <button class="wg-acordeon__head">
+            <span><span class="num">?</span> ¿Puedo combinar varios componentes en una pantalla?</span>
+            <iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon>
+          </button>
+          <div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">
+            <strong>Sí.</strong> Una pantalla puede tener varios componentes apilados.
+            Indicámelo con un <code>+</code>:
+            <code>[hint: KPIs arriba + acordeón abajo + callout warning final]</code>
+          </div></div>
+        </div>
+
+        <div class="wg-acordeon__item">
+          <button class="wg-acordeon__head">
+            <span><span class="num">?</span> ¿Y si después quiero cambiar el componente?</span>
+            <iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon>
+          </button>
+          <div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">
+            Decime "cambiá el componente de la pantalla N por X" en cualquier momento.
+            El contenido se mantiene, solo cambia la presentación.
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== EJEMPLOS POR COMPONENTE ============== -->
+
+    <section id="ej-portada" class="wf-section">
+      <span class="wf-section__eyebrow">Ejemplo 1</span>
+      <h2>Portada del curso</h2>
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:swap-horizontal"></iconify-icon>
+          <strong>De Word → Pantalla</strong>
+          <span class="tag">PORTADA</span>
+        </div>
+        <div class="wf-example__body">
+          <div class="wf-example__col wf-example__col--before">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:file-word-box"></iconify-icon> VOS me pasás esto</div>
+            <pre><span class="hd">## PANTALLA 01 · Portada</span>
+<span class="hint">[hint: hero portada default]</span>
+
+<span class="lb">Eyebrow:</span> CURSO RCP-2025 · ISO 9001:2015
+<span class="lb">Título:</span> Reanimación Cardiopulmonar
+<span class="lb">Énfasis (en color):</span> en VR háptica
+<span class="lb">Subtítulo:</span> Programa educativo inmersivo Waygroup.
+El conocimiento se aprende leyendo. La competencia
+se construye actuando.
+
+<span class="lb">Stats inline:</span>
+- 20–30 min | Duración
+- 8 fases | Modelo pedagógico
+- VR + Háptica | Modalidad
+- Primer respondiente | Audiencia
+
+<span class="lb">CTA principal:</span> Comenzar el curso
+<span class="lb">CTA secundario:</span> Descargar material PDF</pre>
+          </div>
+          <div class="wf-example__col wf-example__col--after">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:auto-fix"></iconify-icon> YO genero</div>
+            <ul class="wf-result-list">
+              <li><code>index.html</code> con componente <code>.wg-portada</code></li>
+              <li>Eyebrow con tinte cyan + heart-pulse icon</li>
+              <li>H1 con triple jerarquía (outline / sólido / accent gradient)</li>
+              <li>Strip de 4 stats con separadores</li>
+              <li>2 botones (primary + ghost) + chip de certificación</li>
+              <li>Fondo dark navy con ECG ambient + mesh gradient</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ej-ficha" class="wf-section">
+      <span class="wf-section__eyebrow">Ejemplo 2</span>
+      <h2>Ficha técnica · bienvenida</h2>
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:swap-horizontal"></iconify-icon>
+          <strong>De Word → Pantalla</strong>
+          <span class="tag">FICHA TÉCNICA</span>
+        </div>
+        <div class="wf-example__body">
+          <div class="wf-example__col wf-example__col--before">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:file-word-box"></iconify-icon> VOS me pasás esto</div>
+            <pre><span class="hd">## PANTALLA 02 · Bienvenida</span>
+<span class="hint">[hint: ficha técnica + objetivos en grid 2]</span>
+
+<span class="lb">Eyebrow:</span> Pantalla 02 · Bienvenida
+<span class="lb">Título:</span> Te damos la bienvenida
+<span class="lb">Lead:</span> Antes de entrar al simulador, te
+presentamos el modelo y lo que vas a vivir.
+
+<span class="lb">Ficha técnica (4 ítems):</span>
+- Nombre | RCP Básica · Entrenamiento Inmersivo
+- Duración | 20–30 min · incluye debriefing
+- Objetivo | Identificar paro y ejecutar protocolo RCP + DEA
+- Audiencia | Primer respondiente no profesional
+
+<span class="lb">Resultados de aprendizaje:</span>
+- Identificar signos de paro en menos de 10 segundos
+- Ejecutar compresiones de alta calidad (5–6 cm, 100–120/min)
+- Operar un DEA siguiendo el protocolo seguro
+- Activar la cadena de supervivencia con delegación específica</pre>
+          </div>
+          <div class="wf-example__col wf-example__col--after">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:auto-fix"></iconify-icon> YO genero</div>
+            <ul class="wf-result-list">
+              <li>Header con eyebrow + título + lead</li>
+              <li>Componente <code>.wg-ficha</code> con los 4 ítems · iconos auto-elegidos</li>
+              <li>Grid 2 columnas: lado izq texto, lado der lista de objetivos con check icons</li>
+              <li>CTA "Empezar Tema 1" al pie</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ej-acordeon" class="wf-section">
+      <span class="wf-section__eyebrow">Ejemplo 3</span>
+      <h2>Acordeón · conceptos clave</h2>
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:swap-horizontal"></iconify-icon>
+          <strong>De Word → Pantalla</strong>
+          <span class="tag">ACORDEÓN</span>
+        </div>
+        <div class="wf-example__body">
+          <div class="wf-example__col wf-example__col--before">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:file-word-box"></iconify-icon> VOS me pasás esto</div>
+            <pre><span class="hd">## PANTALLA 04 · Conceptos previos</span>
+<span class="hint">[hint: acordeón con 4 definiciones]</span>
+
+<span class="lb">Título:</span> Conceptos previos
+<span class="lb">Lead:</span> Andamiaje cognitivo antes de la simulación.
+Toca cada definición para expandirla.
+
+<span class="lb">Definiciones:</span>
+
+<span class="num">1. Paro o parada cardíaca</span>
+Se produce cuando el corazón deja de latir o presenta
+un ritmo irregular rápido. Sin intervención, el daño
+cerebral irreversible comienza en 4–6 minutos.
+
+<span class="num">2. RCP solo con las manos</span>
+Para primeros respondientes, AHA 2025 recomienda
+compresiones continuas sin respiraciones boca a boca.
+
+<span class="num">3. DEA</span>
+Dispositivo electrónico que analiza el ritmo cardíaco
+y guía al usuario para administrar una descarga.
+
+<span class="num">4. Verificación de pulso</span>
+AHA 2025 reafirma: NO se recomienda verificar pulso
+en primeros respondientes (sensibilidad &lt;50%).
+
+<span class="lb">Callout final:</span>
+[novedad] AHA 2025 elimina el término "respiraciones
+de rescate". Ahora se usa "respiraciones".</pre>
+          </div>
+          <div class="wf-example__col wf-example__col--after">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:auto-fix"></iconify-icon> YO genero</div>
+            <ul class="wf-result-list">
+              <li>Header con eyebrow + título + lead</li>
+              <li>Componente <code>.wg-acordeon</code> con 4 ítems numerados (01–04)</li>
+              <li>Primer ítem abierto por default</li>
+              <li>Callout final <code>.wg-callout--default</code> con tag "Novedad AHA 2025"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ej-kpis" class="wf-section">
+      <span class="wf-section__eyebrow">Ejemplo 4</span>
+      <h2>KPI cards · datos destacados</h2>
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:swap-horizontal"></iconify-icon>
+          <strong>De Word → Pantalla</strong>
+          <span class="tag">KPI CARDS</span>
+        </div>
+        <div class="wf-example__body">
+          <div class="wf-example__col wf-example__col--before">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:file-word-box"></iconify-icon> VOS me pasás esto</div>
+            <pre><span class="hd">## PANTALLA 07 · RCP de calidad</span>
+<span class="hint">[hint: 3 KPIs + interfaz simulador]</span>
+
+<span class="lb">Título:</span> Compresiones de alta calidad
+<span class="lb">Lead:</span> Tres parámetros se miden en tiempo real
+con el dummy háptico y la interfaz tipo reloj.
+
+<span class="lb">KPIs (3):</span>
+- Profundidad | 5–6 cm | ~1/3 del diámetro del tórax.
+  Permitir descompresión completa entre compresiones.
+- Frecuencia | 100–120 | compresiones por minuto.
+  Tempo de canciones como Stayin' Alive o La Macarena.
+- Fracción | &gt;60% | del tiempo total.
+  Pausas menores a 10 segundos. Iniciar lo antes posible.</pre>
+          </div>
+          <div class="wf-example__col wf-example__col--after">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:auto-fix"></iconify-icon> YO genero</div>
+            <ul class="wf-result-list">
+              <li>3 cards <code>.wg-kpi</code> en grid responsive</li>
+              <li>Cada card: icono auto-elegido + valor en gradient + label + hint</li>
+              <li>Hover lift + shadow</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ej-vs" class="wf-section">
+      <span class="wf-section__eyebrow">Ejemplo 5</span>
+      <h2>Comparativo VS · 2 conceptos opuestos</h2>
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:swap-horizontal"></iconify-icon>
+          <strong>De Word → Pantalla</strong>
+          <span class="tag">COMPARATIVO VS</span>
+        </div>
+        <div class="wf-example__body">
+          <div class="wf-example__col wf-example__col--before">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:file-word-box"></iconify-icon> VOS me pasás esto</div>
+            <pre><span class="hd">## PANTALLA 05 · Infarto vs paro</span>
+<span class="hint">[hint: comparativo VS]</span>
+
+<span class="lb">Título:</span> Infarto cardíaco vs Paro cardíaco
+<span class="lb">Lead:</span> Son condiciones distintas que requieren
+respuestas distintas. Confundirlas cuesta tiempo crítico.
+
+<span class="lb">Lado A:</span>
+Tag: Infarto cardíaco
+Título: Problema de circulación
+Descripción: El suministro de sangre al músculo cardíaco
+se reduce u obstruye.
+Bullets:
+- Arteria coronaria obstruida
+- El corazón sigue latiendo
+- Persona usualmente consciente
+- Síntomas: dolor torácico, sudoración
+
+<span class="lb">Lado B:</span>
+Tag: Paro cardíaco
+Título: Problema eléctrico
+Descripción: La función eléctrica del corazón se detiene
+súbitamente. No hay bombeo efectivo.
+Bullets:
+- El corazón deja de latir
+- Pérdida inmediata de respuesta
+- No respira o respira anormalmente
+- Requiere RCP + DEA ahora</pre>
+          </div>
+          <div class="wf-example__col wf-example__col--after">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:auto-fix"></iconify-icon> YO genero</div>
+            <ul class="wf-result-list">
+              <li>Componente <code>.wg-vs</code> con 2 cards + divisor "VS" central</li>
+              <li>Card izq con color acento + tag + título + bullets</li>
+              <li>Card der con color info + variante alternativa</li>
+              <li>Callout opcional al pie si hay regla de cierre</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ej-stepper" class="wf-section">
+      <span class="wf-section__eyebrow">Ejemplo 6</span>
+      <h2>Stepper · fases del proceso</h2>
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:swap-horizontal"></iconify-icon>
+          <strong>De Word → Pantalla</strong>
+          <span class="tag">STEPPER</span>
+        </div>
+        <div class="wf-example__body">
+          <div class="wf-example__col wf-example__col--before">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:file-word-box"></iconify-icon> VOS me pasás esto</div>
+            <pre><span class="hd">## PANTALLA 10 · Las 8 fases del entrenamiento</span>
+<span class="hint">[hint: stepper vertical con 8 fases]</span>
+
+<span class="lb">Título:</span> 8 fases del entrenamiento inmersivo
+<span class="lb">Lead:</span> Tu sesión en el simulador progresa
+en 8 fases con dificultad creciente.
+
+<span class="lb">Fases:</span>
+
+<span class="num">01 · Activación cognitiva</span>
+Tag: Cognitiva · ~3 min
+Construyes el modelo mental antes de actuar.
+Narrativa VR 360° con reloj de degradación cerebral.
+
+<span class="num">02 · Lectura situacional</span>
+Tag: Lectura situacional
+Aseguras la escena · evaluás riesgos en 5 direcciones.
+
+<span class="num">03 · Toma de decisiones</span>
+Tag: Decisión
+Verificás respuesta · llamás al 123 · solicitás DEA.
+
+<span class="num">[... resto de fases siguiendo el mismo patrón]</span></pre>
+          </div>
+          <div class="wf-example__col wf-example__col--after">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:auto-fix"></iconify-icon> YO genero</div>
+            <ul class="wf-result-list">
+              <li>Componente <code>.wg-stepper</code> con conector vertical animado</li>
+              <li>Cada paso: número grande (01–08) + card con tag + título + descripción</li>
+              <li>Hover translate-X en cada card</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ej-quiz" class="wf-section">
+      <span class="wf-section__eyebrow">Ejemplo 7</span>
+      <h2>Quiz · pregunta de selección única</h2>
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:swap-horizontal"></iconify-icon>
+          <strong>De Word → Pantalla</strong>
+          <span class="tag">QUIZ</span>
+        </div>
+        <div class="wf-example__body">
+          <div class="wf-example__col wf-example__col--before">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:file-word-box"></iconify-icon> VOS me pasás esto</div>
+            <pre><span class="hd">## PANTALLA 08 · Quiz · verificación</span>
+<span class="hint">[hint: quiz con 3 preguntas]</span>
+
+<span class="lb">Título:</span> Verifica tu comprensión
+<span class="lb">Lead:</span> Antes del simulador, validá los conceptos.
+
+<span class="lb">Pregunta 1:</span>
+Texto: Según AHA 2025, ¿qué debe hacer un primer
+respondiente ante una víctima que no responde y no
+respira normalmente?
+Opciones:
+A. Verificar pulso carotídeo durante 10 segundos.
+B. Asumir paro e iniciar compresiones inmediatamente. ★ CORRECTA
+C. Esperar al personal médico antes de actuar.
+D. Realizar 2 respiraciones de rescate antes de comprimir.
+Feedback correcto: ✓ AHA 2025 elimina la verificación
+de pulso por parte de legos. Cada minuto sin RCP
+reduce la sobrevida 7–10%.
+Feedback incorrecto: ✗ Revisá la pantalla 04. Si no
+responde y no respira normal, asumir paro y comprimir.
+
+<span class="lb">Pregunta 2:</span>
+[mismo formato...]
+
+<span class="lb">Pregunta 3:</span>
+[mismo formato...]</pre>
+          </div>
+          <div class="wf-example__col wf-example__col--after">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:auto-fix"></iconify-icon> YO genero</div>
+            <ul class="wf-result-list">
+              <li>3 bloques <code>.wg-quiz</code> apilados verticalmente</li>
+              <li>Barra de progreso por pregunta · trophy counter</li>
+              <li>4 opciones por pregunta · feedback inmediato al click</li>
+              <li>Card final "Estás listo para X" al cierre</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ej-detonante" class="wf-section">
+      <span class="wf-section__eyebrow">Ejemplo 8</span>
+      <h2>Pregunta detonante · dato impactante</h2>
+      <div class="wf-example">
+        <div class="wf-example__head">
+          <iconify-icon icon="mdi:swap-horizontal"></iconify-icon>
+          <strong>De Word → Pantalla</strong>
+          <span class="tag">DETONANTE + CONCEPT GRID</span>
+        </div>
+        <div class="wf-example__body">
+          <div class="wf-example__col wf-example__col--before">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:file-word-box"></iconify-icon> VOS me pasás esto</div>
+            <pre><span class="hd">## PANTALLA 03 · Pregunta detonante</span>
+<span class="hint">[hint: bloque detonante + 4 concept cards]</span>
+
+<span class="lb">Título:</span> ¿Qué pasa cuando un corazón se detiene?
+<span class="lb">Lead:</span> Antes de responder, observá este dato.
+
+<span class="lb">Dato impactante:</span>
+Valor (en grande): 7–10%
+Texto: Cada minuto sin RCP reduce la probabilidad
+de sobrevida. El daño cerebral irreversible
+comienza en 4 a 6 minutos.
+Fuente: AHA · Guías 2025
+
+<span class="lb">Puente:</span>
+Para responder esta pregunta necesitás dominar
+4 conceptos clave (siguientes pantallas).
+
+<span class="lb">Concept cards (4 con link):</span>
+- 01 · Paro cardíaco → pantalla 04
+  Por qué se detiene el corazón.
+- 02 · Infarto vs paro → pantalla 05
+  La diferencia clínica clave.
+- 03 · Cadena de supervivencia → pantalla 06
+  Los 6 eslabones de AHA 2025.
+- 04 · RCP de calidad → pantalla 07
+  Profundidad, frecuencia, continuidad.</pre>
+          </div>
+          <div class="wf-example__col wf-example__col--after">
+            <div class="wf-example__col-title"><iconify-icon icon="mdi:auto-fix"></iconify-icon> YO genero</div>
+            <ul class="wf-result-list">
+              <li>Bloque <code>.wg-detonante</code> dark con stat enorme en gradient</li>
+              <li>Bridge text centrado</li>
+              <li>Grid de 4 <code>.wg-concept</code> cards · cada una linkea a su pantalla</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 ASSETS -->
+    <section id="assets" class="wf-section">
+      <span class="wf-section__eyebrow">07 · Assets</span>
+      <h2>Lo que me das aparte del Word</h2>
+      <p class="wf-section__lead">Lista de archivos sueltos · todo va a la carpeta <code>cursos/{nombre}/assets/</code>.</p>
+
+      <div class="wf-checklist">
+        <ul>
+          <li><iconify-icon icon="mdi:image"></iconify-icon><div><strong>Logo del cliente</strong> SVG (ideal) · PNG transparente · mínimo 200×200 px.</div></li>
+          <li><iconify-icon icon="mdi:image-multiple"></iconify-icon><div><strong>Imágenes de las pantallas</strong> JPG o PNG · max 200 KB cada una · nombrá tipo <code>p04-anatomia.jpg</code> para que sepa dónde van.</div></li>
+          <li><iconify-icon icon="mdi:music-note"></iconify-icon><div><strong>Audios MP3</strong> Si hay audio/podcast · 128–192 kbps · nombrá <code>ep01-intro.mp3</code>.</div></li>
+          <li><iconify-icon icon="mdi:file-pdf-box"></iconify-icon><div><strong>PDFs descargables</strong> Material complementario · optimizados.</div></li>
+          <li><iconify-icon icon="mdi:video"></iconify-icon><div><strong>Videos</strong> Subir a YouTube/Vimeo · pasarme el embed link.</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DESCARGA DEMO -->
+    <section id="descarga-demo" class="wf-section">
+      <span class="wf-section__eyebrow">Descargable</span>
+      <h2>📥 Word demo · ejemplo real</h2>
+      <p class="wf-section__lead">
+        Descargá este Word ya armado siguiendo todos los lineamientos del workflow.
+        Está construido a partir del curso de RCP Básico AHA 2025 · sirve como
+        <strong>plantilla y referencia</strong> para armar el Word de tu próximo curso.
+      </p>
+
+      <a href="assets/downloads/curso-demo-rcp.docx" download
+         style="display:grid; grid-template-columns:72px 1fr auto; gap:20px; align-items:center;
+                padding:24px 28px; background:var(--bg-surface); border:1px solid var(--border-c);
+                border-radius:var(--r-lg); text-decoration:none; color:var(--text-head);
+                box-shadow: var(--shadow-md); transition: all .2s;"
+         onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='var(--c-acento)';"
+         onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='var(--border-c)';">
+        <div style="width:64px; height:64px; background:var(--grad-brand); border-radius:16px;
+                    display:grid; place-items:center; color:white; font-size:2rem;
+                    box-shadow: var(--glow-brand);">
+          <iconify-icon icon="mdi:file-word-box"></iconify-icon>
+        </div>
+        <div>
+          <strong style="display:block; font-family:var(--font-display); font-size:1.15rem; margin-bottom:4px;">
+            curso-demo-rcp.docx
+          </strong>
+          <span style="color:var(--text-mut); font-size:.9rem; display:block;">
+            Word completo con cabecera, 14 pantallas, hints y glosario · ~42 KB
+          </span>
+          <span style="color:var(--c-acento); font-size:.78rem; font-family:var(--font-mono);
+                       letter-spacing:.08em; margin-top:6px; display:inline-block;">
+            ▸ Click para descargar
+          </span>
+        </div>
+        <div style="background:var(--acento-soft); color:var(--c-acento); padding:10px 18px;
+                    border-radius:var(--r-pill); font-family:var(--font-display); font-weight:600;
+                    font-size:.88rem; display:flex; align-items:center; gap:8px;">
+          <iconify-icon icon="mdi:download"></iconify-icon> Descargar
+        </div>
+      </a>
+
+      <h3 style="margin-top: 40px;">📋 Qué incluye el Word demo</h3>
+      <div class="wf-checklist">
+        <ul>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cabecera completa</strong> Metadatos del curso · preset visual · estructura.</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>8 pantallas detalladas</strong> Portada · Bienvenida · Pregunta detonante · Conceptos · Comparativo · Cadena · Compresiones · Uso del DEA.</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Pantalla de evaluación</strong> Quiz con 2 preguntas ejemplo en el formato completo.</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Glosario auto-render</strong> Lista plana letra-término-definición.</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Referencias y créditos</strong> Estructura para que el bloque se arme solo.</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Hint en cada pantalla</strong> Te mostramos los hints reales que usaríamos.</div></li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Notas finales</strong> Recordatorios prácticos para la diseñadora instruccional.</div></li>
+        </ul>
+      </div>
+
+      <h3 style="margin-top: 40px;">🛠️ Cómo usarlo</h3>
+      <ol style="line-height: 1.8;">
+        <li><strong>Descargá el archivo</strong> y abrilo en Word / Google Docs / Pages.</li>
+        <li><strong>Borrá el contenido</strong> de cada pantalla pero <strong>conservá la estructura</strong> (heading, labels, hints).</li>
+        <li><strong>Rellená con el contenido</strong> de tu curso nuevo.</li>
+        <li><strong>Pasámelo</strong> y yo genero el curso HTML completo.</li>
+      </ol>
+
+      <div class="wf-do-dont" style="margin-top: 24px;">
+        <div class="wf-do">
+          <strong>✅ Lo que está bueno copiar del demo</strong>
+          <ul>
+            <li>La forma de marcar el <code>[hint: ...]</code></li>
+            <li>La estructura de labels "Eyebrow:", "Título:", "Lead:"</li>
+            <li>El uso de listas con viñetas para enumerar ítems</li>
+            <li>El separador entre pantallas</li>
+          </ul>
+        </div>
+        <div class="wf-dont">
+          <strong>❌ Lo que NO copies literal</strong>
+          <ul>
+            <li>El contenido específico de RCP (es solo ejemplo)</li>
+            <li>La cantidad exacta de pantallas (puede variar)</li>
+            <li>Los hints exactos (depende de tu contenido)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 FAQ -->
+    <section id="faq" class="wf-section">
+      <span class="wf-section__eyebrow">08 · Dudas frecuentes</span>
+      <h2>Preguntas frecuentes</h2>
+
+      <div class="wg-acordeon">
+        <div class="wg-acordeon__item is-open">
+          <button class="wg-acordeon__head">
+            <span><span class="num">?</span> ¿Tengo que escribir el Word exactamente con ese formato?</span>
+            <iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon>
+          </button>
+          <div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">
+            No. Lo importante es la <strong>separación clara entre pantallas</strong> y los datos por pantalla (título, contenido). Si me das texto corrido, yo lo estructuro pero vamos a iterar más.
+          </div></div>
+        </div>
+
+        <div class="wg-acordeon__item">
+          <button class="wg-acordeon__head">
+            <span><span class="num">?</span> ¿Si no pongo el hint, qué componente elegís?</span>
+            <iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon>
+          </button>
+          <div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">
+            Aplico la <a href="showcase.html">guía del showcase</a>: lista de 3-8 conceptos → acordeón · 2 opuestos → VS · datos numéricos → KPIs · pasos secuenciales → stepper · etc.
+          </div></div>
+        </div>
+
+        <div class="wg-acordeon__item">
+          <button class="wg-acordeon__head">
+            <span><span class="num">?</span> ¿Y si quiero cambiar un componente después?</span>
+            <iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon>
+          </button>
+          <div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">
+            Decime "cambiá el componente X de la pantalla N por Y" y lo edito. El contenido se mantiene, solo cambia la presentación.
+          </div></div>
+        </div>
+
+        <div class="wg-acordeon__item">
+          <button class="wg-acordeon__head">
+            <span><span class="num">?</span> ¿Puedo mezclar varios componentes en una pantalla?</span>
+            <iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon>
+          </button>
+          <div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">
+            Sí. Por ejemplo: KPIs arriba + acordeón abajo + callout al pie. En el hint podés decir <em>"[hint: KPIs arriba, acordeón abajo, callout warning final]"</em>.
+          </div></div>
+        </div>
+
+        <div class="wg-acordeon__item">
+          <button class="wg-acordeon__head">
+            <span><span class="num">?</span> ¿Cómo paso el contenido si es muy largo?</span>
+            <iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon>
+          </button>
+          <div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">
+            Pegámelo por bloques de 3-4 pantallas a la vez. Vamos generando incrementalmente y vos vas revisando.
+          </div></div>
+        </div>
+
+        <div class="wg-acordeon__item">
+          <button class="wg-acordeon__head">
+            <span><span class="num">?</span> ¿Cómo me devolvés el curso terminado?</span>
+            <iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon>
+          </button>
+          <div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">
+            Carpeta <code>cursos/{nombre-curso}/</code> con todos los HTML + assets · y un ZIP comprimido listo para subir al LMS. Es autocontenido, no necesita backend.
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="assets/js/course.js"></script>
+<script src="assets/js/core.js"></script>
+<script>
+  // TOC highlight
+  const links = document.querySelectorAll('.wf-side a[href^="#"]');
+  const sections = [...document.querySelectorAll('.wf-section[id]')];
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

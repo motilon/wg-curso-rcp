@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es" data-version="hibrida">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Identificar parada cardíaca · RCP Básico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
+<link rel="stylesheet" href="assets/css/core.css" />
+</head>
+<body class="wg-body">
+<button class="wg-burger" data-wg-burger><iconify-icon icon="mdi:menu"></iconify-icon></button>
+<div class="wg-app">
+  <aside class="wg-sidebar" data-wg-sidebar data-current="identificacion"></aside>
+  <main class="wg-main">
+    <div class="wg-topbar">
+      <div class="wg-breadcrumb" data-wg-breadcrumb data-current="identificacion"></div>
+      <div class="wg-topbar__actions">
+        <div class="wg-version-switch" data-wg-version-switch></div>
+        <a href="#" class="wg-iconbtn"><iconify-icon icon="mdi:download"></iconify-icon></a>
+      </div>
+    </div>
+    <article class="wg-screen">
+      <header class="wg-screen__head" data-reveal>
+        <div class="wg-screen__eyebrow">Pantalla 04 · Reconocimiento</div>
+        <h1 class="wg-screen__title">¿Cómo se identifica una posible parada cardíaca?</h1>
+        <p class="wg-screen__lead">
+          Una posible parada cardíaca se identifica principalmente por
+          <strong>dos señales</strong>:
+        </p>
+      </header>
+
+      <!-- 2 SEÑALES · hero cards con iconos grandes y badge numerado -->
+      <div class="wg-grid-2" data-reveal style="margin-top:8px;">
+        <div style="position:relative; padding:32px 28px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-lg); overflow:hidden;">
+          <span style="position:absolute; top:18px; right:18px; font-family:var(--font-mono); font-size:.75rem; color:var(--c-acento); background:color-mix(in srgb, var(--c-acento) 12%, transparent); padding:4px 10px; border-radius:999px;">SEÑAL 1</span>
+          <div style="width:64px; height:64px; border-radius:18px; background:var(--grad-brand); display:grid; place-items:center; color:white; margin-bottom:18px; box-shadow:0 10px 24px color-mix(in srgb, var(--c-acento) 30%, transparent);">
+            <iconify-icon icon="mdi:account-off-outline" style="font-size:2rem;"></iconify-icon>
+          </div>
+          <h3 style="margin:0; font-size:1.5rem;">La persona no responde.</h3>
+        </div>
+        <div style="position:relative; padding:32px 28px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-lg); overflow:hidden;">
+          <span style="position:absolute; top:18px; right:18px; font-family:var(--font-mono); font-size:.75rem; color:var(--c-info); background:color-mix(in srgb, var(--c-info) 14%, transparent); padding:4px 10px; border-radius:999px;">SEÑAL 2</span>
+          <div style="width:64px; height:64px; border-radius:18px; background:linear-gradient(135deg, var(--c-info), color-mix(in srgb, var(--c-info) 70%, var(--c-acento))); display:grid; place-items:center; color:white; margin-bottom:18px; box-shadow:0 10px 24px color-mix(in srgb, var(--c-info) 30%, transparent);">
+            <iconify-icon icon="mdi:lungs" style="font-size:2rem;"></iconify-icon>
+          </div>
+          <h3 style="margin:0; font-size:1.5rem;">La persona no respira normalmente.</h3>
+        </div>
+      </div>
+
+      <!-- VERIFICACIÓN · instrucciones literales con stepper -->
+      <h3 style="margin:48px 0 8px; display:flex; align-items:center; gap:10px;" data-reveal>
+        <iconify-icon icon="mdi:magnify-scan" style="color:var(--c-acento); font-size:1.6rem;"></iconify-icon>
+        Cómo verificarlo
+      </h3>
+      <p data-reveal>
+        Para verificarlo, acércate únicamente si la escena es segura. Llama a la
+        persona en voz alta y toca suavemente sus hombros. Puedes decir:
+      </p>
+
+      <!-- Bloque cita destacada · las 2 frases literales -->
+      <div data-reveal style="margin-top:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <div style="position:relative; padding:24px 24px 24px 56px; background:linear-gradient(135deg, color-mix(in srgb, var(--c-acento) 8%, var(--bg-surface)), var(--bg-surface)); border:1px solid color-mix(in srgb, var(--c-acento) 25%, var(--border-c)); border-radius:var(--r-md); font-family:var(--font-display); font-size:1.4rem; color:var(--text-head); line-height:1.3;">
+          <iconify-icon icon="mdi:format-quote-open" style="position:absolute; top:14px; left:18px; font-size:2rem; color:var(--c-acento); opacity:.7;"></iconify-icon>
+          ¿Está bien?
+        </div>
+        <div style="position:relative; padding:24px 24px 24px 56px; background:linear-gradient(135deg, color-mix(in srgb, var(--c-info) 8%, var(--bg-surface)), var(--bg-surface)); border:1px solid color-mix(in srgb, var(--c-info) 25%, var(--border-c)); border-radius:var(--r-md); font-family:var(--font-display); font-size:1.4rem; color:var(--text-head); line-height:1.3;">
+          <iconify-icon icon="mdi:format-quote-open" style="position:absolute; top:14px; left:18px; font-size:2rem; color:var(--c-info); opacity:.7;"></iconify-icon>
+          ¿Me escucha?
+        </div>
+      </div>
+
+      <!-- Si no responde · observar respiración -->
+      <div data-reveal style="margin-top:32px; padding:28px; background:var(--bg-surface); border-left:4px solid var(--c-acento); border-radius:var(--r-md);">
+        <div style="display:flex; gap:18px; align-items:flex-start;">
+          <div style="min-width:48px; height:48px; border-radius:14px; background:color-mix(in srgb, var(--c-acento) 14%, transparent); display:grid; place-items:center; color:var(--c-acento);">
+            <iconify-icon icon="mdi:eye-outline" style="font-size:1.6rem;"></iconify-icon>
+          </div>
+          <p style="margin:0;">
+            Si no responde, observa si el <strong>pecho o el abdomen se mueven</strong>
+            de manera normal. Si no hay respiración, o si solo hay
+            <strong>jadeos, boqueadas o respiración irregular</strong>, debes asumir
+            que puede estar en parada cardíaca.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tip · No buscar pulso -->
+      <div class="wg-callout wg-callout--success" style="margin-top:14px;" data-reveal>
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">Recuerda</span>
+          <p style="margin:8px 0 0;">
+            No es necesario buscar el pulso si no estás entrenado para hacerlo. La
+            prioridad es <strong>reconocer rápidamente la situación e iniciar la
+            respuesta</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           SUB-SECCIÓN · ¿Cuándo sospechar parada cardíaca?
+           =================================================================== -->
+      <div data-reveal style="margin:64px 0 32px; display:flex; align-items:center; gap:18px;">
+        <span style="width:48px; height:1px; background:var(--c-acento);"></span>
+        <span style="font-family:var(--font-mono); font-size:.78rem; letter-spacing:.18em; color:var(--c-acento); text-transform:uppercase;">Toma de decisión</span>
+        <span style="flex:1; height:1px; background:var(--border-c);"></span>
+      </div>
+
+      <header data-reveal>
+        <h2 class="wg-screen__title" style="font-size:clamp(1.6rem, 2.4vw, 2rem); margin:0 0 24px;">
+          ¿Cuándo sospechar parada cardíaca?
+        </h2>
+      </header>
+
+      <!-- Imagen 1 · Flowchart cuándo sospechar -->
+      <figure class="wg-figura" data-reveal>
+        <div class="wg-figura__hero" style="height:auto; padding:24px; background:#fff;">
+          <span class="badge">IMAGEN 1 · FLUJO DE DECISIÓN</span>
+          <img src="assets/img/curso/p04-flowchart-sospechar.png" alt="Flujo: cuándo sospechar parada cardíaca" style="max-width:100%; max-height:none; width:auto;" />
+        </div>
+        <figcaption class="wg-figura__caption">
+          <iconify-icon icon="mdi:sitemap" style="color:var(--c-acento);"></iconify-icon>
+          <strong>Cuándo sospechar parada cardíaca</strong>
+          <span>Persona en el suelo · escena segura · ¿responde? · ¿respira normal? → activar emergencias + DEA + RCP.</span>
+        </figcaption>
+      </figure>
+
+      <!-- Callout · Atención -->
+      <div class="wg-callout wg-callout--warning" style="margin-top:32px;" data-reveal>
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:alert"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">Atención</span>
+          <p style="margin:8px 0 0;">
+            Los jadeos o boqueadas no son respiración normal.
+          </p>
+        </div>
+      </div>
+
+      <!-- Callout · Tener en cuenta -->
+      <div class="wg-callout" style="margin-top:14px;" data-reveal>
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">Tener en cuenta</span>
+          <p style="margin:8px 0 0;">
+            Ante la duda, si la persona no responde y no respira normalmente, inicia RCP.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bloque · ¿Sabías que…? estilo Q&A destacado -->
+      <div data-reveal style="margin-top:24px; position:relative; padding:32px; background:linear-gradient(135deg, color-mix(in srgb, var(--c-info) 14%, var(--bg-surface)) 0%, var(--bg-surface) 100%); border:1px solid color-mix(in srgb, var(--c-info) 30%, var(--border-c)); border-radius:var(--r-lg); overflow:hidden;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+          <div style="width:42px; height:42px; border-radius:12px; background:var(--c-info); display:grid; place-items:center; color:white;">
+            <iconify-icon icon="mdi:head-question-outline" style="font-size:1.4rem;"></iconify-icon>
+          </div>
+          <span style="font-family:var(--font-mono); font-size:.78rem; letter-spacing:.16em; color:var(--c-info); text-transform:uppercase;">¿Sabías que…?</span>
+        </div>
+
+        <p style="margin:0 0 20px; font-family:var(--font-display); font-size:1.25rem; color:var(--text-head); line-height:1.4;">
+          Una persona inconsciente respira con jadeos aislados cada varios segundos.
+          <span style="color:var(--c-info);">¿Debes considerarlo respiración normal?</span>
+        </p>
+
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:18px; background:var(--bg-base); border-radius:var(--r-md); border-left:4px solid var(--c-acento);">
+          <span style="min-width:42px; height:42px; border-radius:50%; background:var(--c-acento); color:white; display:grid; place-items:center; font-family:var(--font-display); font-weight:700; font-size:1.2rem;">NO</span>
+          <p style="margin:0; align-self:center;">
+            Debe considerarse <strong>posible parada cardíaca</strong>.
+          </p>
+        </div>
+      </div>
+    </article>
+    <nav class="wg-screen-nav" data-wg-screen-nav data-current="identificacion"></nav>
+  </main>
+</div>
+<script src="assets/js/course.js"></script>
+<script src="assets/js/core.js"></script>
+</body>
+</html>

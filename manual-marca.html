@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="es" data-version="hibrida">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Manual de marca · Template Waygroup OVA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
+<link rel="stylesheet" href="assets/css/core.css" />
+<style>
+  .mn-app { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+  @media (max-width: 1024px) { .mn-app { grid-template-columns: 1fr; } }
+  .mn-side { position: sticky; top: 0; height: 100vh; background: var(--bg-sidebar); color: var(--sb-text); overflow-y: auto; padding: 22px 16px; }
+  .mn-side h2 { color: var(--sb-text); margin: 0 0 4px; font-size: 1rem; }
+  .mn-side small { display: block; color: var(--sb-text-mut); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 22px; }
+  .mn-side a { display: block; padding: 7px 10px; color: var(--sb-text-mut); text-decoration: none; border-radius: 7px; font-size: .86rem; transition: all .15s; }
+  .mn-side a:hover { background: color-mix(in srgb, currentColor 4%, transparent); color: var(--sb-text); }
+  .mn-side a.is-active { background: var(--acento-strong); color: var(--sb-text); }
+  .mn-main { background: var(--bg-app); }
+  .mn-topbar { height: var(--topbar-h); background: var(--bg-surface); border-bottom: 1px solid var(--border-c); position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+  .mn-topbar h1 { margin: 0; font-size: 1.05rem; }
+  .mn-section { padding: 56px 32px; max-width: 900px; margin: 0 auto; }
+  .mn-section + .mn-section { border-top: 1px dashed var(--border-c); }
+  .mn-section__eyebrow { display: inline-block; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--c-acento); margin-bottom: 8px; }
+  .mn-section h2 { margin: 0 0 8px; font-size: 1.8rem; }
+  .mn-section__lead { color: var(--text-mut); font-size: 1.1rem; margin: 0 0 32px; }
+  .mn-do { background: color-mix(in srgb, var(--success) 6%, transparent); border-left: 3px solid var(--success); padding: 16px 20px; border-radius: 8px; margin: 16px 0; }
+  .mn-dont { background: color-mix(in srgb, var(--danger) 6%, transparent); border-left: 3px solid var(--danger); padding: 16px 20px; border-radius: 8px; margin: 16px 0; }
+  .mn-do strong, .mn-dont strong { display: block; margin-bottom: 6px; font-family: var(--font-display); }
+  .mn-do strong { color: var(--success); }
+  .mn-dont strong { color: var(--danger); }
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+  .swatch { background: var(--bg-surface); border: 1px solid var(--border-c); border-radius: var(--r-md); overflow: hidden; }
+  .swatch-color { height: 60px; }
+  .swatch-info { padding: 12px 14px; font-size: .82rem; }
+  .swatch-info strong { display: block; font-family: var(--font-display); color: var(--text-head); }
+  .swatch-info code { font-family: var(--font-mono); font-size: .72rem; color: var(--text-mut); background: none; padding: 0; }
+  .mn-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  .mn-table th, .mn-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border-c); font-size: .9rem; }
+  .mn-table th { background: var(--bg-muted); font-family: var(--font-display); font-size: .82rem; color: var(--text-head); }
+  .mn-table code { font-family: var(--font-mono); font-size: .8rem; }
+  .mn-checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .mn-checklist li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: var(--bg-surface); border: 1px solid var(--border-c); border-radius: var(--r-md); font-size: .92rem; }
+  .mn-checklist li::before { content: '☐'; color: var(--text-mut); font-size: 1.2rem; flex-shrink: 0; line-height: 1; }
+  pre { background: var(--bg-sidebar); color: white; padding: 18px 22px; border-radius: var(--r-md); overflow-x: auto; font-family: var(--font-mono); font-size: .82rem; line-height: 1.6; }
+  pre .c { color: #6B7B95; }
+  pre .k { color: var(--c-acento); }
+  pre .s { color: var(--c-info); }
+</style>
+</head>
+<body class="wg-body">
+<div class="mn-app">
+  <aside class="mn-side">
+    <h2>📐 Manual de marca</h2>
+    <small>v1.0 · Waygroup OVA</small>
+    <a href="index.html"><iconify-icon icon="mdi:arrow-left"></iconify-icon> Volver al curso</a>
+
+    <h4 style="margin-top:18px; color:var(--c-acento); font-family:var(--font-mono); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; padding:0 8px;">Secciones</h4>
+    <a href="#vision">1 · Visión general</a>
+    <a href="#color">2 · Sistema de color</a>
+    <a href="#tres">3 · Las 3 versiones</a>
+    <a href="#tipografia">4 · Tipografía</a>
+    <a href="#espaciado">5 · Espaciado y radios</a>
+    <a href="#componentes">6 · Componentes</a>
+    <a href="#logo">7 · Logo y placeholders</a>
+    <a href="#voz">8 · Voz y tono</a>
+    <a href="#iconos">9 · Iconos</a>
+    <a href="#accesibilidad">10 · Accesibilidad</a>
+    <a href="#checklist">11 · Checklist pre-publicación</a>
+  </aside>
+
+  <main class="mn-main">
+    <div class="mn-topbar">
+      <h1><iconify-icon icon="mdi:palette-swatch" style="color:var(--c-acento); margin-right:8px;"></iconify-icon> Manual de marca</h1>
+      <div style="display:flex; gap:8px;">
+        <div class="wg-version-switch" data-wg-version-switch></div>
+        <a href="presets.html" class="wg-iconbtn"><iconify-icon icon="mdi:palette"></iconify-icon></a>
+        <a href="showcase.html" class="wg-iconbtn wg-iconbtn--accent"><iconify-icon icon="mdi:view-grid"></iconify-icon></a>
+      </div>
+    </div>
+
+    <section id="vision" class="mn-section">
+      <span class="mn-section__eyebrow">01 · Introducción</span>
+      <h2>Visión general del template</h2>
+      <p class="mn-section__lead">Template marca blanca para Objetos Virtuales de Aprendizaje (OVA). Una sola base, muchos cursos.</p>
+      <p>Este template se diseñó para que el equipo académico pueda producir cursos con apariencia consistente y profesional sin necesidad de tocar CSS. <strong>Solo varían: paleta de colores, logo y contenido.</strong></p>
+      <h3 style="margin-top: 32px;">El sistema en una frase</h3>
+      <p>El curso define <strong>2 colores</strong> (acento + info) y elige <strong>1 de 3 versiones</strong> (Híbrida, Clara, Oscura). Con eso el template completo se pinta automáticamente.</p>
+    </section>
+
+    <section id="color" class="mn-section">
+      <span class="mn-section__eyebrow">02 · Color</span>
+      <h2>Sistema de color</h2>
+      <p class="mn-section__lead">Solo 2 variables CSS definen toda la marca del curso.</p>
+
+      <h3>Las 2 variables base</h3>
+      <pre><span class="c">/* assets/css/theme.css */</span>
+<span class="k">:root</span> {
+  <span class="k">--c-acento</span>: <span class="s">#F37021</span>;  <span class="c">/* botones, énfasis, gradientes */</span>
+  <span class="k">--c-info</span>:   <span class="s">#38E1FF</span>;  <span class="c">/* chips, eyebrows, datos */</span>
+}</pre>
+
+      <h3 style="margin-top: 32px;">Lo que se deriva automáticamente</h3>
+      <table class="mn-table">
+        <thead><tr><th>Token</th><th>Fórmula</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td><code>--acento-soft</code></td><td><code>--c-acento × 12%</code></td><td>Fondos sutiles</td></tr>
+          <tr><td><code>--acento-deep</code></td><td><code>--c-acento × 70% + black</code></td><td>Final del gradient</td></tr>
+          <tr><td><code>--acento-light</code></td><td><code>--c-acento × 50% + white</code></td><td>Texto en sidebar dark</td></tr>
+          <tr><td><code>--grad-brand</code></td><td><code>linear-gradient(acento → deep)</code></td><td>Botones primary, KPIs</td></tr>
+          <tr><td><code>--glow-brand</code></td><td><code>shadow del acento al 35%</code></td><td>Halo de botones</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top: 32px;">14 presets pre-validados</h3>
+      <p>En lugar de inventar colores, usá uno de los 14 presets disponibles en <code>assets/css/presets/</code>. Mirá la galería interactiva en <a href="presets.html">presets.html</a>.</p>
+
+      <div class="mn-do"><strong>✅ Hacer</strong> Usar uno de los 14 presets · cambiar de marca = cambiar 1 línea de <code>&lt;link&gt;</code>.</div>
+      <div class="mn-dont"><strong>❌ No hacer</strong> Inventar colores hex sueltos · romper la armonía cromática del sistema.</div>
+    </section>
+
+    <section id="tres" class="mn-section">
+      <span class="mn-section__eyebrow">03 · Versiones</span>
+      <h2>Las 3 versiones del template</h2>
+      <p class="mn-section__lead">El estudiante elige · o el curso fija una como default vía <code>data-version</code> en el <code>&lt;html&gt;</code>.</p>
+
+      <table class="mn-table">
+        <thead><tr><th>Versión</th><th>Sidebar</th><th>Main</th><th>Cuándo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Híbrida</strong></td><td>Dark navy</td><td>Claro</td><td>Default · contraste fuerte profesional</td></tr>
+          <tr><td><strong>Clara</strong></td><td>Blanco</td><td>Blanco</td><td>Cursos académicos · lectura prolongada</td></tr>
+          <tr><td><strong>Oscura</strong></td><td>Dark navy</td><td>Dark navy</td><td>Simulación / inmersión · brand brilla como neón</td></tr>
+        </tbody>
+      </table>
+
+      <p>Toggle visible en el topbar de todas las pantallas. Preferencia persistida en <code>localStorage</code>.</p>
+    </section>
+
+    <section id="tipografia" class="mn-section">
+      <span class="mn-section__eyebrow">04 · Tipografía</span>
+      <h2>Familias del sistema</h2>
+      <table class="mn-table">
+        <thead><tr><th>Token</th><th>Familia</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td><code>--font-display</code></td><td>Space Grotesk</td><td>Títulos, números grandes, eyebrows</td></tr>
+          <tr><td><code>--font-body</code></td><td>Inter</td><td>Cuerpo de texto, párrafos</td></tr>
+          <tr><td><code>--font-mono</code></td><td>JetBrains Mono</td><td>Códigos, datos, tags telemetría</td></tr>
+        </tbody>
+      </table>
+      <p>Se cargan desde Google Fonts en el <code>&lt;head&gt;</code>. Para cambiar a otras familias → editá <code>core.css</code>.</p>
+    </section>
+
+    <section id="espaciado" class="mn-section">
+      <span class="mn-section__eyebrow">05 · Espaciado</span>
+      <h2>Radios y espaciados</h2>
+      <table class="mn-table">
+        <thead><tr><th>Token</th><th>Valor</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td><code>--r-sm</code></td><td>8px</td><td>Badges, inputs</td></tr>
+          <tr><td><code>--r-md</code></td><td>14px</td><td>Cards, alerts</td></tr>
+          <tr><td><code>--r-lg</code></td><td>22px</td><td>Bloques grandes</td></tr>
+          <tr><td><code>--r-xl</code></td><td>32px</td><td>Heroes, modales</td></tr>
+          <tr><td><code>--r-pill</code></td><td>999px</td><td>Botones, chips</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="componentes" class="mn-section">
+      <span class="mn-section__eyebrow">06 · Componentes</span>
+      <h2>Catálogo obligatorio</h2>
+      <p class="mn-section__lead">Todo curso DEBE usar solo los componentes del catálogo. Mirá <a href="showcase.html">showcase.html</a> para verlos todos.</p>
+      <div class="mn-dont"><strong>❌ Prohibido</strong> Inventar markup propio · cargar Bootstrap/Tailwind/Materialize · sobrescribir con <code>!important</code>.</div>
+      <div class="mn-do"><strong>✅ Si falta un componente</strong> Proponerlo para sumar al sistema · NO inventarlo solo para tu curso.</div>
+    </section>
+
+    <section id="logo" class="mn-section">
+      <span class="mn-section__eyebrow">07 · Logo</span>
+      <h2>Logo y placeholders</h2>
+      <p>El template usa un placeholder SVG (<code>assets/img/placeholders/logo.svg</code>) con borde punteado y texto "LOGO" para que sea OBVIO que falta reemplazar.</p>
+      <p>Cuando el cliente entrega su logo, simplemente reemplazá ese archivo · el sidebar lo tomará automáticamente.</p>
+      <div class="mn-do"><strong>✅ Recomendado</strong> Logo en SVG · escala perfecta · se tinta con el color del preset si usa <code>currentColor</code>.</div>
+      <div class="mn-dont"><strong>❌ Evitar</strong> Logos PNG/JPG menores a 200×200 · se pixelan en Retina.</div>
+    </section>
+
+    <section id="voz" class="mn-section">
+      <span class="mn-section__eyebrow">08 · Voz</span>
+      <h2>Voz y tono</h2>
+      <ul>
+        <li><strong>Tuteo o "vos"</strong> consistente · elegir uno por curso.</li>
+        <li><strong>Frases cortas</strong> · máx 25 palabras.</li>
+        <li><strong>Voz activa</strong> · no pasiva.</li>
+        <li><strong>Sin emojis</strong> en contenido educativo (sí en demos/promociones).</li>
+        <li><strong>Sin MAYÚSCULAS</strong> para énfasis · usá <code>&lt;strong&gt;</code>.</li>
+      </ul>
+      <h3 style="margin-top: 24px;">Microcopy obligatorio</h3>
+      <table class="mn-table">
+        <thead><tr><th>Acción</th><th>Texto</th></tr></thead>
+        <tbody>
+          <tr><td>CTA principal</td><td>"Comenzar el curso" / "Continuar"</td></tr>
+          <tr><td>CTA secundario</td><td>"Descargar material" / "Ver más"</td></tr>
+          <tr><td>Quiz ✓</td><td>"✓ Correcto. [explicación]"</td></tr>
+          <tr><td>Quiz ✗</td><td>"✗ Revisá [pantalla]. [pista]"</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="iconos" class="mn-section">
+      <span class="mn-section__eyebrow">09 · Iconos</span>
+      <h2>Iconify (200k+ iconos)</h2>
+      <p>Usamos <strong>Iconify</strong>. Sets recomendados:</p>
+      <ul>
+        <li><code>mdi:*</code> · Material Design Icons (default)</li>
+        <li><code>healthicons:*</code> · Iconos médicos / SST</li>
+        <li><code>tabler:*</code> · Iconos line-art alternativos</li>
+        <li><code>phosphor:*</code> · Iconos curvos amigables</li>
+      </ul>
+      <p>Buscador: <a href="https://icon-sets.iconify.design/" target="_blank">icon-sets.iconify.design</a></p>
+      <pre>&lt;<span class="k">iconify-icon</span> <span class="s">icon</span>=<span class="s">"mdi:heart-pulse"</span>&gt;&lt;/<span class="k">iconify-icon</span>&gt;</pre>
+    </section>
+
+    <section id="accesibilidad" class="mn-section">
+      <span class="mn-section__eyebrow">10 · A11y</span>
+      <h2>Accesibilidad</h2>
+      <ul>
+        <li>Contraste AA mínimo en todos los textos · verificar en las 3 versiones.</li>
+        <li><code>alt</code> en todas las imágenes.</li>
+        <li><code>aria-label</code> en botones de solo icono.</li>
+        <li>Navegación por teclado funcional (← → para prev/next).</li>
+        <li>Touch target mínimo 40×40 px.</li>
+      </ul>
+    </section>
+
+    <section id="checklist" class="mn-section">
+      <span class="mn-section__eyebrow">11 · Cierre</span>
+      <h2>Checklist pre-publicación</h2>
+      <p class="mn-section__lead">Antes de entregar el curso al cliente verificá:</p>
+      <ul class="mn-checklist">
+        <li>El preset está definido (uno de los 14 o uno custom).</li>
+        <li>El logo placeholder fue reemplazado por el real del cliente.</li>
+        <li><code>course.js</code> tiene todos los datos (menú, glosario, créditos, referencias).</li>
+        <li>Cada pantalla tiene su <code>data-current</code> correcto.</li>
+        <li>El contenido se ve bien en las 3 versiones (Híbrida / Clara / Oscura).</li>
+        <li>Funciona en mobile sin desbordes.</li>
+        <li>Los enlaces prev/next del nav funcionan en todas las pantallas.</li>
+        <li>El glosario y créditos se auto-renderizan correctamente.</li>
+        <li>No quedan textos placeholder ("Lorem ipsum", "Editar este texto").</li>
+        <li>Imágenes optimizadas (&lt; 200KB cada una).</li>
+        <li>El curso completo carga en &lt; 3 segundos en 3G.</li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<script src="assets/js/course.js"></script>
+<script src="assets/js/core.js"></script>
+<script>
+  const links = document.querySelectorAll('.mn-side a[href^="#"]');
+  const sections = [...document.querySelectorAll('.mn-section[id]')];
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

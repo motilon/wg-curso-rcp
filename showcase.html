@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="es" data-version="hibrida">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Showcase · Catálogo de componentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
+<link rel="stylesheet" href="assets/css/core.css" />
+<style>
+  .sc-app { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+  @media (max-width: 1024px) { .sc-app { grid-template-columns: 1fr; } }
+  .sc-sidebar {
+    position: sticky; top: 0; height: 100vh;
+    background: var(--bg-sidebar); color: var(--sb-text);
+    overflow-y: auto;
+    padding: 22px 16px;
+  }
+  .sc-sidebar h2 { color: var(--sb-text); margin: 0 0 4px; font-size: 1rem; }
+  .sc-sidebar small { display: block; color: var(--sb-text-mut); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 22px; }
+  .sc-sidebar h4 { color: var(--c-acento); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; margin: 18px 0 8px; padding: 0 8px; }
+  .sc-sidebar a { display: block; padding: 7px 10px; color: var(--sb-text-mut); text-decoration: none; border-radius: 7px; font-size: .86rem; transition: all .15s; }
+  .sc-sidebar a:hover { background: color-mix(in srgb, currentColor 4%, transparent); color: var(--sb-text); }
+  .sc-sidebar a.is-active { background: var(--acento-strong); color: var(--sb-text); }
+  .sc-main { background: var(--bg-app); }
+  .sc-topbar { height: var(--topbar-h); background: var(--bg-surface); border-bottom: 1px solid var(--border-c); position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+  .sc-topbar h1 { margin: 0; font-size: 1.05rem; }
+  .sc-section { padding: 56px 32px; max-width: 1100px; margin: 0 auto; }
+  .sc-section + .sc-section { border-top: 1px dashed var(--border-c); }
+  .sc-section__head { margin-bottom: 32px; }
+  .sc-section__eyebrow { display: inline-block; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--c-acento); margin-bottom: 8px; }
+  .sc-section h2 { margin: 0 0 8px; }
+  .sc-section__lead { color: var(--text-mut); margin: 0; }
+  .sc-component { margin-bottom: 48px; }
+  .sc-component__title { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-c); }
+  .sc-component__title h3 { margin: 0; font-size: 1.2rem; }
+  .sc-component__title code { font-family: var(--font-mono); font-size: .78rem; background: var(--bg-muted); color: var(--c-acento); padding: 3px 10px; border-radius: 5px; }
+  .sc-component__desc { font-size: .92rem; color: var(--text-mut); margin: 0 0 20px; max-width: 700px; }
+  .sc-component__demo { background: var(--bg-surface); border: 1px solid var(--border-c); border-radius: var(--r-lg); padding: 32px; overflow: hidden; }
+  /* Bloque metadata por componente · cuándo usarlo + cuándo NO + input + hint */
+  .sc-meta {
+    margin-top: 18px;
+    background: var(--bg-muted);
+    border-radius: var(--r-md);
+    padding: 20px 24px;
+    display: grid;
+    gap: 14px;
+    font-size: .9rem;
+  }
+  .sc-meta__row { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; line-height: 1.55; color: var(--text-pri); }
+  .sc-meta__row iconify-icon { font-size: 1.2rem; margin-top: 2px; }
+  .sc-meta__row strong { display: inline-block; font-family: var(--font-display); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; margin-right: 10px; }
+  .sc-meta__row em { color: var(--text-mut); font-style: normal; background: color-mix(in srgb, var(--c-acento) 10%, transparent); padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono); font-size: .85em; }
+  .sc-meta__row--do iconify-icon, .sc-meta__row--do strong { color: var(--success); }
+  .sc-meta__row--dont iconify-icon, .sc-meta__row--dont strong { color: var(--danger); }
+  .sc-meta__row--input iconify-icon, .sc-meta__row--input strong { color: var(--c-info); }
+  .sc-meta__row--hint iconify-icon, .sc-meta__row--hint strong { color: var(--c-acento); }
+</style>
+</head>
+<body class="wg-body">
+
+<div class="sc-app">
+  <aside class="sc-sidebar">
+    <h2>Componentes UI</h2>
+    <small>Catálogo · v1.0</small>
+    <a href="index.html"><iconify-icon icon="mdi:arrow-left"></iconify-icon> Volver al curso</a>
+
+    <h4>Layout</h4>
+    <a href="#portada">Portada / Hero</a>
+    <a href="#ficha">Ficha técnica</a>
+
+    <h4>Contenido</h4>
+    <a href="#acordeon">Acordeón</a>
+    <a href="#tabs">Tabs</a>
+    <a href="#callouts">Callouts (4)</a>
+    <a href="#vs">Comparativo VS</a>
+    <a href="#tabla">Tabla</a>
+
+    <h4>Datos</h4>
+    <a href="#kpis">KPI cards</a>
+    <a href="#stepper">Stepper</a>
+    <a href="#timeline">Línea de tiempo</a>
+
+    <h4>Multimedia</h4>
+    <a href="#audio">Audio</a>
+    <a href="#podcast">Podcast</a>
+    <a href="#figura">Figura</a>
+    <a href="#beforeafter">Antes/Después</a>
+    <a href="#hotspots">Hotspots</a>
+    <a href="#carrusel">Carrusel</a>
+
+    <h4>Actividades</h4>
+    <a href="#quiz">Quiz</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#dnd">Drag &amp; Drop</a>
+    <a href="#ordenar">Ordenar</a>
+    <a href="#emparejar">Emparejar</a>
+    <a href="#modal">Modal</a>
+
+    <h4>Material</h4>
+    <a href="#descargas">Descargas</a>
+    <a href="#botones">Botones</a>
+  </aside>
+
+  <main class="sc-main">
+    <div class="sc-topbar">
+      <h1><iconify-icon icon="mdi:view-grid" style="color:var(--c-acento); margin-right:8px;"></iconify-icon> Catálogo de componentes</h1>
+      <div style="display:flex; gap:8px;">
+        <div class="wg-version-switch" data-wg-version-switch></div>
+        <a href="presets.html" class="wg-iconbtn" title="Paletas"><iconify-icon icon="mdi:palette"></iconify-icon></a>
+        <a href="index.html" class="wg-iconbtn wg-iconbtn--accent"><iconify-icon icon="mdi:home"></iconify-icon></a>
+      </div>
+    </div>
+
+    <!-- 01 LAYOUT -->
+    <div class="sc-section">
+      <div class="sc-section__head">
+        <span class="sc-section__eyebrow">01 · Layout</span>
+        <h2>Estructura general</h2>
+        <p class="sc-section__lead">Bloques que forman la cáscara de cualquier curso.</p>
+      </div>
+
+      <section id="portada" class="sc-component">
+        <div class="sc-component__title"><h3>Portada / Hero</h3><code>.wg-portada</code></div>
+        <p class="sc-component__desc">Pantalla de entrada · tipografía masiva sobre fondo del sidebar.</p>
+        <div class="sc-component__demo" style="padding:0;">
+          <div style="padding: 60px 40px; background: var(--bg-sidebar); color: var(--sb-text); border-radius: var(--r-md); text-align: center; position:relative; overflow:hidden;">
+            <div style="position:absolute; inset:0; background: var(--grad-mesh);"></div>
+            <div style="position:relative;">
+              <p style="font-family:var(--font-mono); font-size:.78rem; color:var(--c-info); letter-spacing:.16em; text-transform:uppercase; margin-bottom:14px;">CURSO · ISO</p>
+              <h2 style="color:var(--sb-text); margin-bottom:14px;">Nombre del curso<br/><span style="background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; color:transparent;">con énfasis.</span></h2>
+              <a href="#" class="wg-btn wg-btn--primary">Comenzar curso <iconify-icon icon="mdi:arrow-right" class="arrow"></iconify-icon></a>
+            </div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Pantalla 01 · primera impresión del curso.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Pantallas intermedias (es exclusivo de la primera).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Nombre del curso, subtítulo, 3-4 stats clave, CTA principal.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"acá va la portada del curso"</em></div></div>
+        </div>
+      </section>
+
+      <section id="ficha" class="sc-component">
+        <div class="sc-component__title"><h3>Ficha técnica</h3><code>.wg-ficha</code></div>
+        <p class="sc-component__desc">Metadatos del curso · grid auto-fit con iconos.</p>
+        <div class="sc-component__demo">
+          <div class="wg-ficha">
+            <div class="wg-ficha__item"><div class="ico"><iconify-icon icon="mdi:book-open"></iconify-icon></div><div class="label">Nombre</div><div class="value">Curso ejemplo</div></div>
+            <div class="wg-ficha__item"><div class="ico"><iconify-icon icon="mdi:clock-outline"></iconify-icon></div><div class="label">Duración</div><div class="value">20–30 min</div></div>
+            <div class="wg-ficha__item"><div class="ico"><iconify-icon icon="mdi:target"></iconify-icon></div><div class="label">Objetivo</div><div class="value">Resultado clave</div></div>
+            <div class="wg-ficha__item"><div class="ico"><iconify-icon icon="mdi:account-group"></iconify-icon></div><div class="label">Audiencia</div><div class="value">Población objetivo</div></div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Bienvenida o introducción · metadatos del curso o lección.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Si son datos numéricos destacados (usar KPI cards).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> 4-6 ítems con icono, label y valor.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"poné los metadatos como ficha"</em></div></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 02 CONTENIDO -->
+    <div class="sc-section">
+      <div class="sc-section__head">
+        <span class="sc-section__eyebrow">02 · Contenido textual</span>
+        <h2>Bloques narrativos</h2>
+      </div>
+
+      <section id="acordeon" class="sc-component">
+        <div class="sc-component__title"><h3>Acordeón</h3><code>.wg-acordeon</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-acordeon">
+            <div class="wg-acordeon__item is-open"><button class="wg-acordeon__head"><span><span class="num">01</span> Primer panel</span><iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon></button><div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">Contenido del primer panel.</div></div></div>
+            <div class="wg-acordeon__item"><button class="wg-acordeon__head"><span><span class="num">02</span> Segundo panel</span><iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon></button><div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">Contenido del segundo.</div></div></div>
+            <div class="wg-acordeon__item"><button class="wg-acordeon__head"><span><span class="num">03</span> Tercer panel</span><iconify-icon class="wg-acordeon__chev" icon="mdi:chevron-down"></iconify-icon></button><div class="wg-acordeon__body"><div class="wg-acordeon__body-inner">Contenido del tercero.</div></div></div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> 3-8 conceptos o definiciones del mismo nivel jerárquico.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Solo 2 ítems (usar comparativo) · 10+ ítems (usar tabla o glosario).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Lista de pares · título corto + descripción.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"esto va como acordeón"</em> · <em>"definiciones expandibles"</em></div></div>
+        </div>
+      </section>
+
+      <section id="tabs" class="sc-component">
+        <div class="sc-component__title"><h3>Tabs</h3><code>.wg-tabs</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-tabs">
+            <div class="wg-tabs__nav">
+              <button class="wg-tabs__btn is-active"><iconify-icon icon="mdi:information"></iconify-icon> Tab 1</button>
+              <button class="wg-tabs__btn"><iconify-icon icon="mdi:cog"></iconify-icon> Tab 2</button>
+              <button class="wg-tabs__btn"><iconify-icon icon="mdi:chart-bar"></iconify-icon> Tab 3</button>
+            </div>
+            <div class="wg-tabs__panels">
+              <div class="wg-tabs__panel is-active"><h4>Panel 1</h4><p>Contenido del primer tab.</p></div>
+              <div class="wg-tabs__panel"><h4>Panel 2</h4><p>Contenido del segundo tab.</p></div>
+              <div class="wg-tabs__panel"><h4>Panel 3</h4><p>Contenido del tercer tab.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> 2-4 vistas paralelas del mismo tema (variantes, perspectivas).</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Si las vistas son secuenciales (usar stepper).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> 2-4 etiquetas + contenido por cada tab.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"poné estas 3 secciones en tabs"</em></div></div>
+        </div>
+      </section>
+
+      <section id="callouts" class="sc-component">
+        <div class="sc-component__title"><h3>Callouts</h3><code>.wg-callout</code> · 4 variantes</div>
+        <p class="sc-component__desc">Bloques destacados para reglas, conceptos clave, advertencias y errores.</p>
+        <div class="sc-component__demo" style="display:grid; gap:14px;">
+          <div class="wg-callout"><div class="wg-callout__ico"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon></div><div><span class="wg-callout__tag">Idea clave</span><h4>Variante brand (default)</h4><p>Para resaltar conceptos centrales con el color de marca.</p></div></div>
+          <div class="wg-callout wg-callout--success"><div class="wg-callout__ico"><iconify-icon icon="mdi:check-circle"></iconify-icon></div><div><span class="wg-callout__tag">Correcto</span><h4>Variante success</h4><p>Para confirmar pasos cumplidos o buenas prácticas.</p></div></div>
+          <div class="wg-callout wg-callout--warning"><div class="wg-callout__ico"><iconify-icon icon="mdi:alert"></iconify-icon></div><div><span class="wg-callout__tag">Atención</span><h4>Variante warning</h4><p>Para advertencias y elementos a tener en cuenta.</p></div></div>
+          <div class="wg-callout wg-callout--danger"><div class="wg-callout__ico"><iconify-icon icon="mdi:close-octagon"></iconify-icon></div><div><span class="wg-callout__tag">No hacer</span><h4>Variante danger</h4><p>Para errores críticos o acciones prohibidas.</p></div></div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Destacar regla, advertencia o concepto clave dentro de un bloque más largo.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Si es el contenido principal · pierde sentido destacar todo.</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Variante (brand/success/warning/danger) + tag + título + texto.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"destacalo como warning"</em> · <em>"resaltá esta regla"</em></div></div>
+        </div>
+      </section>
+
+      <section id="vs" class="sc-component">
+        <div class="sc-component__title"><h3>Comparativo VS</h3><code>.wg-vs</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-vs">
+            <div class="wg-vs__card"><span class="wg-vs__card-tag">Opción A</span><h3>Primera</h3><p>Descripción.</p><ul><li>Ítem 1</li><li>Ítem 2</li></ul></div>
+            <div class="wg-vs__divider">VS</div>
+            <div class="wg-vs__card wg-vs__card--alt"><span class="wg-vs__card-tag">Opción B</span><h3>Segunda</h3><p>Descripción.</p><ul><li>Ítem 1</li><li>Ítem 2</li></ul></div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Dos conceptos opuestos o alternativas a comparar lado a lado.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Si son 3+ opciones (usar tabla comparativa).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Por cada lado · tag + título + descripción + lista de características.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"compará X versus Y"</em></div></div>
+        </div>
+      </section>
+
+      <section id="tabla" class="sc-component">
+        <div class="sc-component__title"><h3>Tabla</h3><code>.wg-tabla</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-tabla">
+            <table>
+              <thead><tr><th>Criterio</th><th class="is-highlight">Recomendado</th><th>Alternativa</th><th>Estado</th></tr></thead>
+              <tbody>
+                <tr><td>Criterio 1</td><td>Cumple total</td><td>Cumple parcial</td><td><span class="badge badge--success">OK</span></td></tr>
+                <tr><td>Criterio 2</td><td>Cumple</td><td>No cumple</td><td><span class="badge badge--warning">Atención</span></td></tr>
+                <tr><td>Criterio 3</td><td>Cumple obs.</td><td>Fallido</td><td><span class="badge badge--danger">Crítico</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> 3+ ítems contra 2+ criterios · datos estructurados o normativos.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> 2 conceptos (usar VS) · 1 dato (usar KPI).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Encabezados de columna + filas con celdas (texto, badge o ambos).</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"esto va en tabla comparativa"</em></div></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 03 DATOS -->
+    <div class="sc-section">
+      <div class="sc-section__head">
+        <span class="sc-section__eyebrow">03 · Datos &amp; métricas</span>
+        <h2>Visualización</h2>
+      </div>
+
+      <section id="kpis" class="sc-component">
+        <div class="sc-component__title"><h3>KPI cards</h3><code>.wg-kpis · .wg-kpi</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-kpis">
+            <div class="wg-kpi"><div class="wg-kpi__icon"><iconify-icon icon="mdi:chart-line"></iconify-icon></div><div class="wg-kpi__value">85%</div><div class="wg-kpi__label">Métrica</div><div class="wg-kpi__hint">Contexto del dato.</div></div>
+            <div class="wg-kpi"><div class="wg-kpi__icon"><iconify-icon icon="mdi:clock-fast"></iconify-icon></div><div class="wg-kpi__value">3–5</div><div class="wg-kpi__label">Rango</div><div class="wg-kpi__hint">Ventana temporal.</div></div>
+            <div class="wg-kpi"><div class="wg-kpi__icon"><iconify-icon icon="mdi:account-multiple"></iconify-icon></div><div class="wg-kpi__value">+120k</div><div class="wg-kpi__label">Volumen</div><div class="wg-kpi__hint">Personas.</div></div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> 2-4 datos numéricos destacados que el aprendiz debe recordar.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Datos cualitativos sin número · información de proceso (usar stepper).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Por cada KPI · icono + valor + label + hint contextual breve.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"resaltá estas 3 cifras"</em> · <em>"KPIs"</em></div></div>
+        </div>
+      </section>
+
+      <section id="stepper" class="sc-component">
+        <div class="sc-component__title"><h3>Stepper</h3><code>.wg-stepper</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-stepper">
+            <div class="wg-step"><div class="wg-step__num"><span>01</span></div><div class="wg-step__card"><span class="wg-step__tag">Fase 1</span><h3>Primer paso</h3><p>Descripción.</p></div></div>
+            <div class="wg-step"><div class="wg-step__num"><span>02</span></div><div class="wg-step__card"><span class="wg-step__tag">Fase 2</span><h3>Segundo paso</h3><p>Descripción.</p></div></div>
+            <div class="wg-step"><div class="wg-step__num"><span>03</span></div><div class="wg-step__card"><span class="wg-step__tag">Fase 3</span><h3>Tercer paso</h3><p>Descripción.</p></div></div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> 3-8 pasos secuenciales de un proceso o protocolo.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Eventos cronológicos históricos (usar timeline).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Por cada paso · número + etiqueta + título + descripción.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"poné los pasos en stepper"</em> · <em>"fases del proceso"</em></div></div>
+        </div>
+      </section>
+
+      <section id="timeline" class="sc-component">
+        <div class="sc-component__title"><h3>Línea de tiempo</h3><code>.wg-timeline</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-timeline">
+            <div class="wg-timeline__item"><div class="wg-timeline__marker">01</div><div class="wg-timeline__card"><h4>Evento 1</h4><p>Descripción breve.</p></div></div>
+            <div class="wg-timeline__item"><div class="wg-timeline__marker">02</div><div class="wg-timeline__card"><h4>Evento 2</h4><p>Descripción breve.</p></div></div>
+            <div class="wg-timeline__item"><div class="wg-timeline__marker">03</div><div class="wg-timeline__card"><h4>Evento 3</h4><p>Descripción breve.</p></div></div>
+            <div class="wg-timeline__item"><div class="wg-timeline__marker">04</div><div class="wg-timeline__card"><h4>Evento 4</h4><p>Descripción breve.</p></div></div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Eventos cronológicos · historia · evolución temporal.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Pasos de un proceso operativo (usar stepper).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Por cada evento · marcador temporal + título + descripción.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"línea de tiempo"</em> · <em>"evolución histórica"</em></div></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 04 MULTIMEDIA -->
+    <div class="sc-section">
+      <div class="sc-section__head">
+        <span class="sc-section__eyebrow">04 · Multimedia</span>
+        <h2>Audio, imagen y video</h2>
+      </div>
+
+      <section id="audio" class="sc-component">
+        <div class="sc-component__title"><h3>Audio</h3><code>.wg-audio</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-audio">
+            <button class="wg-audio__play"><iconify-icon icon="mdi:play"></iconify-icon></button>
+            <div class="wg-audio__info"><div class="wg-audio__title">Título del audio</div><div class="wg-audio__sub">Subtítulo</div><div class="wg-audio__progress"><div class="wg-audio__progress-fill" style="width:30%"></div></div></div>
+            <span class="wg-audio__time">2:43</span>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Un audio único · instrucción narrada · una pista MP3.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Serie de episodios (usar Podcast).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Archivo MP3 + título + duración.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"acá va un audio"</em></div></div>
+        </div>
+      </section>
+
+      <section id="podcast" class="sc-component">
+        <div class="sc-component__title"><h3>Sección Podcast</h3><code>.wg-podcast</code></div>
+        <div class="sc-component__demo" style="padding:0;">
+          <div class="wg-podcast">
+            <div class="wg-podcast__head">
+              <div>
+                <span class="wg-podcast__tag"><iconify-icon icon="mdi:podcast"></iconify-icon> Podcast del curso</span>
+                <h3>Conversaciones complementarias</h3>
+              </div>
+              <span style="color:var(--sb-text-mut); font-size:.85rem;">3 ep · 28 min</span>
+            </div>
+            <div class="wg-podcast__list">
+              <div class="wg-podcast__ep"><div class="wg-podcast__ep-num">01</div><div><div class="wg-podcast__ep-title">Episodio 1 · Introducción</div><div class="wg-podcast__ep-meta"><span><iconify-icon icon="mdi:account-voice"></iconify-icon> Invitado A</span></div></div><div class="wg-podcast__ep-duration">09:42</div><button class="wg-podcast__ep-play"><iconify-icon icon="mdi:play"></iconify-icon></button></div>
+              <div class="wg-podcast__ep"><div class="wg-podcast__ep-num">02</div><div><div class="wg-podcast__ep-title">Episodio 2 · Aplicación</div><div class="wg-podcast__ep-meta"><span><iconify-icon icon="mdi:account-voice"></iconify-icon> Invitado B</span></div></div><div class="wg-podcast__ep-duration">12:18</div><button class="wg-podcast__ep-play"><iconify-icon icon="mdi:play"></iconify-icon></button></div>
+              <div class="wg-podcast__ep"><div class="wg-podcast__ep-num">03</div><div><div class="wg-podcast__ep-title">Episodio 3 · Casos reales</div><div class="wg-podcast__ep-meta"><span><iconify-icon icon="mdi:account-voice"></iconify-icon> Invitado C</span></div></div><div class="wg-podcast__ep-duration">06:24</div><button class="wg-podcast__ep-play"><iconify-icon icon="mdi:play"></iconify-icon></button></div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Serie de 2+ episodios MP3 con metadata (invitado, capítulo).</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Si es un solo audio (usar Audio simple).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Por cada episodio · número + título + invitado + duración + archivo MP3.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"sumá una sección de podcast con estos episodios"</em></div></div>
+        </div>
+      </section>
+
+      <section id="figura" class="sc-component">
+        <div class="sc-component__title"><h3>Figura</h3><code>.wg-figura</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-grid-3">
+            <figure class="wg-figura"><div class="wg-figura__hero"><span class="badge">FIGURA · 01</span><iconify-icon icon="mdi:image" style="font-size:4rem; color:var(--c-acento); position:relative; z-index:1;"></iconify-icon></div><figcaption class="wg-figura__caption"><strong>Light</strong><span>Fondo claro tipo editorial.</span></figcaption></figure>
+            <figure class="wg-figura"><div class="wg-figura__hero wg-figura__hero--dark"><span class="badge">FIGURA · 02</span><iconify-icon icon="mdi:chart-donut" style="font-size:4rem; color:var(--c-info); position:relative; z-index:1;"></iconify-icon></div><figcaption class="wg-figura__caption"><strong>Dark</strong><span>Fondo oscuro tipo monitor.</span></figcaption></figure>
+            <figure class="wg-figura"><div class="wg-figura__hero"><span class="badge">FIGURA · 03</span><img src="assets/img/placeholders/logo.svg" alt="Placeholder" style="color: var(--c-acento);" /></div><figcaption class="wg-figura__caption"><strong>Con SVG</strong><span>Imagen externa o SVG.</span></figcaption></figure>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Imagen de referencia con caption · variante light o dark.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Si la imagen es puramente decorativa sin info clave.</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Imagen (SVG o JPG) + título + descripción corta.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"figura con esta imagen"</em></div></div>
+        </div>
+      </section>
+
+      <section id="beforeafter" class="sc-component">
+        <div class="sc-component__title"><h3>Antes / Después</h3><code>.wg-beforeafter</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-beforeafter">
+            <img class="wg-beforeafter__before" src="assets/img/placeholders/logo.svg" alt="Antes" style="filter: grayscale(1) brightness(0.7);"/>
+            <img class="wg-beforeafter__after" src="assets/img/placeholders/logo.svg" alt="Después"/>
+            <span class="wg-beforeafter__label wg-beforeafter__label--before">Antes</span>
+            <span class="wg-beforeafter__label wg-beforeafter__label--after">Después</span>
+            <div class="wg-beforeafter__handle"></div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Comparación visual de 2 estados del mismo objeto o escena (antes/después).</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Si son dos cosas distintas (usar comparativo VS).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> 2 imágenes del mismo encuadre + labels (antes/después).</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"antes/después con estas imágenes"</em></div></div>
+        </div>
+      </section>
+
+      <section id="hotspots" class="sc-component">
+        <div class="sc-component__title"><h3>Hotspots</h3><code>.wg-hotspots</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-hotspots">
+            <div class="wg-hotspots__img">
+              <img src="assets/img/placeholders/logo.svg" alt="Imagen con hotspots" style="color:var(--c-acento);" />
+              <div class="wg-hotspot" style="left:30%; top:30%;"><div class="wg-hotspot__pulse"></div><div class="wg-hotspot__dot">1</div><div class="wg-hotspot__tooltip"><strong>Punto 1</strong> Descripción del primer punto.</div></div>
+              <div class="wg-hotspot" style="left:60%; top:55%;"><div class="wg-hotspot__pulse"></div><div class="wg-hotspot__dot">2</div><div class="wg-hotspot__tooltip"><strong>Punto 2</strong> Descripción del segundo.</div></div>
+              <div class="wg-hotspot" style="left:75%; top:35%;"><div class="wg-hotspot__pulse"></div><div class="wg-hotspot__dot">3</div><div class="wg-hotspot__tooltip"><strong>Punto 3</strong> Descripción del tercero.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Imagen con 2-5 puntos clickeables que muestran info contextual.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Imagen sin puntos de interés definidos (usar figura simple).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Imagen + por cada hotspot · coordenadas (x%, y%) + título + descripción.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"imagen con hotspots interactivos"</em></div></div>
+        </div>
+      </section>
+
+      <section id="carrusel" class="sc-component">
+        <div class="sc-component__title"><h3>Carrusel</h3><code>.wg-carrusel</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-carrusel">
+            <div class="wg-carrusel__track-wrap">
+              <div class="wg-carrusel__track">
+                <div class="wg-carrusel__slide"><iconify-icon icon="mdi:numeric-1-circle" style="font-size:2rem; color:var(--c-acento);"></iconify-icon><h4 style="margin-top:12px;">Slide 1</h4><p style="color:var(--text-mut); font-size:.9rem;">Contenido.</p></div>
+                <div class="wg-carrusel__slide"><iconify-icon icon="mdi:numeric-2-circle" style="font-size:2rem; color:var(--c-acento);"></iconify-icon><h4 style="margin-top:12px;">Slide 2</h4><p style="color:var(--text-mut); font-size:.9rem;">Contenido.</p></div>
+                <div class="wg-carrusel__slide"><iconify-icon icon="mdi:numeric-3-circle" style="font-size:2rem; color:var(--c-acento);"></iconify-icon><h4 style="margin-top:12px;">Slide 3</h4><p style="color:var(--text-mut); font-size:.9rem;">Contenido.</p></div>
+                <div class="wg-carrusel__slide"><iconify-icon icon="mdi:numeric-4-circle" style="font-size:2rem; color:var(--c-acento);"></iconify-icon><h4 style="margin-top:12px;">Slide 4</h4><p style="color:var(--text-mut); font-size:.9rem;">Contenido.</p></div>
+                <div class="wg-carrusel__slide"><iconify-icon icon="mdi:numeric-5-circle" style="font-size:2rem; color:var(--c-acento);"></iconify-icon><h4 style="margin-top:12px;">Slide 5</h4><p style="color:var(--text-mut); font-size:.9rem;">Contenido.</p></div>
+                <div class="wg-carrusel__slide"><iconify-icon icon="mdi:numeric-6-circle" style="font-size:2rem; color:var(--c-acento);"></iconify-icon><h4 style="margin-top:12px;">Slide 6</h4><p style="color:var(--text-mut); font-size:.9rem;">Contenido.</p></div>
+              </div>
+            </div>
+            <div class="wg-carrusel__nav">
+              <div class="wg-carrusel__dots"></div>
+              <div class="wg-carrusel__arrows">
+                <button class="wg-carrusel__arrow" data-wg-carrusel-prev><iconify-icon icon="mdi:arrow-left"></iconify-icon></button>
+                <button class="wg-carrusel__arrow" data-wg-carrusel-next><iconify-icon icon="mdi:arrow-right"></iconify-icon></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> 4+ ítems homogéneos (testimonios, ejemplos, escenarios).</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> 3 o menos ítems (usar grid de tarjetas estático).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Lista de slides · cada uno con icono/imagen + título + descripción.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"carrusel de ejemplos"</em></div></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 05 ACTIVIDADES -->
+    <div class="sc-section">
+      <div class="sc-section__head">
+        <span class="sc-section__eyebrow">05 · Actividades</span>
+        <h2>Interacción y evaluación</h2>
+      </div>
+
+      <section id="quiz" class="sc-component">
+        <div class="sc-component__title"><h3>Quiz</h3><code>.wg-quiz</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-quiz">
+            <div class="wg-quiz__head"><span class="wg-quiz__progress">1 de 1</span><span class="wg-quiz__progress" style="color:var(--c-acento);"><iconify-icon icon="mdi:trophy"></iconify-icon> 0/1</span></div>
+            <div class="wg-quiz__bar"><div class="wg-quiz__bar-fill" style="width:100%"></div></div>
+            <h3 class="wg-quiz__question">¿Cuál es la respuesta correcta?</h3>
+            <div class="wg-quiz__opts">
+              <button class="wg-quiz__opt"><span class="wg-quiz__opt-letter">A</span><span>Primera opción.</span></button>
+              <button class="wg-quiz__opt" data-correct="true"><span class="wg-quiz__opt-letter">B</span><span>Segunda · correcta.</span></button>
+              <button class="wg-quiz__opt"><span class="wg-quiz__opt-letter">C</span><span>Tercera opción.</span></button>
+            </div>
+            <div class="wg-quiz__feedback" data-correct="<strong>✓ Correcto.</strong> Explicación." data-wrong="<strong>✗ Revisa.</strong> Pista."></div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Pregunta de selección única con feedback inmediato.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Respuesta abierta (no soportada) · autoevaluación sin correcta única (usar checklist).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Pregunta + 3-4 opciones (marcar la correcta) + texto de feedback ✓/✗.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"hacé un quiz con esta pregunta"</em></div></div>
+        </div>
+      </section>
+
+      <section id="checklist" class="sc-component">
+        <div class="sc-component__title"><h3>Checklist</h3><code>.wg-checklist</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-checklist">
+            <div class="wg-checklist__head"><h3 style="margin:0; font-size:1.1rem;">Pasos</h3><div class="wg-checklist__count"><strong>0</strong> / 4</div></div>
+            <ul class="wg-checklist__list">
+              <li class="wg-checklist__item"><span class="wg-checklist__box"><iconify-icon icon="mdi:check"></iconify-icon></span><span class="wg-checklist__text">Paso 1.</span></li>
+              <li class="wg-checklist__item"><span class="wg-checklist__box"><iconify-icon icon="mdi:check"></iconify-icon></span><span class="wg-checklist__text">Paso 2.</span></li>
+              <li class="wg-checklist__item"><span class="wg-checklist__box"><iconify-icon icon="mdi:check"></iconify-icon></span><span class="wg-checklist__text">Paso 3.</span></li>
+              <li class="wg-checklist__item"><span class="wg-checklist__box"><iconify-icon icon="mdi:check"></iconify-icon></span><span class="wg-checklist__text">Paso 4.</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Verificación de pasos completados (autoevaluación sin respuesta correcta única).</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Si hay una respuesta correcta a evaluar (usar quiz).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Lista de ítems a verificar.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"checklist autoevaluable"</em></div></div>
+        </div>
+      </section>
+
+      <section id="dnd" class="sc-component">
+        <div class="sc-component__title"><h3>Drag &amp; Drop</h3><code>.wg-dnd</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-dnd">
+            <div class="wg-dnd__pool">
+              <div class="wg-dnd__title">Conceptos</div>
+              <div class="wg-dnd__items">
+                <div class="wg-dnd__item" data-wg-correct="cat1"><iconify-icon icon="mdi:drag"></iconify-icon> Concepto A (cat1)</div>
+                <div class="wg-dnd__item" data-wg-correct="cat2"><iconify-icon icon="mdi:drag"></iconify-icon> Concepto B (cat2)</div>
+                <div class="wg-dnd__item" data-wg-correct="cat1"><iconify-icon icon="mdi:drag"></iconify-icon> Concepto C (cat1)</div>
+              </div>
+            </div>
+            <div class="wg-dnd__zone" data-wg-target="cat1">
+              <div class="wg-dnd__title">Categoría 1</div>
+              <div class="wg-dnd__items"></div>
+            </div>
+          </div>
+          <div class="wg-dnd" style="margin-top: 14px;">
+            <div class="wg-dnd__zone" data-wg-target="cat2">
+              <div class="wg-dnd__title">Categoría 2</div>
+              <div class="wg-dnd__items"></div>
+            </div>
+            <div style="background:var(--bg-muted); padding:18px; border-radius:var(--r-md); font-size:.85rem; color:var(--text-mut);">
+              <iconify-icon icon="mdi:information"></iconify-icon> Arrastra cada concepto a su categoría correcta. Verde = acierto, rojo = error.
+            </div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Clasificar ítems en 2-3 categorías arrastrando.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Si solo hay 1 categoría (usar checklist).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Lista de ítems + categoría correcta de cada uno.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"arrastrá conceptos a categorías"</em></div></div>
+        </div>
+      </section>
+
+      <section id="ordenar" class="sc-component">
+        <div class="sc-component__title"><h3>Ordenar pasos</h3><code>.wg-orden</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-actividad">
+            <ul class="wg-orden">
+              <li class="wg-orden__item" data-wg-order="3"><span class="wg-orden__num">1</span><span>Paso A (correcto: 3)</span><iconify-icon class="wg-orden__grip" icon="mdi:drag-horizontal"></iconify-icon></li>
+              <li class="wg-orden__item" data-wg-order="1"><span class="wg-orden__num">2</span><span>Paso B (correcto: 1)</span><iconify-icon class="wg-orden__grip" icon="mdi:drag-horizontal"></iconify-icon></li>
+              <li class="wg-orden__item" data-wg-order="2"><span class="wg-orden__num">3</span><span>Paso C (correcto: 2)</span><iconify-icon class="wg-orden__grip" icon="mdi:drag-horizontal"></iconify-icon></li>
+            </ul>
+            <button class="wg-btn wg-btn--primary" style="margin-top: 20px;" data-wg-orden-check>Verificar <iconify-icon icon="mdi:check" class="arrow"></iconify-icon></button>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> El aprendiz debe poner pasos en orden correcto.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Si el orden no importa (usar checklist).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Lista de pasos + número de orden correcto de cada uno.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"ordenar pasos del proceso"</em></div></div>
+        </div>
+      </section>
+
+      <section id="emparejar" class="sc-component">
+        <div class="sc-component__title"><h3>Emparejar</h3><code>.wg-empar</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-empar">
+            <div class="wg-empar__col"><div class="wg-empar__item" data-wg-match="a">Concepto A</div><div class="wg-empar__item" data-wg-match="b">Concepto B</div><div class="wg-empar__item" data-wg-match="c">Concepto C</div></div>
+            <div class="wg-empar__col"><div class="wg-empar__item" data-wg-match="c">Def. C</div><div class="wg-empar__item" data-wg-match="a">Def. A</div><div class="wg-empar__item" data-wg-match="b">Def. B</div></div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> 3-6 pares concepto/definición a emparejar.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Definiciones largas (usar glosario) · más de 6 pares (cansador).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Lista de pares · concepto + definición correspondiente.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"emparejar conceptos con definiciones"</em></div></div>
+        </div>
+      </section>
+
+      <section id="modal" class="sc-component">
+        <div class="sc-component__title"><h3>Modal</h3><code>.wg-modal</code></div>
+        <div class="sc-component__demo">
+          <button class="wg-btn wg-btn--primary" data-wg-modal-open="demo-modal">Abrir modal <iconify-icon icon="mdi:arrow-right" class="arrow"></iconify-icon></button>
+          <div class="wg-modal" id="demo-modal">
+            <div class="wg-modal__dialog">
+              <div class="wg-modal__head"><h3>Título del modal</h3><button class="wg-modal__close" data-wg-modal-close><iconify-icon icon="mdi:close"></iconify-icon></button></div>
+              <div class="wg-modal__body"><p>Contenido expandido del modal.</p></div>
+              <div class="wg-modal__foot"><button class="wg-btn wg-btn--outline" data-wg-modal-close>Cerrar</button><button class="wg-btn wg-btn--primary">Acción</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Info expandida que no cabe inline (detalle opcional, glosario contextual).</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Contenido principal (siempre debe ser opcional consultar).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Trigger (botón o link) + título + contenido.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"poné este detalle en modal al click"</em></div></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 06 MATERIAL -->
+    <div class="sc-section">
+      <div class="sc-section__head">
+        <span class="sc-section__eyebrow">06 · Material</span>
+        <h2>Descargas y botones</h2>
+      </div>
+
+      <section id="descargas" class="sc-component">
+        <div class="sc-component__title"><h3>Descarga</h3><code>.wg-descarga</code></div>
+        <div class="sc-component__demo">
+          <div class="wg-descargas">
+            <a href="#" class="wg-descarga"><div class="wg-descarga__ico"><iconify-icon icon="mdi:file-pdf-box"></iconify-icon></div><div class="wg-descarga__info"><strong>Material PDF</strong><span>2.4 MB</span></div><span class="wg-descarga__action"><iconify-icon icon="mdi:download"></iconify-icon> Descargar</span></a>
+            <a href="#" class="wg-descarga"><div class="wg-descarga__ico"><iconify-icon icon="mdi:folder-zip"></iconify-icon></div><div class="wg-descarga__info"><strong>Recursos ZIP</strong><span>18.7 MB</span></div><span class="wg-descarga__action"><iconify-icon icon="mdi:download"></iconify-icon> Descargar</span></a>
+          </div>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> PDF / PPTX / ZIP descargables (guías, material complementario).</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Enlaces externos a páginas web (usar botón outline).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Por archivo · nombre + tipo + peso + URL.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"bloque de descargas con estos archivos"</em></div></div>
+        </div>
+      </section>
+
+      <section id="botones" class="sc-component">
+        <div class="sc-component__title"><h3>Botones</h3><code>.wg-btn</code> · 4 variantes</div>
+        <div class="sc-component__demo" style="display:flex; gap:14px; flex-wrap:wrap;">
+          <button class="wg-btn wg-btn--primary">Primary <iconify-icon icon="mdi:arrow-right" class="arrow"></iconify-icon></button>
+          <button class="wg-btn wg-btn--dark">Dark</button>
+          <button class="wg-btn wg-btn--outline">Outline</button>
+          <button class="wg-btn wg-btn--ghost">Ghost</button>
+        </div>
+        <div class="sc-meta">
+          <div class="sc-meta__row sc-meta__row--do"><iconify-icon icon="mdi:check-circle"></iconify-icon><div><strong>Cuándo usarlo</strong> Acciones · CTA · links externos · disparadores de formularios.</div></div>
+          <div class="sc-meta__row sc-meta__row--dont"><iconify-icon icon="mdi:close-circle"></iconify-icon><div><strong>Cuándo NO</strong> Navegación prev/next entre pantallas (es automática del template).</div></div>
+          <div class="sc-meta__row sc-meta__row--input"><iconify-icon icon="mdi:format-list-bulleted"></iconify-icon><div><strong>Input mínimo</strong> Variante (primary / dark / outline / ghost) + texto + icono opcional.</div></div>
+          <div class="sc-meta__row sc-meta__row--hint"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon><div><strong>Hint ejemplo</strong> <em>"botón primary que diga Comenzar"</em></div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="assets/js/course.js"></script>
+<script src="assets/js/core.js"></script>
+<script>
+  // Highlight current section in sidebar TOC
+  const links = document.querySelectorAll('.sc-sidebar a[href^="#"]');
+  const sections = [...document.querySelectorAll('.sc-component[id]')];
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

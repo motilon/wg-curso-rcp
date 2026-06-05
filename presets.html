@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es" data-version="hibrida">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Presets · Template Waygroup OVA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="stylesheet" href="assets/css/presets/theme-vital.css" id="preset-link" />
+<link rel="stylesheet" href="assets/css/core.css" />
+<style>
+  .preset-card {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-c);
+    border-radius: var(--r-md);
+    cursor: pointer;
+    transition: all .2s;
+    text-align: left;
+    font-family: inherit;
+    width: 100%;
+  }
+  .preset-card:hover { transform: translateY(-2px); border-color: var(--c-acento); box-shadow: var(--shadow-md); }
+  .preset-card.is-active { border-color: var(--c-acento); background: var(--acento-soft); box-shadow: var(--glow-brand); }
+  .preset-swatch { height: 56px; border-radius: 10px; display: grid; grid-template-rows: 1fr 1fr 1fr; overflow: hidden; }
+  .preset-name { font-family: var(--font-display); font-weight: 700; font-size: .95rem; color: var(--text-head); }
+  .preset-area { font-size: .78rem; color: var(--text-mut); }
+  .preset-hex {
+    font-family: var(--font-mono); font-size: .68rem;
+    color: var(--text-mut);
+    display: flex; gap: 8px; margin-top: 4px;
+  }
+  .preset-default { font-size: .58rem; background: var(--c-acento); color: white; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono); letter-spacing: .08em; margin-left: 8px; vertical-align: middle; }
+  .preset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 14px;
+  }
+  .preset-section { margin-bottom: 40px; }
+  .preset-section h2 {
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--text-mut);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border-c);
+  }
+</style>
+</head>
+<body class="wg-body">
+<button class="wg-burger" data-wg-burger><iconify-icon icon="mdi:menu"></iconify-icon></button>
+<div class="wg-app">
+  <aside class="wg-sidebar" data-wg-sidebar data-current="portada"></aside>
+  <main class="wg-main">
+    <div class="wg-topbar">
+      <div class="wg-breadcrumb">
+        <span class="step">🎨</span>
+        <span>Template</span>
+        <span class="sep">›</span>
+        <strong>Presets de marca</strong>
+      </div>
+      <div class="wg-topbar__actions">
+        <div class="wg-version-switch" data-wg-version-switch></div>
+        <a href="index.html" class="wg-iconbtn"><iconify-icon icon="mdi:home"></iconify-icon></a>
+        <a href="showcase.html" class="wg-iconbtn wg-iconbtn--accent"><iconify-icon icon="mdi:view-grid"></iconify-icon></a>
+      </div>
+    </div>
+
+    <article class="wg-screen">
+      <header class="wg-screen__head" data-reveal>
+        <div class="wg-screen__eyebrow">Selector de paleta</div>
+        <h1 class="wg-screen__title">14 presets pre-validados</h1>
+        <p class="wg-screen__lead">
+          Click en cualquier preset → toda la interfaz se recolorea al instante. Andá a las demás
+          pantallas (portada, temas, actividad) y vas a verlas con la paleta nueva.
+        </p>
+      </header>
+
+      <div class="wg-callout" data-reveal style="margin-bottom: 40px;">
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:information"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">Cómo funciona</span>
+          <h4>2 colores → todo el template</h4>
+          <p>Cada preset define solo <code>--c-acento</code> y <code>--c-info</code>. Sidebar, gradientes, glows, soft surfaces, callouts y todo lo demás se derivan automáticamente con <code>color-mix()</code>.</p>
+        </div>
+      </div>
+
+      <div class="preset-section">
+        <h2>🛡️ Transversal · SST</h2>
+        <div class="preset-grid" data-area="sst"></div>
+      </div>
+      <div class="preset-section">
+        <h2>🩺 Salud y Servicios</h2>
+        <div class="preset-grid" data-area="salud"></div>
+      </div>
+      <div class="preset-section">
+        <h2>💻 Tecnología</h2>
+        <div class="preset-grid" data-area="tech"></div>
+      </div>
+      <div class="preset-section">
+        <h2>⚙️ Industrial y Energía</h2>
+        <div class="preset-grid" data-area="industrial"></div>
+      </div>
+      <div class="preset-section">
+        <h2>🏗️ Construcción y Logística</h2>
+        <div class="preset-grid" data-area="construccion"></div>
+      </div>
+      <div class="preset-section">
+        <h2>🌱 Primario y Negocios</h2>
+        <div class="preset-grid" data-area="negocios"></div>
+      </div>
+    </article>
+  </main>
+</div>
+<script src="assets/js/course.js"></script>
+<script src="assets/js/core.js"></script>
+<script>
+const PRESETS = [
+  { id:'waygroup', name:'Waygroup',  area:'Default · marca corporativa', acento:'#F37021', info:'#38E1FF', deep:'#0F2B47', group:'sst',         isDefault:true },
+  { id:'casco',    name:'Casco',     area:'SST · transversal',           acento:'#EAB308', info:'#94A3B8', deep:'#1F2937', group:'sst' },
+  { id:'vital',    name:'Vital',     area:'Red de Salud',                acento:'#F97316', info:'#0EA5E9', deep:'#082F49', group:'salud' },
+  { id:'costa',    name:'Costa',     area:'Hotelería y Turismo',         acento:'#0D9488', info:'#FBBF24', deep:'#134E4A', group:'salud' },
+  { id:'codigo',   name:'Código',    area:'Software',                    acento:'#6366F1', info:'#06B6D4', deep:'#1E1B4B', group:'tech' },
+  { id:'circuito', name:'Circuito',  area:'Electrónica',                 acento:'#0EA5E9', info:'#84CC16', deep:'#0C4A6E', group:'tech' },
+  { id:'forja',    name:'Forja',     area:'Mecánica Industrial',         acento:'#EA580C', info:'#475569', deep:'#1C1917', group:'industrial' },
+  { id:'voltaje',  name:'Voltaje',   area:'Energía Eléctrica',           acento:'#FACC15', info:'#1E3A8A', deep:'#172554', group:'industrial' },
+  { id:'motor',    name:'Motor',     area:'Automotor',                   acento:'#DC2626', info:'#1F2937', deep:'#0C0A09', group:'industrial' },
+  { id:'cimiento', name:'Cimiento',  area:'Construcción',                acento:'#F59E0B', info:'#6B7280', deep:'#292524', group:'construccion' },
+  { id:'ruta',     name:'Ruta',      area:'Logística',                   acento:'#F97316', info:'#334155', deep:'#1E293B', group:'construccion' },
+  { id:'raiz',     name:'Raíz',      area:'Agrícola',                    acento:'#16A34A', info:'#B45309', deep:'#14532D', group:'negocios' },
+  { id:'capital',  name:'Capital',   area:'Gestión Financiera',          acento:'#1E40AF', info:'#D4A017', deep:'#172554', group:'negocios' },
+  { id:'plaza',    name:'Plaza',     area:'Comercio y Ventas',           acento:'#DB2777', info:'#F59E0B', deep:'#4A044E', group:'negocios' },
+];
+
+const saved = localStorage.getItem('wg-preset') || 'waygroup';
+
+PRESETS.forEach(p => {
+  const host = document.querySelector(`[data-area="${p.group}"]`);
+  if (!host) return;
+  const btn = document.createElement('button');
+  btn.className = 'preset-card' + (p.id === saved ? ' is-active' : '');
+  btn.innerHTML = `
+    <div class="preset-swatch" title="Acento · Info · Deep">
+      <span style="background:${p.acento}" title="Acento ${p.acento}"></span>
+      <span style="background:${p.info}"   title="Info ${p.info}"></span>
+      <span style="background:${p.deep}"   title="Deep ${p.deep}"></span>
+    </div>
+    <div>
+      <div class="preset-name">${p.name}${p.isDefault ? '<span class="preset-default">DEF</span>' : ''}</div>
+      <div class="preset-area">${p.area}</div>
+      <div class="preset-hex"><span>${p.acento}</span><span>·</span><span>${p.info}</span><span>·</span><span>${p.deep}</span></div>
+    </div>
+    <iconify-icon icon="mdi:check-circle" style="color:var(--c-acento); font-size:1.4rem; opacity:${p.id === saved ? 1 : 0};" data-check></iconify-icon>
+  `;
+  btn.onclick = () => apply(p, btn);
+  host.appendChild(btn);
+});
+
+function apply(p, btn) {
+  // Aplicar en vivo · 3 colores del preset
+  document.documentElement.style.setProperty('--c-acento', p.acento);
+  document.documentElement.style.setProperty('--c-info', p.info);
+  document.documentElement.style.setProperty('--c-deep', p.deep);
+  // Cambiar el link CSS al preset correspondiente
+  document.getElementById('preset-link').href = `assets/css/presets/theme-${p.id}.css`;
+  // Persistir
+  localStorage.setItem('wg-preset', p.id);
+  // UI
+  document.querySelectorAll('.preset-card').forEach(b => {
+    b.classList.remove('is-active');
+    const check = b.querySelector('[data-check]');
+    if (check) check.style.opacity = 0;
+  });
+  btn.classList.add('is-active');
+  const check = btn.querySelector('[data-check]');
+  if (check) check.style.opacity = 1;
+}
+
+// Aplicar el preset guardado al cargar
+const savedPreset = PRESETS.find(p => p.id === saved);
+if (savedPreset) {
+  document.documentElement.style.setProperty('--c-acento', savedPreset.acento);
+  document.documentElement.style.setProperty('--c-info', savedPreset.info);
+}
+</script>
+</body>
+</html>

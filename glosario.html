@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es" data-version="hibrida">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Glosario · Template Waygroup OVA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
+<link rel="stylesheet" href="assets/css/core.css" />
+<style>
+  .wg-glosario { display: grid; gap: 14px; }
+  .wg-glosario__item {
+    background: var(--bg-surface);
+    border-radius: var(--r-md);
+    padding: 22px 26px;
+    border: 1px solid var(--border-c);
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 22px;
+    align-items: start;
+    transition: all .2s;
+  }
+  .wg-glosario__item:hover { border-color: var(--c-acento); transform: translateX(4px); }
+  .wg-glosario__letter {
+    width: 56px; height: 56px;
+    background: var(--grad-brand);
+    border-radius: 14px;
+    display: grid; place-items: center;
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 1.5rem; color: white;
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--c-acento) 30%, transparent);
+  }
+  .wg-glosario__term { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--text-head); margin-bottom: 4px; }
+  .wg-glosario__def { font-size: .95rem; color: var(--text-pri); margin: 0; }
+</style>
+</head>
+<body class="wg-body">
+<button class="wg-burger" data-wg-burger><iconify-icon icon="mdi:menu"></iconify-icon></button>
+<div class="wg-app">
+  <aside class="wg-sidebar" data-wg-sidebar data-current="glosario"></aside>
+  <main class="wg-main">
+    <div class="wg-topbar">
+      <div class="wg-breadcrumb" data-wg-breadcrumb data-current="glosario"></div>
+      <div class="wg-topbar__actions">
+        <div class="wg-version-switch" data-wg-version-switch></div>
+        <a href="presets.html" class="wg-iconbtn"><iconify-icon icon="mdi:palette"></iconify-icon></a>
+        <a href="showcase.html" class="wg-iconbtn wg-iconbtn--accent"><iconify-icon icon="mdi:view-grid"></iconify-icon></a>
+      </div>
+    </div>
+
+    <article class="wg-screen">
+      <header class="wg-screen__head" data-reveal>
+        <div class="wg-screen__eyebrow">Pantalla 06 · Glosario</div>
+        <h1 class="wg-screen__title">Términos clave</h1>
+        <p class="wg-screen__lead">Auto-renderizado desde el array <code>glosario</code> en <code>assets/js/course.js</code>. Editá ese array para cambiar los términos.</p>
+      </header>
+      <div class="wg-glosario" data-wg-glosario data-reveal></div>
+    </article>
+    <nav class="wg-screen-nav" data-wg-screen-nav data-current="glosario"></nav>
+  </main>
+</div>
+<script src="assets/js/course.js"></script>
+<script src="assets/js/core.js"></script>
+<script>
+  (function () {
+    const el = document.querySelector('[data-wg-glosario]');
+    if (!el || !window.WG_COURSE?.glosario) return;
+    el.innerHTML = window.WG_COURSE.glosario.map(g => `
+      <div class="wg-glosario__item">
+        <div class="wg-glosario__letter">${g.letra}</div>
+        <div>
+          <div class="wg-glosario__term">${g.termino}</div>
+          <p class="wg-glosario__def">${g.definicion}</p>
+        </div>
+      </div>
+    `).join('');
+  })();
+</script>
+</body>
+</html>
