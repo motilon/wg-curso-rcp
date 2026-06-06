@@ -29,12 +29,21 @@
         <h1 class="wg-screen__title">Importancia de la RCP temprana</h1>
         <p class="wg-screen__lead">
           Cuando una persona presenta parada cardíaca, el corazón deja de enviar sangre
-          oxigenada al cerebro. En <strong>pocos minutos</strong> puede causarse daño
-          cerebral irreversible.
+          oxigenada al cerebro. En <strong>pocos minutos</strong>, la falta de oxígeno
+          puede causar daño cerebral irreversible y muerte.
         </p>
       </header>
 
-      <p data-reveal>La RCP temprana ayuda a mantener una circulación mínima mientras llega ayuda especializada. <strong>Cada minuto cuenta.</strong> El primer respondiente cumple un papel fundamental porque puede actuar durante los primeros minutos, antes de que llegue la ambulancia.</p>
+      <p data-reveal>
+        La RCP temprana ayuda a mantener una circulación mínima mientras llega ayuda
+        especializada. <strong>Cada minuto cuenta.</strong> Cuanto antes se inicien las
+        compresiones, mayor será la posibilidad de supervivencia.
+      </p>
+
+      <p data-reveal>
+        El primer respondiente cumple un papel fundamental porque puede actuar durante
+        los primeros minutos, antes de que llegue la ambulancia o el equipo médico.
+      </p>
 
       <h3 style="margin-top:40px;" data-reveal>Las 4 acciones clave</h3>
       <figure class="wg-figura" data-reveal>
@@ -48,25 +57,121 @@
         </figcaption>
       </figure>
 
-      <h3 style="margin-top:48px;" data-reveal>Porque cada minuto cuenta</h3>
-      <div class="wg-timeline" data-reveal>
-        <div class="wg-timeline__item">
-          <div class="wg-timeline__marker">0</div>
-          <div class="wg-timeline__card"><h4>Minuto 0</h4><p>La persona colapsa.</p></div>
+      <!-- =============================================================
+           VENTANA CRÍTICA · Porque cada minuto cuenta
+           Visualización con hero stat, barra de urgencia y 4 estados.
+           ============================================================= -->
+      <div data-reveal style="margin-top:64px;">
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:10px;">
+          <iconify-icon icon="mdi:timer-alert-outline" style="font-size:1.6rem; color:var(--danger); animation: wg-pulse 1.6s ease-in-out infinite;"></iconify-icon>
+          <span style="font-family:var(--font-mono); letter-spacing:.18em; font-size:.74rem; color:var(--danger); text-transform:uppercase;">El tiempo es cerebro</span>
+          <span style="flex:1; height:1px; background:linear-gradient(to right, color-mix(in srgb, var(--danger) 40%, transparent), transparent);"></span>
         </div>
-        <div class="wg-timeline__item">
-          <div class="wg-timeline__marker">1</div>
-          <div class="wg-timeline__card"><h4>Minuto 1</h4><p>Se reconoce la emergencia.</p></div>
+        <h3 style="margin:0;">Porque cada minuto cuenta</h3>
+      </div>
+
+      <!-- HERO STAT · cuenta regresiva visual + barra de urgencia -->
+      <div data-reveal style="margin-top:24px; padding:32px; background:linear-gradient(135deg, color-mix(in srgb, var(--danger) 7%, var(--bg-surface)) 0%, var(--bg-surface) 60%); border:1px solid color-mix(in srgb, var(--danger) 22%, var(--border-c)); border-radius:var(--r-lg); position:relative; overflow:hidden;">
+        <!-- glow decorativo -->
+        <div aria-hidden="true" style="position:absolute; top:-40px; right:-40px; width:280px; height:280px; background: radial-gradient(circle, color-mix(in srgb, var(--danger) 16%, transparent) 0%, transparent 70%); pointer-events:none;"></div>
+
+        <div style="display:grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr); gap:32px; align-items:center; position:relative; z-index:1;">
+          <div>
+            <div style="font-family:var(--font-display); font-size:clamp(3.5rem, 8vw, 5.5rem); font-weight:700; line-height:1; color:var(--c-acento); letter-spacing:-.04em;">
+              ~4<span style="color:var(--text-mut); font-size:.4em; font-weight:600;"> min</span>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:.74rem; letter-spacing:.18em; color:var(--text-mut); text-transform:uppercase; margin-top:8px;">Ventana crítica</div>
+          </div>
+          <p style="margin:0; font-size:1.05rem; line-height:1.55; color:var(--text-pri);">
+            Sin oxígeno, el cerebro empieza a sufrir <strong>daño irreversible</strong>.
+            La ventana de oportunidad es corta y se cierra rápido. Cada minuto sin RCP
+            <strong>reduce las posibilidades de supervivencia</strong>.
+          </p>
         </div>
-        <div class="wg-timeline__item">
-          <div class="wg-timeline__marker">2</div>
-          <div class="wg-timeline__card"><h4>Minuto 2</h4><p>Se activa emergencias e inicia RCP.</p></div>
-        </div>
-        <div class="wg-timeline__item">
-          <div class="wg-timeline__marker">3+</div>
-          <div class="wg-timeline__card"><h4>Minuto 3 en adelante</h4><p>Se busca DEA y continúa atención.</p></div>
+
+        <!-- Barra de urgencia -->
+        <div style="margin-top:32px;">
+          <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:.7rem; color:var(--text-mut); letter-spacing:.1em; margin-bottom:8px;">
+            <span>0 MIN</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10+</span>
+          </div>
+
+          <div style="position:relative; height:16px; border-radius:999px; background: linear-gradient(to right, var(--success) 0%, var(--success) 18%, var(--warning) 22%, var(--warning) 38%, color-mix(in srgb, var(--warning) 50%, var(--danger)) 42%, color-mix(in srgb, var(--warning) 30%, var(--danger)) 58%, var(--danger) 62%, var(--danger) 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 4px 10px color-mix(in srgb, var(--danger) 20%, transparent);">
+            <!-- Ticks divisores -->
+            <span style="position:absolute; left:20%; top:-4px; bottom:-4px; width:2px; background:var(--bg-base); border-radius:2px;"></span>
+            <span style="position:absolute; left:40%; top:-4px; bottom:-4px; width:2px; background:var(--bg-base); border-radius:2px;"></span>
+            <span style="position:absolute; left:60%; top:-4px; bottom:-4px; width:2px; background:var(--bg-base); border-radius:2px;"></span>
+            <span style="position:absolute; left:80%; top:-4px; bottom:-4px; width:2px; background:var(--bg-base); border-radius:2px;"></span>
+            <!-- Marker "ventana óptima" -->
+            <span style="position:absolute; left:20%; top:-30px; transform:translateX(-50%); font-family:var(--font-mono); font-size:.62rem; letter-spacing:.12em; color:var(--success); text-transform:uppercase; white-space:nowrap;">
+              <iconify-icon icon="mdi:triangle-down" style="font-size:.7rem; vertical-align:middle;"></iconify-icon> Iniciar RCP
+            </span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(5, 1fr); font-family:var(--font-mono); font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; margin-top:14px; gap:4px; text-align:center;">
+            <div style="color:var(--success);">Ventana óptima</div>
+            <div style="color:var(--warning);">Crítica</div>
+            <div style="color:color-mix(in srgb, var(--warning) 50%, var(--danger));">Reduce supervivencia</div>
+            <div style="color:var(--danger);">Riesgo alto</div>
+            <div style="color:var(--danger); font-weight:700;">Irreversible</div>
+          </div>
         </div>
       </div>
+
+      <!-- 4 ESTADOS · secuencia original del minuto 0 al 3+ -->
+      <div data-reveal style="margin-top:18px; display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:14px;">
+
+        <!-- MIN 0 · La persona colapsa -->
+        <div style="position:relative; padding:22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); overflow:hidden;">
+          <div style="position:absolute; top:0; bottom:0; left:0; width:4px; background:var(--success);"></div>
+          <div style="display:flex; gap:10px; align-items:center; margin-bottom:12px;">
+            <iconify-icon icon="mdi:account-alert" style="font-size:1.7rem; color:var(--success);"></iconify-icon>
+            <div style="font-family:var(--font-mono); font-size:.68rem; letter-spacing:.18em; color:var(--success);">MIN 0</div>
+          </div>
+          <h4 style="margin:0 0 6px; font-size:1rem;">La persona colapsa</h4>
+          <p style="margin:0; font-size:.86rem; color:var(--text-mut); line-height:1.5;">Pierde la conciencia. El corazón ha dejado de bombear.</p>
+        </div>
+
+        <!-- MIN 1 · Se reconoce la emergencia -->
+        <div style="position:relative; padding:22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); overflow:hidden;">
+          <div style="position:absolute; top:0; bottom:0; left:0; width:4px; background:var(--c-info);"></div>
+          <div style="display:flex; gap:10px; align-items:center; margin-bottom:12px;">
+            <iconify-icon icon="mdi:phone-in-talk" style="font-size:1.7rem; color:var(--c-info);"></iconify-icon>
+            <div style="font-family:var(--font-mono); font-size:.68rem; letter-spacing:.18em; color:var(--c-info);">MIN 1</div>
+          </div>
+          <h4 style="margin:0 0 6px; font-size:1rem;">Se reconoce la emergencia</h4>
+          <p style="margin:0; font-size:.86rem; color:var(--text-mut); line-height:1.5;">Verificar respuesta y respiración. Activar el sistema de emergencias.</p>
+        </div>
+
+        <!-- MIN 2 · Iniciar RCP · CLAVE -->
+        <div style="position:relative; padding:22px; background:linear-gradient(135deg, color-mix(in srgb, var(--c-acento) 10%, var(--bg-surface)) 0%, var(--bg-surface) 100%); border:1px solid color-mix(in srgb, var(--c-acento) 40%, var(--border-c)); border-radius:var(--r-md); overflow:hidden; box-shadow: 0 10px 24px color-mix(in srgb, var(--c-acento) 14%, transparent);">
+          <div style="position:absolute; top:0; bottom:0; left:0; width:4px; background:var(--c-acento);"></div>
+          <span style="position:absolute; top:14px; right:14px; padding:3px 9px; background:var(--c-acento); color:white; border-radius:999px; font-family:var(--font-mono); font-size:.6rem; letter-spacing:.14em;">CLAVE</span>
+          <div style="display:flex; gap:10px; align-items:center; margin-bottom:12px;">
+            <iconify-icon icon="mdi:heart-pulse" style="font-size:1.7rem; color:var(--c-acento); animation: wg-pulse 1.2s ease-in-out infinite;"></iconify-icon>
+            <div style="font-family:var(--font-mono); font-size:.68rem; letter-spacing:.18em; color:var(--c-acento);">MIN 2</div>
+          </div>
+          <h4 style="margin:0 0 6px; font-size:1rem; color:var(--text-head);">Se inicia RCP</h4>
+          <p style="margin:0; font-size:.86rem; color:var(--text-pri); line-height:1.5;">Compresiones de alta calidad. Mantienen circulación hasta que llega ayuda.</p>
+        </div>
+
+        <!-- MIN 3+ · Se busca DEA y continúa atención -->
+        <div style="position:relative; padding:22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); overflow:hidden;">
+          <div style="position:absolute; top:0; bottom:0; left:0; width:4px; background:var(--warning);"></div>
+          <div style="display:flex; gap:10px; align-items:center; margin-bottom:12px;">
+            <iconify-icon icon="mdi:flash-outline" style="font-size:1.7rem; color:var(--warning);"></iconify-icon>
+            <div style="font-family:var(--font-mono); font-size:.68rem; letter-spacing:.18em; color:var(--warning);">MIN 3+</div>
+          </div>
+          <h4 style="margin:0 0 6px; font-size:1rem;">Se busca DEA y continúa atención</h4>
+          <p style="margin:0; font-size:.86rem; color:var(--text-mut); line-height:1.5;">Aplicar descarga si está indicada. No interrumpir RCP hasta la llegada del personal.</p>
+        </div>
+      </div>
+
+      <style>
+        @keyframes wg-pulse {
+          0%, 100% { transform: scale(1);   opacity: 1;   }
+          50%      { transform: scale(1.15); opacity:.75; }
+        }
+      </style>
 
       <div class="wg-callout wg-callout--warning" style="margin-top:48px;" data-reveal>
         <div class="wg-callout__ico"><iconify-icon icon="mdi:alert"></iconify-icon></div>
