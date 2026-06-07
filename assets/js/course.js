@@ -11,15 +11,16 @@
 window.WG_COURSE = {
 
   brand: {
-    name: 'TU MARCA',                /* PENDIENTE confirmar cliente */
-    sub:  'Cliente del curso',
-    logo: 'assets/img/placeholders/logo.svg',
+    // Solo la "W" naranja; el texto va al lado en HTML
+    name: 'WAYGROUP',
+    sub:  'SST en la era digital',
+    logo: 'assets/img/curso/waygroup-w-only.svg',
   },
 
   course: {
-    code:     'RCP-2025',
-    name:     'RCP Básico',
-    subtitle: 'Entrenamiento del primer respondiente',
+    code:     '',
+    name:     'Reanimación Cardio Pulmonar (RCP)',
+    subtitle: '',
     duration: '8 horas',
     iso:      'ISO 9001:2015',
     licencia: 'Creative Commons BY-NC-SA 4.0',
@@ -27,7 +28,7 @@ window.WG_COURSE = {
 
   /* MENÚ · 25 pantallas en orden secuencial */
   menu: [
-    { id: 'portada',           num: '01', titulo: 'Portada',                       icon: 'mdi:home',                   file: 'index.html' },
+    { id: 'portada',           num: '01', titulo: 'Inicio',                        icon: 'mdi:home',                   file: 'index.html' },
     { id: 'bienvenida',        num: '02', titulo: 'Bienvenida',                    icon: 'mdi:play-circle',            file: 'bienvenida.html' },
     { id: 'conceptos-basicos', num: '03', titulo: 'Conceptos básicos',             icon: 'mdi:book-open-page-variant', file: 'conceptos-basicos.html' },
     { id: 'identificacion',    num: '04', titulo: 'Identificar parada cardíaca',   icon: 'mdi:magnify',                file: 'identificacion.html' },

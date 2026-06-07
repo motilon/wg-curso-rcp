@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es" data-version="hibrida">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>RCP sin DEA disponible · Reanimación Cardio Pulmonar (RCP)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
+<link rel="stylesheet" href="assets/css/core.css" />
+</head>
+<body class="wg-body">
+<button class="wg-burger" data-wg-burger><iconify-icon icon="mdi:menu"></iconify-icon></button>
+<div class="wg-app">
+  <aside class="wg-sidebar" data-wg-sidebar data-current="rcp-sin-dea"></aside>
+  <main class="wg-main">
+    <div class="wg-topbar">
+      <div class="wg-breadcrumb" data-wg-breadcrumb data-current="rcp-sin-dea"></div>
+      <div class="wg-topbar__actions">
+        <div class="wg-version-switch" data-wg-version-switch></div>
+        <a href="index.html" class="wg-iconbtn" title="Volver al inicio"><iconify-icon icon="mdi:home"></iconify-icon></a>
+        <a href="assets/downloads/Curso_RCP.pdf" class="wg-iconbtn" title="Descargar PDF del curso" download><iconify-icon icon="mdi:download"></iconify-icon></a>
+        <a class="wg-iconbtn wg-iconbtn--accent" data-wg-next-iconbtn title="Siguiente"><iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+      </div>
+    </div>
+
+    <article class="wg-screen">
+      <header class="wg-screen__head" data-reveal>
+        <div class="wg-screen__eyebrow">16 · Sin desfibrilador</div>
+        <h1 class="wg-screen__title">RCP sin DEA disponible</h1>
+        <p class="wg-screen__lead">
+          Si no hay DEA disponible, <strong>continúa realizando compresiones torácicas
+          de alta calidad</strong>.
+        </p>
+      </header>
+
+      <!-- PÁRRAFOS INTRO literales -->
+      <p data-reveal>
+        La ausencia de DEA no debe detener la atención. Verifica que
+        <strong>emergencias haya sido activado</strong> y pide a alguien que busque
+        un DEA si existe la posibilidad.
+      </p>
+
+      <p data-reveal>
+        Si hay más de un reanimador, <strong>alternen cada dos minutos</strong> para
+        mantener la calidad de las compresiones.
+      </p>
+
+      <!-- 4 CONDICIONES PARA DETENER · grid de cards con título + descripción -->
+      <h3 style="margin:48px 0 16px; display:flex; align-items:center; gap:10px;" data-reveal>
+        <iconify-icon icon="mdi:stop-circle-outline" style="color:var(--c-acento); font-size:1.6rem;"></iconify-icon>
+        Continúa RCP hasta:
+      </h3>
+
+      <div data-reveal style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;">
+
+        <!-- 1. Llegada de personal de emergencias -->
+        <div style="position:relative; padding:24px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); overflow:hidden;">
+          <div style="position:absolute; top:0; bottom:0; left:0; width:4px; background:var(--success);"></div>
+          <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+            <div style="min-width:42px; height:42px; border-radius:12px; background:color-mix(in srgb, var(--success) 16%, transparent); display:grid; place-items:center; color:var(--success);">
+              <iconify-icon icon="mdi:ambulance" style="font-size:1.4rem;"></iconify-icon>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:.68rem; letter-spacing:.18em; color:var(--success); text-transform:uppercase;">01 · Detener</div>
+          </div>
+          <h4 style="margin:0 0 6px; font-size:1.05rem;">Llegada de personal de emergencias</h4>
+          <p style="margin:0; font-size:.9rem; color:var(--text-mut); line-height:1.5;">
+            El personal de emergencias está en camino y puede tomar el relevo.
+          </p>
+        </div>
+
+        <!-- 2. Relevo entrenado -->
+        <div style="position:relative; padding:24px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); overflow:hidden;">
+          <div style="position:absolute; top:0; bottom:0; left:0; width:4px; background:var(--c-info);"></div>
+          <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+            <div style="min-width:42px; height:42px; border-radius:12px; background:color-mix(in srgb, var(--c-info) 16%, transparent); display:grid; place-items:center; color:var(--c-info);">
+              <iconify-icon icon="mdi:account-switch" style="font-size:1.4rem;"></iconify-icon>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:.68rem; letter-spacing:.18em; color:var(--c-info); text-transform:uppercase;">02 · Detener</div>
+          </div>
+          <h4 style="margin:0 0 6px; font-size:1.05rem;">Relevo entrenado</h4>
+          <p style="margin:0; font-size:.9rem; color:var(--text-mut); line-height:1.5;">
+            Otra persona entrenada puede continuar con la atención.
+          </p>
+        </div>
+
+        <!-- 3. Recuperación del paciente -->
+        <div style="position:relative; padding:24px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); overflow:hidden;">
+          <div style="position:absolute; top:0; bottom:0; left:0; width:4px; background:var(--c-acento);"></div>
+          <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+            <div style="min-width:42px; height:42px; border-radius:12px; background:color-mix(in srgb, var(--c-acento) 16%, transparent); display:grid; place-items:center; color:var(--c-acento);">
+              <iconify-icon icon="mdi:heart-flash" style="font-size:1.4rem;"></iconify-icon>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:.68rem; letter-spacing:.18em; color:var(--c-acento); text-transform:uppercase;">03 · Detener</div>
+          </div>
+          <h4 style="margin:0 0 6px; font-size:1.05rem;">Recuperación del paciente</h4>
+          <p style="margin:0; font-size:.9rem; color:var(--text-mut); line-height:1.5;">
+            El paciente muestra signos claros de recuperación y puede no necesitar más
+            asistencia inmediata.
+          </p>
+        </div>
+
+        <!-- 4. Agotamiento o riesgo -->
+        <div style="position:relative; padding:24px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); overflow:hidden;">
+          <div style="position:absolute; top:0; bottom:0; left:0; width:4px; background:var(--danger);"></div>
+          <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+            <div style="min-width:42px; height:42px; border-radius:12px; background:color-mix(in srgb, var(--danger) 14%, transparent); display:grid; place-items:center; color:var(--danger);">
+              <iconify-icon icon="mdi:battery-alert-variant-outline" style="font-size:1.4rem;"></iconify-icon>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:.68rem; letter-spacing:.18em; color:var(--danger); text-transform:uppercase;">04 · Detener</div>
+          </div>
+          <h4 style="margin:0 0 6px; font-size:1.05rem;">Agotamiento o riesgo</h4>
+          <p style="margin:0; font-size:.9rem; color:var(--text-mut); line-height:1.5;">
+            No puedes continuar de forma segura, por agotamiento extremo o riesgo para
+            tu seguridad.
+          </p>
+        </div>
+      </div>
+
+      <!-- IMAGEN 6 · ilustración 4 condiciones de detener -->
+      <figure class="wg-figura" data-reveal style="margin-top:32px;">
+        <div class="wg-figura__hero" style="height:auto; padding:24px; background:#fff;">
+          <img src="assets/img/curso/p16-4-condiciones-detener.png" alt="4 condiciones para detener la RCP" style="max-width:100%; max-height:none; width:auto;" />
+        </div>
+        <figcaption class="wg-figura__caption">
+          <iconify-icon icon="mdi:stop-circle-outline" style="color:var(--c-acento);"></iconify-icon>
+          <strong>4 condiciones para detener la RCP</strong>
+          <span>Emergencias · relevo entrenado · recuperación · agotamiento o riesgo.</span>
+        </figcaption>
+      </figure>
+
+      <!-- 2 CALLOUTS literales -->
+      <div class="wg-callout" style="margin-top:32px;" data-reveal>
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">Tener en cuenta</span>
+          <p style="margin:8px 0 0;">
+            La RCP continua puede mantener la circulación mientras llega el equipo
+            con desfibrilador.
+          </p>
+        </div>
+      </div>
+
+      <div class="wg-callout wg-callout--danger" style="margin-top:14px;" data-reveal>
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:close-octagon"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">No hacer</span>
+          <p style="margin:8px 0 0;">
+            No suspendas las compresiones solo porque no hay DEA disponible.
+          </p>
+        </div>
+      </div>
+    </article>
+    <nav class="wg-screen-nav" data-wg-screen-nav data-current="rcp-sin-dea"></nav>
+  </main>
+</div>
+<script src="assets/js/course.js"></script>
+<script src="assets/js/core.js"></script>
+</body>
+</html>

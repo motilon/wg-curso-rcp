@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es" data-version="hibrida">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Simulador VR · Reanimación Cardio Pulmonar (RCP)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
+<link rel="stylesheet" href="assets/css/core.css" />
+</head>
+<body class="wg-body">
+<button class="wg-burger" data-wg-burger><iconify-icon icon="mdi:menu"></iconify-icon></button>
+<div class="wg-app">
+  <aside class="wg-sidebar" data-wg-sidebar data-current="simulador"></aside>
+  <main class="wg-main">
+    <div class="wg-topbar">
+      <div class="wg-breadcrumb" data-wg-breadcrumb data-current="simulador"></div>
+      <div class="wg-topbar__actions">
+        <div class="wg-version-switch" data-wg-version-switch></div>
+        <a href="index.html" class="wg-iconbtn" title="Volver al inicio"><iconify-icon icon="mdi:home"></iconify-icon></a>
+        <a href="assets/downloads/Curso_RCP.pdf" class="wg-iconbtn" title="Descargar PDF del curso" download><iconify-icon icon="mdi:download"></iconify-icon></a>
+        <a class="wg-iconbtn wg-iconbtn--accent" data-wg-next-iconbtn title="Siguiente"><iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+      </div>
+    </div>
+
+    <article class="wg-screen">
+      <header class="wg-screen__head" data-reveal>
+        <div class="wg-screen__eyebrow">22 · Práctica inmersiva</div>
+        <h1 class="wg-screen__title">Uso del simulador de realidad virtual</h1>
+        <p class="wg-screen__lead">
+          El simulador de realidad virtual permite practicar situaciones de emergencia
+          en un <strong>entorno seguro</strong>. Su objetivo es que el participante
+          aplique el paso a paso de la atención en <strong>escenarios realistas</strong>.
+        </p>
+      </header>
+
+      <!-- HERO VR · stat destacado -->
+      <div data-reveal style="margin-top:8px; padding:32px; background:linear-gradient(135deg, color-mix(in srgb, var(--c-info) 14%, var(--bg-surface)) 0%, var(--bg-surface) 60%); border:1px solid color-mix(in srgb, var(--c-info) 30%, var(--border-c)); border-radius:var(--r-lg); position:relative; overflow:hidden;">
+        <div aria-hidden="true" style="position:absolute; top:-40px; right:-40px; width:280px; height:280px; background: radial-gradient(circle, color-mix(in srgb, var(--c-info) 20%, transparent) 0%, transparent 70%); pointer-events:none;"></div>
+        <div style="display:grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr); gap:32px; align-items:center; position:relative; z-index:1;">
+          <div style="width:96px; height:96px; border-radius:24px; background:linear-gradient(135deg, var(--c-info), color-mix(in srgb, var(--c-info) 60%, var(--c-acento))); display:grid; place-items:center; color:white; box-shadow:0 20px 40px color-mix(in srgb, var(--c-info) 30%, transparent);">
+            <iconify-icon icon="mdi:virtual-reality" style="font-size:3rem;"></iconify-icon>
+          </div>
+          <div>
+            <div style="font-family:var(--font-mono); font-size:.72rem; letter-spacing:.18em; color:var(--c-info); text-transform:uppercase; margin-bottom:6px;">Práctica inmersiva · VR</div>
+            <div style="font-family:var(--font-display); font-size:clamp(1.4rem, 2.2vw, 1.8rem); font-weight:800; color:var(--text-head); letter-spacing:-.02em; line-height:1.2;">
+              Entrena RCP en escenarios reales sin riesgo.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 ESCENARIOS POSIBLES -->
+      <p data-reveal style="margin-top:32px;">
+        Durante la simulación, se pueden presentar escenarios como:
+      </p>
+
+      <div data-reveal style="margin-top:18px; display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:14px;">
+        <div style="position:relative; padding:24px 20px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); text-align:center; transition: transform .18s ease;">
+          <div style="width:54px; height:54px; margin:0 auto 12px; border-radius:14px; background:color-mix(in srgb, var(--c-acento) 14%, transparent); color:var(--c-acento); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:parking" style="font-size:1.8rem;"></iconify-icon>
+          </div>
+          <div style="font-family:var(--font-display); font-weight:700; color:var(--text-head);">Parqueadero</div>
+        </div>
+        <div style="position:relative; padding:24px 20px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); text-align:center; transition: transform .18s ease;">
+          <div style="width:54px; height:54px; margin:0 auto 12px; border-radius:14px; background:color-mix(in srgb, var(--c-info) 16%, transparent); color:var(--c-info); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:storefront-outline" style="font-size:1.8rem;"></iconify-icon>
+          </div>
+          <div style="font-family:var(--font-display); font-weight:700; color:var(--text-head);">Centro comercial</div>
+        </div>
+        <div style="position:relative; padding:24px 20px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); text-align:center; transition: transform .18s ease;">
+          <div style="width:54px; height:54px; margin:0 auto 12px; border-radius:14px; background:color-mix(in srgb, var(--c-acento) 14%, transparent); color:var(--c-acento); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:airplane" style="font-size:1.8rem;"></iconify-icon>
+          </div>
+          <div style="font-family:var(--font-display); font-weight:700; color:var(--text-head);">Aeropuerto</div>
+        </div>
+        <div style="position:relative; padding:24px 20px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); text-align:center; transition: transform .18s ease;">
+          <div style="width:54px; height:54px; margin:0 auto 12px; border-radius:14px; background:color-mix(in srgb, var(--c-info) 16%, transparent); color:var(--c-info); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:office-building" style="font-size:1.8rem;"></iconify-icon>
+          </div>
+          <div style="font-family:var(--font-display); font-weight:700; color:var(--text-head);">Oficina</div>
+        </div>
+      </div>
+
+      <!-- 10 ACCIONES · Allí debes: -->
+      <h3 style="margin:48px 0 16px; display:flex; align-items:center; gap:10px;" data-reveal>
+        <iconify-icon icon="mdi:gesture-tap" style="color:var(--c-acento); font-size:1.6rem;"></iconify-icon>
+        Allí debes:
+      </h3>
+
+      <div data-reveal style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
+
+        <div style="display:flex; gap:14px; align-items:center; padding:18px 22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md);">
+          <div style="min-width:36px; height:36px; border-radius:10px; background:color-mix(in srgb, var(--c-acento) 14%, transparent); color:var(--c-acento); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:eye-outline" style="font-size:1.25rem;"></iconify-icon>
+          </div>
+          <span style="font-family:var(--font-display); font-weight:500;">Reconocer el entorno.</span>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:center; padding:18px 22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md);">
+          <div style="min-width:36px; height:36px; border-radius:10px; background:color-mix(in srgb, var(--c-acento) 14%, transparent); color:var(--c-acento); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:shield-alert-outline" style="font-size:1.25rem;"></iconify-icon>
+          </div>
+          <span style="font-family:var(--font-display); font-weight:500;">Identificar los riesgos.</span>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:center; padding:18px 22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md);">
+          <div style="min-width:36px; height:36px; border-radius:10px; background:color-mix(in srgb, var(--c-acento) 14%, transparent); color:var(--c-acento); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:walk" style="font-size:1.25rem;"></iconify-icon>
+          </div>
+          <span style="font-family:var(--font-display); font-weight:500;">Acercarse al paciente.</span>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:center; padding:18px 22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md);">
+          <div style="min-width:36px; height:36px; border-radius:10px; background:color-mix(in srgb, var(--c-info) 14%, transparent); color:var(--c-info); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:account-question-outline" style="font-size:1.25rem;"></iconify-icon>
+          </div>
+          <span style="font-family:var(--font-display); font-weight:500;">Verificar la respuesta.</span>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:center; padding:18px 22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md);">
+          <div style="min-width:36px; height:36px; border-radius:10px; background:color-mix(in srgb, var(--c-info) 14%, transparent); color:var(--c-info); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:lungs" style="font-size:1.25rem;"></iconify-icon>
+          </div>
+          <span style="font-family:var(--font-display); font-weight:500;">Valorar la respiración.</span>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:center; padding:18px 22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md);">
+          <div style="min-width:36px; height:36px; border-radius:10px; background:color-mix(in srgb, var(--c-info) 14%, transparent); color:var(--c-info); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:phone-in-talk" style="font-size:1.25rem;"></iconify-icon>
+          </div>
+          <span style="font-family:var(--font-display); font-weight:500;">Activar las emergencias.</span>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:center; padding:18px 22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md);">
+          <div style="min-width:36px; height:36px; border-radius:10px; background:color-mix(in srgb, var(--c-info) 14%, transparent); color:var(--c-info); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:flash" style="font-size:1.25rem;"></iconify-icon>
+          </div>
+          <span style="font-family:var(--font-display); font-weight:500;">Pedir el DEA.</span>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:center; padding:18px 22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md);">
+          <div style="min-width:36px; height:36px; border-radius:10px; background:color-mix(in srgb, var(--c-acento) 14%, transparent); color:var(--c-acento); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:heart-pulse" style="font-size:1.25rem;"></iconify-icon>
+          </div>
+          <span style="font-family:var(--font-display); font-weight:500;">Iniciar RCP.</span>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:center; padding:18px 22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md);">
+          <div style="min-width:36px; height:36px; border-radius:10px; background:color-mix(in srgb, var(--c-acento) 14%, transparent); color:var(--c-acento); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:flash-triangle-outline" style="font-size:1.25rem;"></iconify-icon>
+          </div>
+          <span style="font-family:var(--font-display); font-weight:500;">Usar el DEA.</span>
+        </div>
+
+        <div style="display:flex; gap:14px; align-items:center; padding:18px 22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md);">
+          <div style="min-width:36px; height:36px; border-radius:10px; background:color-mix(in srgb, var(--success) 16%, transparent); color:var(--success); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:message-reply-text-outline" style="font-size:1.25rem;"></iconify-icon>
+          </div>
+          <span style="font-family:var(--font-display); font-weight:500;">Responder a la retroalimentación del simulador.</span>
+        </div>
+      </div>
+
+      <!-- 3 CALLOUTS -->
+      <div class="wg-callout wg-callout--warning" style="margin-top:48px;" data-reveal>
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:alert"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">Atención</span>
+          <p style="margin:8px 0 0;">
+            Asegúrate de que el espacio físico esté libre de obstáculos antes de usar
+            el visor.
+          </p>
+        </div>
+      </div>
+
+      <div class="wg-callout wg-callout--success" style="margin-top:14px;" data-reveal>
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:dumbbell"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">Practica</span>
+          <p style="margin:8px 0 0;">
+            Realiza una prueba de interacción: mirar, señalar, tocar hombros, ubicar
+            manos y activar DEA.
+          </p>
+        </div>
+      </div>
+
+      <div class="wg-callout" style="margin-top:14px;" data-reveal>
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">Tener en cuenta</span>
+          <p style="margin:8px 0 0;">
+            El simulador evalúa decisiones, tiempos, seguridad y calidad de
+            compresiones.
+          </p>
+        </div>
+      </div>
+    </article>
+    <nav class="wg-screen-nav" data-wg-screen-nav data-current="simulador"></nav>
+  </main>
+</div>
+<script src="assets/js/course.js"></script>
+<script src="assets/js/core.js"></script>
+</body>
+</html>

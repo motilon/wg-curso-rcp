@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es" data-version="hibrida">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Retorno de circulación · Reanimación Cardio Pulmonar (RCP)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
+<link rel="stylesheet" href="assets/css/core.css" />
+</head>
+<body class="wg-body">
+<button class="wg-burger" data-wg-burger><iconify-icon icon="mdi:menu"></iconify-icon></button>
+<div class="wg-app">
+  <aside class="wg-sidebar" data-wg-sidebar data-current="rosc"></aside>
+  <main class="wg-main">
+    <div class="wg-topbar">
+      <div class="wg-breadcrumb" data-wg-breadcrumb data-current="rosc"></div>
+      <div class="wg-topbar__actions">
+        <div class="wg-version-switch" data-wg-version-switch></div>
+        <a href="index.html" class="wg-iconbtn" title="Volver al inicio"><iconify-icon icon="mdi:home"></iconify-icon></a>
+        <a href="assets/downloads/Curso_RCP.pdf" class="wg-iconbtn" title="Descargar PDF del curso" download><iconify-icon icon="mdi:download"></iconify-icon></a>
+        <a class="wg-iconbtn wg-iconbtn--accent" data-wg-next-iconbtn title="Siguiente"><iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+      </div>
+    </div>
+
+    <article class="wg-screen">
+      <header class="wg-screen__head" data-reveal>
+        <div class="wg-screen__eyebrow">17 · Recuperación</div>
+        <h1 class="wg-screen__title">Retorno de circulación espontánea</h1>
+        <p class="wg-screen__lead">
+          El retorno de circulación espontánea ocurre cuando el corazón
+          <strong>vuelve a bombear sangre de manera efectiva</strong>.
+        </p>
+      </header>
+
+      <!-- 6 SIGNOS · grid con iconos -->
+      <h3 style="margin:24px 0 16px; display:flex; align-items:center; gap:10px;" data-reveal>
+        <iconify-icon icon="mdi:heart-flash" style="color:var(--c-acento); font-size:1.6rem; animation: wg-rosc-pulse 1.3s ease-in-out infinite;"></iconify-icon>
+        Puedes reconocerlo si la persona:
+      </h3>
+
+      <div data-reveal style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px;">
+        <div style="position:relative; padding:22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); display:flex; gap:14px; align-items:center;">
+          <div style="min-width:42px; height:42px; border-radius:12px; background:color-mix(in srgb, var(--success) 18%, transparent); color:var(--success); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:lungs" style="font-size:1.5rem;"></iconify-icon>
+          </div>
+          <p style="margin:0;">Respira normalmente.</p>
+        </div>
+
+        <div style="position:relative; padding:22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); display:flex; gap:14px; align-items:center;">
+          <div style="min-width:42px; height:42px; border-radius:12px; background:color-mix(in srgb, var(--success) 18%, transparent); color:var(--success); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:emoticon-cool-outline" style="font-size:1.5rem;"></iconify-icon>
+          </div>
+          <p style="margin:0;">Tose.</p>
+        </div>
+
+        <div style="position:relative; padding:22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); display:flex; gap:14px; align-items:center;">
+          <div style="min-width:42px; height:42px; border-radius:12px; background:color-mix(in srgb, var(--success) 18%, transparent); color:var(--success); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:run-fast" style="font-size:1.5rem;"></iconify-icon>
+          </div>
+          <p style="margin:0;">Se mueve.</p>
+        </div>
+
+        <div style="position:relative; padding:22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); display:flex; gap:14px; align-items:center;">
+          <div style="min-width:42px; height:42px; border-radius:12px; background:color-mix(in srgb, var(--success) 18%, transparent); color:var(--success); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:eye-outline" style="font-size:1.5rem;"></iconify-icon>
+          </div>
+          <p style="margin:0;">Abre los ojos.</p>
+        </div>
+
+        <div style="position:relative; padding:22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); display:flex; gap:14px; align-items:center;">
+          <div style="min-width:42px; height:42px; border-radius:12px; background:color-mix(in srgb, var(--success) 18%, transparent); color:var(--success); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:account-voice" style="font-size:1.5rem;"></iconify-icon>
+          </div>
+          <p style="margin:0;">Intenta hablar.</p>
+        </div>
+
+        <div style="position:relative; padding:22px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-md); display:flex; gap:14px; align-items:center;">
+          <div style="min-width:42px; height:42px; border-radius:12px; background:color-mix(in srgb, var(--success) 18%, transparent); color:var(--success); display:grid; place-items:center;">
+            <iconify-icon icon="mdi:hand-wave-outline" style="font-size:1.5rem;"></iconify-icon>
+          </div>
+          <p style="margin:0;">Reacciona al entorno.</p>
+        </div>
+      </div>
+
+      <!-- ¿Qué hacer si esto ocurre? · 3 párrafos literales -->
+      <h3 style="margin:48px 0 16px; display:flex; align-items:center; gap:10px;" data-reveal>
+        <iconify-icon icon="mdi:checkbox-marked-circle-outline" style="color:var(--c-info); font-size:1.6rem;"></iconify-icon>
+        Si esto ocurre…
+      </h3>
+
+      <div data-reveal style="margin-top:16px; padding:28px; background:var(--bg-surface); border-left:4px solid var(--success); border-radius:var(--r-md);">
+        <div style="display:flex; gap:18px; align-items:flex-start;">
+          <div style="min-width:48px; height:48px; border-radius:14px; background:color-mix(in srgb, var(--success) 18%, transparent); display:grid; place-items:center; color:var(--success);">
+            <iconify-icon icon="mdi:hand-back-left-outline" style="font-size:1.6rem;"></iconify-icon>
+          </div>
+          <p style="margin:0;">
+            Suspende las compresiones si la respiración es normal, pero
+            <strong>mantén vigilancia continua</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div data-reveal style="margin-top:14px; padding:28px; background:var(--bg-surface); border-left:4px solid var(--c-acento); border-radius:var(--r-md);">
+        <div style="display:flex; gap:18px; align-items:flex-start;">
+          <div style="min-width:48px; height:48px; border-radius:14px; background:color-mix(in srgb, var(--c-acento) 14%, transparent); display:grid; place-items:center; color:var(--c-acento);">
+            <iconify-icon icon="mdi:sticker-check-outline" style="font-size:1.6rem;"></iconify-icon>
+          </div>
+          <p style="margin:0;">
+            <strong>No retires los parches del DEA</strong>. La persona puede volver
+            a presentar una parada cardíaca y el equipo podría necesitarse nuevamente.
+          </p>
+        </div>
+      </div>
+
+      <div data-reveal style="margin-top:14px; padding:28px; background:var(--bg-surface); border-left:4px solid var(--c-info); border-radius:var(--r-md);">
+        <div style="display:flex; gap:18px; align-items:flex-start;">
+          <div style="min-width:48px; height:48px; border-radius:14px; background:color-mix(in srgb, var(--c-info) 14%, transparent); display:grid; place-items:center; color:var(--c-info);">
+            <iconify-icon icon="mdi:account-heart-outline" style="font-size:1.6rem;"></iconify-icon>
+          </div>
+          <p style="margin:0;">
+            La persona puede estar <strong>confundida o desorientada</strong>. Habla
+            con calma y evita que se levante.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3 CALLOUTS literales -->
+      <div class="wg-callout wg-callout--warning" style="margin-top:32px;" data-reveal>
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:alert"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">Atención</span>
+          <p style="margin:8px 0 0;">
+            Aunque la persona mejore, puede volver a deteriorarse.
+          </p>
+        </div>
+      </div>
+
+      <div class="wg-callout wg-callout--danger" style="margin-top:14px;" data-reveal>
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:close-octagon"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">No hacer</span>
+          <p style="margin:8px 0 0;">
+            No retires los parches del DEA.
+          </p>
+        </div>
+      </div>
+
+      <div class="wg-callout" style="margin-top:14px;" data-reveal>
+        <div class="wg-callout__ico"><iconify-icon icon="mdi:lightbulb-on"></iconify-icon></div>
+        <div>
+          <span class="wg-callout__tag">Tener en cuenta</span>
+          <p style="margin:8px 0 0;">
+            Vigila la respiración y la pérdida de consciencia hasta la llegada de
+            emergencias.
+          </p>
+        </div>
+      </div>
+    </article>
+    <nav class="wg-screen-nav" data-wg-screen-nav data-current="rosc"></nav>
+  </main>
+</div>
+<script src="assets/js/course.js"></script>
+<script src="assets/js/core.js"></script>
+
+<style>
+  @keyframes wg-rosc-pulse{
+    0%, 100% { transform: scale(1);    opacity: 1; }
+    50%      { transform: scale(1.18); opacity: .8; }
+  }
+</style>
+</body>
+</html>

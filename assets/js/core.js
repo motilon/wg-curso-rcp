@@ -10,8 +10,11 @@
   'use strict';
 
   const C = window.WG_COURSE || { menu: [] };
-  const VERSIONS = ['hibrida', 'clara', 'oscura'];
-  const VERSION_LABELS = { hibrida: 'Híbrida', clara: 'Clara', oscura: 'Oscura' };
+  // 'hibrida' se conserva como id interno (data-version="hibrida") por compat
+  // con el HTML existente, pero se muestra al usuario como "Oscura".
+  const VERSIONS = ['hibrida', 'clara'];
+  const VERSION_LABELS = { hibrida: 'Oscura', clara: 'Clara' };
+  const VERSION_ICONS  = { hibrida: 'mdi:weather-night', clara: 'mdi:white-balance-sunny' };
 
   /* ============================================
      RENDER · sidebar
@@ -27,22 +30,24 @@
 
     el.innerHTML = `
       <div class="wg-sidebar__brand">
-        <img src="${C.brand.logo}" alt="${C.brand.name}" />
-        <div>
-          <strong>${C.brand.name}</strong>
-          <small>${C.brand.sub || ''}</small>
-        </div>
+        <img src="${C.brand.logo}" alt="${C.brand.name || ''}" />
+        ${C.brand.name || C.brand.sub ? `
+          <div>
+            ${C.brand.name ? `<strong>${C.brand.name}</strong>` : ''}
+            ${C.brand.sub  ? `<small>${C.brand.sub}</small>`   : ''}
+          </div>
+        ` : ''}
       </div>
       <div class="wg-sidebar__course">
-        <span class="wg-sidebar__course-tag">${C.course.code}</span>
+        ${C.course.code     ? `<span class="wg-sidebar__course-tag">${C.course.code}</span>` : ''}
         <h3>${C.course.name}</h3>
-        <p>${C.course.subtitle}</p>
+        ${C.course.subtitle ? `<p>${C.course.subtitle}</p>` : ''}
       </div>
       <nav class="wg-sidebar__menu">
         ${C.menu.map((m, i) => {
           const state = i < idx ? 'is-done' : (i === idx ? 'is-active' : '');
           return `
-            <a href="${m.file}" class="wg-sidebar__menu-item ${state}" aria-current="${i === idx ? 'page' : 'false'}">
+            <a href="${m.file}" class="wg-sidebar__menu-item ${state}" data-title="${m.titulo}" aria-current="${i === idx ? 'page' : 'false'}">
               <span class="num">${m.num}</span>
               <span class="title">${m.titulo}</span>
               <iconify-icon icon="${m.icon}"></iconify-icon>
@@ -50,18 +55,152 @@
           `;
         }).join('')}
       </nav>
-      <div class="wg-sidebar__progress">
+      <div class="wg-sidebar__progress" data-progress="${completed + 1}/${total}">
         <div class="label">
           <span>Progreso</span>
           <strong>${completed + 1}/${total}</strong>
         </div>
         <div class="bar"><div class="bar-fill" style="width:${progress}%"></div></div>
       </div>
-      <div class="wg-sidebar__footer">
-        <a href="#" title="Material"><iconify-icon icon="mdi:download"></iconify-icon> Material</a>
-        <a href="presets.html" title="Presets"><iconify-icon icon="mdi:palette"></iconify-icon> Tema</a>
-      </div>
     `;
+  }
+
+  /* ============================================
+     TOGGLE · colapsar/expandir sidebar
+     Persistencia en localStorage
+     ============================================ */
+  function setupSidebarToggle(){
+    // Lectura inicial de la preferencia guardada · no la aplicamos todavía
+    const saved = localStorage.getItem('wg-sidebar-collapsed');
+
+    // Solo inyectar si hay sidebar en la página (no en archivos del template)
+    if (!document.querySelector('[data-wg-sidebar]')) return;
+    if (document.querySelector('[data-wg-sidebar-toggle]')) return; // ya existe
+
+    // Inyectar el botón flotante al body (afuera del sidebar para que position:fixed funcione)
+    const btn = document.createElement('button');
+    btn.className = 'wg-sidebar__toggle';
+    btn.setAttribute('data-wg-sidebar-toggle', '');
+    btn.title = saved === 'true' ? 'Expandir menú' : 'Colapsar menú';
+    btn.innerHTML = '<iconify-icon icon="mdi:chevron-left" style="transition:transform .25s ease;"></iconify-icon>';
+    // Fallback inline para garantizar visibilidad incluso si el CSS está cacheado viejo
+    btn.style.cssText = `
+      position: fixed; top: 24px;
+      left: calc(var(--sidebar-w, 300px) - 16px);
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--bg-surface, #fff);
+      border: 1px solid var(--border-c, #e5e7eb);
+      color: var(--text-pri, #3a4255);
+      display: grid; place-items: center;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 12px rgba(0,0,0,.15);
+      transition: left .25s ease, background .2s ease, transform .2s ease;
+    `;
+    document.body.appendChild(btn);
+    console.log('[wg] Sidebar toggle inyectado:', btn);
+
+    // Helper · aplica los estilos inline para garantizar funcionamiento aunque el CSS esté cacheado
+    function applyCollapsedState(collapsed){
+      const app = document.querySelector('.wg-app');
+      const sidebar = document.querySelector('.wg-sidebar');
+      const ico = btn.querySelector('iconify-icon');
+      if (collapsed) {
+        if (app) app.style.gridTemplateColumns = '72px 1fr';
+        btn.style.left = 'calc(72px - 16px)';
+        if (ico) ico.style.transform = 'rotate(180deg)';
+        // Ocultar elementos textuales
+        document.querySelectorAll(
+          '.wg-sidebar__course, .wg-sidebar__brand > div, ' +
+          '.wg-sidebar__menu-item .num, .wg-sidebar__menu-item .title, ' +
+          '.wg-sidebar__progress .label, .wg-sidebar__progress .bar'
+        ).forEach(el => { el.style.display = 'none'; });
+        // Centrar iconos del menú
+        document.querySelectorAll('.wg-sidebar__menu-item').forEach(el => {
+          el.style.gridTemplateColumns = '1fr';
+          el.style.justifyItems = 'center';
+          el.style.padding = '10px 0';
+        });
+        document.querySelectorAll('.wg-sidebar__brand').forEach(el => {
+          el.style.justifyContent = 'center';
+          el.style.padding = '16px 8px';
+        });
+      } else {
+        if (app) app.style.gridTemplateColumns = '';
+        btn.style.left = 'calc(var(--sidebar-w, 300px) - 16px)';
+        if (ico) ico.style.transform = 'rotate(0deg)';
+        document.querySelectorAll(
+          '.wg-sidebar__course, .wg-sidebar__brand > div, ' +
+          '.wg-sidebar__menu-item .num, .wg-sidebar__menu-item .title, ' +
+          '.wg-sidebar__progress .label, .wg-sidebar__progress .bar'
+        ).forEach(el => { el.style.display = ''; });
+        document.querySelectorAll('.wg-sidebar__menu-item').forEach(el => {
+          el.style.gridTemplateColumns = '';
+          el.style.justifyItems = '';
+          el.style.padding = '';
+        });
+        document.querySelectorAll('.wg-sidebar__brand').forEach(el => {
+          el.style.justifyContent = '';
+          el.style.padding = '';
+        });
+      }
+    }
+
+    // Detectar viewport mobile · el toggle NO debe aplicar ahí (entra el burger overlay)
+    const mqMobile = window.matchMedia('(max-width: 1024px)');
+    const html = document.documentElement;
+
+    function syncWithViewport(){
+      if (mqMobile.matches) {
+        // ===== MOBILE =====
+        // 1) Ocultar el toggle
+        btn.style.display = 'none';
+        // 2) QUITAR el atributo del <html> · sin tocar localStorage (preferencia persiste)
+        html.removeAttribute('data-sidebar-collapsed');
+        // 3) Limpiar todos los inline styles
+        applyCollapsedState(false);
+      } else {
+        // ===== DESKTOP =====
+        // 1) Mostrar el toggle
+        btn.style.display = '';
+        // 2) Restaurar el estado guardado en localStorage
+        if (saved === 'true') {
+          html.setAttribute('data-sidebar-collapsed', 'true');
+          applyCollapsedState(true);
+          btn.title = 'Expandir menú';
+        } else {
+          html.removeAttribute('data-sidebar-collapsed');
+          applyCollapsedState(false);
+          btn.title = 'Colapsar menú';
+        }
+      }
+    }
+
+    syncWithViewport();
+
+    // Re-sincronizar cuando cambia el viewport
+    mqMobile.addEventListener('change', syncWithViewport);
+
+    // Listener del click · solo funciona en desktop
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (mqMobile.matches) return; // ignorar en mobile
+      const html = document.documentElement;
+      const isCollapsed = html.getAttribute('data-sidebar-collapsed') === 'true';
+      if (isCollapsed) {
+        html.removeAttribute('data-sidebar-collapsed');
+        localStorage.setItem('wg-sidebar-collapsed', 'false');
+        btn.title = 'Colapsar menú';
+        applyCollapsedState(false);
+      } else {
+        html.setAttribute('data-sidebar-collapsed', 'true');
+        localStorage.setItem('wg-sidebar-collapsed', 'true');
+        btn.title = 'Expandir menú';
+        applyCollapsedState(true);
+      }
+    });
   }
 
   /* ============================================
@@ -109,6 +248,32 @@
   }
 
   /* ============================================
+     RENDER · botón "Siguiente" del topbar
+     Calcula automáticamente la próxima pantalla en la secuencia
+     ============================================ */
+  function renderNextIconBtn() {
+    document.querySelectorAll('[data-wg-next-iconbtn]').forEach(btn => {
+      // Obtener pantalla actual desde el sidebar o breadcrumb
+      const host = document.querySelector('[data-wg-breadcrumb][data-current]')
+                || document.querySelector('[data-wg-sidebar][data-current]');
+      if (!host) return;
+      const currentId = host.dataset.current;
+      const idx = C.menu.findIndex(m => m.id === currentId);
+      if (idx < 0) return;
+      const next = idx < C.menu.length - 1 ? C.menu[idx + 1] : null;
+      if (next) {
+        btn.href = next.file;
+        btn.title = `Siguiente: ${next.titulo}`;
+      } else {
+        // Última pantalla · llevar al inicio
+        btn.href = 'index.html';
+        btn.title = 'Volver al inicio';
+        btn.querySelector('iconify-icon')?.setAttribute('icon', 'mdi:restart');
+      }
+    });
+  }
+
+  /* ============================================
      VERSIÓN del template (hibrida/clara/oscura)
      ============================================ */
   function setVersion(v) {
@@ -121,9 +286,20 @@
   }
   function renderVersionSwitch() {
     document.querySelectorAll('[data-wg-version-switch]').forEach(host => {
-      host.innerHTML = VERSIONS.map(v => `
-        <button data-wg-version-btn="${v}" title="Versión ${VERSION_LABELS[v]}">${VERSION_LABELS[v]}</button>
-      `).join('');
+      host.innerHTML = `
+        <span class="wg-version-switch__label">
+          <iconify-icon icon="mdi:palette-outline"></iconify-icon>
+          Tema
+        </span>
+        <div class="wg-version-switch__pills">
+          ${VERSIONS.map(v => `
+            <button data-wg-version-btn="${v}" title="Versión ${VERSION_LABELS[v]}">
+              <iconify-icon icon="${VERSION_ICONS[v]}"></iconify-icon>
+              <span>${VERSION_LABELS[v]}</span>
+            </button>
+          `).join('')}
+        </div>
+      `;
     });
     document.addEventListener('click', e => {
       const btn = e.target.closest('[data-wg-version-btn]');
@@ -385,7 +561,9 @@
     renderSidebar();
     renderBreadcrumb();
     renderScreenNav();
+    renderNextIconBtn();
     renderVersionSwitch();
+    setupSidebarToggle();
     setupAcordeon();
     setupTabs();
     setupQuiz();

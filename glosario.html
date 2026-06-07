@@ -3,39 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Glosario · Template Waygroup OVA</title>
+<title>Glosario · Reanimación Cardio Pulmonar (RCP)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
 <link rel="stylesheet" href="assets/css/core.css" />
-<style>
-  .wg-glosario { display: grid; gap: 14px; }
-  .wg-glosario__item {
-    background: var(--bg-surface);
-    border-radius: var(--r-md);
-    padding: 22px 26px;
-    border: 1px solid var(--border-c);
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    gap: 22px;
-    align-items: start;
-    transition: all .2s;
-  }
-  .wg-glosario__item:hover { border-color: var(--c-acento); transform: translateX(4px); }
-  .wg-glosario__letter {
-    width: 56px; height: 56px;
-    background: var(--grad-brand);
-    border-radius: 14px;
-    display: grid; place-items: center;
-    font-family: var(--font-display); font-weight: 700;
-    font-size: 1.5rem; color: white;
-    box-shadow: 0 8px 20px color-mix(in srgb, var(--c-acento) 30%, transparent);
-  }
-  .wg-glosario__term { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--text-head); margin-bottom: 4px; }
-  .wg-glosario__def { font-size: .95rem; color: var(--text-pri); margin: 0; }
-</style>
 </head>
 <body class="wg-body">
 <button class="wg-burger" data-wg-burger><iconify-icon icon="mdi:menu"></iconify-icon></button>
@@ -46,38 +20,392 @@
       <div class="wg-breadcrumb" data-wg-breadcrumb data-current="glosario"></div>
       <div class="wg-topbar__actions">
         <div class="wg-version-switch" data-wg-version-switch></div>
-        <a href="presets.html" class="wg-iconbtn"><iconify-icon icon="mdi:palette"></iconify-icon></a>
-        <a href="showcase.html" class="wg-iconbtn wg-iconbtn--accent"><iconify-icon icon="mdi:view-grid"></iconify-icon></a>
+        <a href="index.html" class="wg-iconbtn" title="Volver al inicio"><iconify-icon icon="mdi:home"></iconify-icon></a>
+        <a href="assets/downloads/Curso_RCP.pdf" class="wg-iconbtn" title="Descargar PDF del curso" download><iconify-icon icon="mdi:download"></iconify-icon></a>
+        <a class="wg-iconbtn wg-iconbtn--accent" data-wg-next-iconbtn title="Siguiente"><iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
       </div>
     </div>
 
     <article class="wg-screen">
       <header class="wg-screen__head" data-reveal>
-        <div class="wg-screen__eyebrow">Pantalla 06 · Glosario</div>
-        <h1 class="wg-screen__title">Términos clave</h1>
-        <p class="wg-screen__lead">Auto-renderizado desde el array <code>glosario</code> en <code>assets/js/course.js</code>. Editá ese array para cambiar los términos.</p>
+        <div class="wg-screen__eyebrow">24 · Términos clave</div>
+        <h1 class="wg-screen__title">Glosario</h1>
+        <p class="wg-screen__lead">
+          Definiciones de los términos esenciales del curso. Cada término enlaza con
+          la pantalla donde se profundiza.
+        </p>
       </header>
-      <div class="wg-glosario" data-wg-glosario data-reveal></div>
+
+      <!-- ÍNDICE ALFABÉTICO -->
+      <nav data-reveal style="margin-top:24px; display:flex; gap:8px; flex-wrap:wrap;">
+        <a href="#letra-A" class="wg-glosario-letra">A</a>
+        <a href="#letra-B" class="wg-glosario-letra">B</a>
+        <a href="#letra-C" class="wg-glosario-letra">C</a>
+        <a href="#letra-D" class="wg-glosario-letra">D</a>
+        <a href="#letra-E" class="wg-glosario-letra">E</a>
+        <a href="#letra-I" class="wg-glosario-letra">I</a>
+        <a href="#letra-J" class="wg-glosario-letra">J</a>
+        <a href="#letra-M" class="wg-glosario-letra">M</a>
+        <a href="#letra-O" class="wg-glosario-letra">O</a>
+        <a href="#letra-P" class="wg-glosario-letra">P</a>
+        <a href="#letra-R" class="wg-glosario-letra">R</a>
+        <a href="#letra-S" class="wg-glosario-letra">S</a>
+        <a href="#letra-T" class="wg-glosario-letra">T</a>
+        <a href="#letra-V" class="wg-glosario-letra">V</a>
+      </nav>
+
+      <!-- TÉRMINOS · agrupados por letra -->
+      <div data-reveal style="margin-top:32px; display:grid; gap:32px;">
+
+        <!-- A -->
+        <section id="letra-A" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">A</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="análisis del ritmo">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:waveform"></iconify-icon></div>
+              <div>
+                <h3>Análisis del ritmo</h3>
+                <p>Función del DEA que evalúa el ritmo cardíaco del paciente para determinar si requiere una descarga eléctrica. Durante el análisis nadie debe tocar al paciente.</p>
+                <a href="uso-dea.html" class="wg-glosario__link">Ver en 14 · Uso del DEA <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- B -->
+        <section id="letra-B" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">B</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="boqueadas">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:weather-windy"></iconify-icon></div>
+              <div>
+                <h3>Boqueadas</h3>
+                <p>Respiraciones aisladas, irregulares y profundas que pueden aparecer durante una parada cardíaca. <strong>No son respiración normal</strong> y no deben confundirse con respiración efectiva.</p>
+                <a href="identificacion.html" class="wg-glosario__link">Ver en 04 · Identificación <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+            <div class="wg-glosario__item" data-term="broncoaspiración">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:lungs"></iconify-icon></div>
+              <div>
+                <h3>Broncoaspiración</h3>
+                <p>Paso accidental de saliva, vómito o secreciones hacia la vía aérea. La posición lateral de seguridad ayuda a prevenirla en personas inconscientes que respiran normalmente.</p>
+                <a href="posicion-lateral.html" class="wg-glosario__link">Ver en 18 · Posición lateral <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- C -->
+        <section id="letra-C" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">C</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="cadena de supervivencia">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:link-variant"></iconify-icon></div>
+              <div>
+                <h3>Cadena de supervivencia</h3>
+                <p>Secuencia de acciones que aumentan la posibilidad de sobrevivir a una parada cardíaca: reconocimiento, RCP, desfibrilación, atención avanzada y cuidados posteriores.</p>
+                <a href="cadena.html" class="wg-glosario__link">Ver en 10 · Cadena de supervivencia <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+            <div class="wg-glosario__item" data-term="compresiones torácicas">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:heart-pulse"></iconify-icon></div>
+              <div>
+                <h3>Compresiones torácicas</h3>
+                <p>Maniobra principal de la RCP. Consiste en aplicar presión sobre el centro del pecho con frecuencia de 100-120 por minuto y profundidad de 5-6 cm para mantener la circulación.</p>
+                <a href="rcp-calidad.html" class="wg-glosario__link">Ver en 11 · RCP de alta calidad <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- D -->
+        <section id="letra-D" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">D</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="dea">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:flash"></iconify-icon></div>
+              <div>
+                <h3>DEA · Desfibrilador Externo Automático</h3>
+                <p>Equipo que analiza el ritmo del corazón y determina si se requiere una descarga eléctrica. Guía al usuario mediante instrucciones de voz o visuales.</p>
+                <a href="uso-dea.html" class="wg-glosario__link">Ver en 14 · Uso del DEA <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+            <div class="wg-glosario__item" data-term="desfibrilación">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:flash-triangle"></iconify-icon></div>
+              <div>
+                <h3>Desfibrilación</h3>
+                <p>Aplicación de una descarga eléctrica para restablecer un ritmo cardíaco efectivo. Solo se realiza si el DEA lo indica, y nadie debe tocar al paciente durante la descarga.</p>
+                <a href="seguridad-dea.html" class="wg-glosario__link">Ver en 15 · Seguridad durante la desfibrilación <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- E -->
+        <section id="letra-E" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">E</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="esternón">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:human-male"></iconify-icon></div>
+              <div>
+                <h3>Esternón</h3>
+                <p>Hueso plano ubicado en el centro del pecho. Las compresiones torácicas se aplican sobre la mitad inferior del esternón, no sobre el abdomen ni las costillas.</p>
+                <a href="rcp-calidad.html" class="wg-glosario__link">Ver en 11 · RCP de alta calidad <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- I -->
+        <section id="letra-I" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">I</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="infarto cardíaco">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:heart-broken"></iconify-icon></div>
+              <div>
+                <h3>Infarto cardíaco</h3>
+                <p>Obstrucción de una arteria del corazón que impide que parte del músculo cardíaco reciba oxígeno. La persona puede estar consciente y hablar. Un infarto puede evolucionar a parada cardíaca.</p>
+                <a href="conceptos-basicos.html" class="wg-glosario__link">Ver en 03 · Conceptos básicos <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- J -->
+        <section id="letra-J" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">J</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="jadeos">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:weather-windy-variant"></iconify-icon></div>
+              <div>
+                <h3>Jadeos</h3>
+                <p>Respiraciones cortas, ruidosas e ineficaces que pueden aparecer durante una parada cardíaca. Como las boqueadas, no son respiración normal y deben considerarse signos de emergencia.</p>
+                <a href="identificacion.html" class="wg-glosario__link">Ver en 04 · Identificación <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- M -->
+        <section id="letra-M" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">M</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="maniobra de heimlich">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:hand-heart-outline"></iconify-icon></div>
+              <div>
+                <h3>Maniobra de Heimlich</h3>
+                <p>Técnica para expulsar un cuerpo extraño en una persona consciente con obstrucción total de la vía aérea. Consiste en compresiones abdominales rápidas hacia adentro y hacia arriba.</p>
+                <a href="obstruccion.html" class="wg-glosario__link">Ver en 19 · Obstrucción de vía aérea <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- O -->
+        <section id="letra-O" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">O</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="obstrucción de vía aérea">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:lungs"></iconify-icon></div>
+              <div>
+                <h3>Obstrucción de vía aérea</h3>
+                <p>Bloqueo del paso del aire por un cuerpo extraño, también llamado atragantamiento. Puede ser parcial (la persona puede toser) o total (no puede hablar, toser ni respirar).</p>
+                <a href="obstruccion.html" class="wg-glosario__link">Ver en 19 · Obstrucción de vía aérea <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- P -->
+        <section id="letra-P" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">P</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="parada cardíaca">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:heart-off-outline"></iconify-icon></div>
+              <div>
+                <h3>Parada cardíaca</h3>
+                <p>Situación en la que el corazón deja de bombear sangre de manera efectiva. El cerebro y los órganos vitales dejan de recibir oxígeno. La persona pierde la conciencia, no responde y no respira normalmente.</p>
+                <a href="conceptos-basicos.html" class="wg-glosario__link">Ver en 03 · Conceptos básicos <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+            <div class="wg-glosario__item" data-term="parches del dea">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:sticker-outline"></iconify-icon></div>
+              <div>
+                <h3>Parches del DEA</h3>
+                <p>Electrodos adhesivos que se colocan sobre el pecho del paciente. Uno en la parte superior derecha y otro en el lado izquierdo debajo de la axila. Transmiten información al equipo y aplican la descarga.</p>
+                <a href="uso-dea.html" class="wg-glosario__link">Ver en 14 · Uso del DEA <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+            <div class="wg-glosario__item" data-term="posición lateral de seguridad">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:human-handsdown"></iconify-icon></div>
+              <div>
+                <h3>Posición lateral de seguridad</h3>
+                <p>Posición que se utiliza cuando una persona está inconsciente pero respira normalmente y no se sospecha trauma grave. Mantiene la vía aérea abierta y previene la broncoaspiración.</p>
+                <a href="posicion-lateral.html" class="wg-glosario__link">Ver en 18 · Posición lateral <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+            <div class="wg-glosario__item" data-term="primer respondiente">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:account-heart"></iconify-icon></div>
+              <div>
+                <h3>Primer respondiente</h3>
+                <p>Persona, no necesariamente profesional de la salud, que actúa primero ante una emergencia. Su intervención durante los primeros minutos es decisiva para la supervivencia.</p>
+                <a href="bienvenida.html" class="wg-glosario__link">Ver en 02 · Bienvenida <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- R -->
+        <section id="letra-R" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">R</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="rcp">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:heart-pulse"></iconify-icon></div>
+              <div>
+                <h3>RCP · Reanimación Cardiopulmonar</h3>
+                <p>Conjunto de maniobras que se realizan para mantener la circulación de sangre cuando el corazón no bombea adecuadamente. Incluye compresiones torácicas y, opcionalmente, ventilaciones.</p>
+                <a href="conceptos-basicos.html" class="wg-glosario__link">Ver en 03 · Conceptos básicos <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+            <div class="wg-glosario__item" data-term="relevo">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:account-switch"></iconify-icon></div>
+              <div>
+                <h3>Relevo</h3>
+                <p>Cambio de reanimador durante la RCP para mantener la calidad de las compresiones. Se recomienda aproximadamente cada 2 minutos, con interrupciones menores a 10 segundos.</p>
+                <a href="relevos.html" class="wg-glosario__link">Ver en 13 · Fatiga y relevos <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+            <div class="wg-glosario__item" data-term="retorno de circulación espontánea">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:heart-flash"></iconify-icon></div>
+              <div>
+                <h3>Retorno de circulación espontánea (ROSC)</h3>
+                <p>Momento en que, después de la RCP o el uso del DEA, el corazón vuelve a latir de manera efectiva. La persona recupera signos como respiración, tos, movimiento o respuesta.</p>
+                <a href="rosc.html" class="wg-glosario__link">Ver en 17 · Retorno de circulación <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- S -->
+        <section id="letra-S" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">S</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="sem">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:phone-in-talk"></iconify-icon></div>
+              <div>
+                <h3>SEM · Sistema de Emergencias Médicas</h3>
+                <p>Servicio público al que se llama para activar la atención prehospitalaria. Su activación temprana es uno de los eslabones de la cadena de supervivencia.</p>
+                <a href="valoracion.html" class="wg-glosario__link">Ver en 09 · Valoración inicial <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+            <div class="wg-glosario__item" data-term="seguridad de la escena">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:shield-check-outline"></iconify-icon></div>
+              <div>
+                <h3>Seguridad de la escena</h3>
+                <p>Evaluación previa del entorno antes de acercarse al paciente. Verifica riesgos eléctricos, fuego, tránsito, sustancias peligrosas u otros peligros. La seguridad del primer respondiente es prioritaria.</p>
+                <a href="seguridad-escena.html" class="wg-glosario__link">Ver en 08 · Seguridad de la escena <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- T -->
+        <section id="letra-T" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">T</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="tórax">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:human-male"></iconify-icon></div>
+              <div>
+                <h3>Tórax</h3>
+                <p>Parte superior del cuerpo entre el cuello y el abdomen. Aloja el corazón y los pulmones. Es el área donde se aplican las compresiones torácicas durante la RCP.</p>
+                <a href="rcp-calidad.html" class="wg-glosario__link">Ver en 11 · RCP de alta calidad <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- V -->
+        <section id="letra-V" class="wg-glosario__seccion">
+          <div class="wg-glosario__letra-titulo">V</div>
+          <div class="wg-glosario__items">
+            <div class="wg-glosario__item" data-term="ventana crítica">
+              <div class="wg-glosario__icono"><iconify-icon icon="mdi:timer-alert-outline"></iconify-icon></div>
+              <div>
+                <h3>Ventana crítica</h3>
+                <p>Período de pocos minutos durante el cual la RCP temprana puede preservar la circulación cerebral. Cada minuto sin RCP reduce significativamente las posibilidades de supervivencia.</p>
+                <a href="importancia.html" class="wg-glosario__link">Ver en 07 · Importancia de la RCP temprana <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
     </article>
     <nav class="wg-screen-nav" data-wg-screen-nav data-current="glosario"></nav>
   </main>
 </div>
 <script src="assets/js/course.js"></script>
 <script src="assets/js/core.js"></script>
-<script>
-  (function () {
-    const el = document.querySelector('[data-wg-glosario]');
-    if (!el || !window.WG_COURSE?.glosario) return;
-    el.innerHTML = window.WG_COURSE.glosario.map(g => `
-      <div class="wg-glosario__item">
-        <div class="wg-glosario__letter">${g.letra}</div>
-        <div>
-          <div class="wg-glosario__term">${g.termino}</div>
-          <p class="wg-glosario__def">${g.definicion}</p>
-        </div>
-      </div>
-    `).join('');
-  })();
-</script>
+
+<style>
+  /* === Estilos del glosario === */
+  .wg-glosario-letra{
+    display: inline-grid; place-items: center;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-c);
+    text-decoration: none;
+    color: var(--text-pri);
+    font-family: var(--font-display); font-weight: 700; font-size: .92rem;
+    transition: background .18s, color .18s, transform .18s;
+  }
+  .wg-glosario-letra:hover{
+    background: var(--c-acento); color: white; transform: translateY(-2px);
+  }
+  .wg-glosario__seccion{ scroll-margin-top: 80px; }
+  .wg-glosario__letra-titulo{
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--grad-brand); color: white;
+    font-family: var(--font-display); font-weight: 800; font-size: 1.5rem;
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--c-acento) 25%, transparent);
+    margin-bottom: 14px;
+  }
+  .wg-glosario__items{ display: grid; gap: 14px; }
+  .wg-glosario__item{
+    display: flex; gap: 18px;
+    padding: 22px 24px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-c);
+    border-radius: var(--r-md);
+    transition: border-color .18s, transform .18s, box-shadow .18s;
+  }
+  .wg-glosario__item:hover{
+    border-color: color-mix(in srgb, var(--c-acento) 40%, var(--border-c));
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0,0,0,.06);
+  }
+  .wg-glosario__icono{
+    min-width: 48px; height: 48px; border-radius: 12px;
+    background: color-mix(in srgb, var(--c-acento) 14%, transparent);
+    color: var(--c-acento);
+    display: grid; place-items: center;
+    font-size: 1.5rem; flex-shrink: 0;
+  }
+  .wg-glosario__item h3{ margin: 0 0 8px; font-size: 1.1rem; color: var(--text-head); }
+  .wg-glosario__item p{ margin: 0 0 10px; color: var(--text-pri); line-height: 1.55; }
+  .wg-glosario__link{
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: .7rem;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--c-acento); text-decoration: none;
+    transition: gap .18s;
+  }
+  .wg-glosario__link:hover{ gap: 12px; }
+  @media (max-width: 720px){
+    .wg-glosario__item{ flex-direction: column; gap: 14px; }
+  }
+</style>
 </body>
 </html>

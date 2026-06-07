@@ -3,23 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Referencias y créditos · Template Waygroup OVA</title>
+<title>Referencias y créditos · Reanimación Cardio Pulmonar (RCP)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
 <link rel="stylesheet" href="assets/css/core.css" />
-<style>
-  .wg-creditos { display: grid; gap: 24px; }
-  .wg-creditos__block { background: var(--bg-surface); border-radius: var(--r-lg); padding: 32px; border: 1px solid var(--border-c); }
-  .wg-creditos__block h3 { font-size: .85rem; letter-spacing: .18em; text-transform: uppercase; color: var(--c-acento); margin-bottom: 20px; }
-  .wg-creditos__people { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
-  .wg-creditos__person strong { display: block; font-family: var(--font-display); font-size: 1rem; color: var(--text-head); }
-  .wg-creditos__person span { display: block; font-size: .85rem; color: var(--text-mut); }
-  .wg-ref-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-  .wg-ref-list li { font-size: .92rem; padding: 12px 16px; background: var(--bg-muted); border-left: 3px solid var(--c-acento); border-radius: 6px; color: var(--text-pri); }
-</style>
 </head>
 <body class="wg-body">
 <button class="wg-burger" data-wg-burger><iconify-icon icon="mdi:menu"></iconify-icon></button>
@@ -30,30 +20,73 @@
       <div class="wg-breadcrumb" data-wg-breadcrumb data-current="creditos"></div>
       <div class="wg-topbar__actions">
         <div class="wg-version-switch" data-wg-version-switch></div>
-        <a href="presets.html" class="wg-iconbtn"><iconify-icon icon="mdi:palette"></iconify-icon></a>
-        <a href="showcase.html" class="wg-iconbtn wg-iconbtn--accent"><iconify-icon icon="mdi:view-grid"></iconify-icon></a>
+        <a href="index.html" class="wg-iconbtn" title="Volver al inicio"><iconify-icon icon="mdi:home"></iconify-icon></a>
+        <a href="assets/downloads/Curso_RCP.pdf" class="wg-iconbtn" title="Descargar PDF del curso" download><iconify-icon icon="mdi:download"></iconify-icon></a>
+        <a class="wg-iconbtn wg-iconbtn--accent" data-wg-next-iconbtn title="Siguiente"><iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
       </div>
     </div>
 
     <article class="wg-screen">
       <header class="wg-screen__head" data-reveal>
-        <div class="wg-screen__eyebrow">Pantalla 07 · Cierre</div>
+        <div class="wg-screen__eyebrow">25 · Cierre</div>
         <h1 class="wg-screen__title">Referencias y créditos</h1>
-        <p class="wg-screen__lead">Auto-renderizado desde <code>referencias</code> y <code>creditos</code> en <code>course.js</code>.</p>
+        <p class="wg-screen__lead">
+          Fuentes utilizadas para la construcción del curso y equipo responsable de
+          su producción.
+        </p>
       </header>
 
-      <div class="wg-creditos">
-        <div class="wg-creditos__block" data-reveal>
-          <h3>— Referencias</h3>
-          <ul class="wg-ref-list" data-wg-refs></ul>
-        </div>
-        <div class="wg-creditos__block" data-reveal data-wg-creditos></div>
-        <div class="wg-creditos__block" data-reveal>
-          <h3>— Certificación y licencia</h3>
-          <p style="margin:0;">
-            Recurso educativo certificado bajo <strong data-wg-iso>ISO 9001:2015</strong>.
-            Distribuido bajo licencia <strong data-wg-licencia>Creative Commons BY-NC-SA 4.0</strong>.
-          </p>
+      <!-- REFERENCIAS BIBLIOGRÁFICAS -->
+      <div data-reveal style="margin-top:8px; padding:32px; background:var(--bg-surface); border:1px solid var(--border-c); border-radius:var(--r-lg);">
+        <h3 style="font-family:var(--font-mono); font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:var(--c-acento); margin:0 0 20px; display:flex; align-items:center; gap:10px;">
+          <iconify-icon icon="mdi:bookshelf" style="font-size:1.1rem;"></iconify-icon>
+          Referencias
+        </h3>
+        <ul style="list-style:none; padding:0; margin:0; display:grid; gap:10px;">
+          <li style="font-size:.92rem; padding:14px 18px; background:var(--bg-muted); border-left:3px solid var(--c-acento); border-radius:6px; color:var(--text-pri); line-height:1.5;">
+            American Heart Association. <em>Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care.</em>
+          </li>
+          <li style="font-size:.92rem; padding:14px 18px; background:var(--bg-muted); border-left:3px solid var(--c-acento); border-radius:6px; color:var(--text-pri); line-height:1.5;">
+            International Liaison Committee on Resuscitation (ILCOR). <em>Consenso internacional sobre la ciencia de la RCP.</em>
+          </li>
+          <li style="font-size:.92rem; padding:14px 18px; background:var(--bg-muted); border-left:3px solid var(--c-acento); border-radius:6px; color:var(--text-pri); line-height:1.5;">
+            European Resuscitation Council. <em>Guidelines for Resuscitation.</em>
+          </li>
+          <li style="font-size:.92rem; padding:14px 18px; background:var(--bg-muted); border-left:3px solid var(--c-acento); border-radius:6px; color:var(--text-pri); line-height:1.5;">
+            Ministerio de Salud y Protección Social de Colombia. <em>Lineamientos para atención prehospitalaria de emergencias cardiovasculares.</em>
+          </li>
+        </ul>
+      </div>
+
+      <!-- EQUIPO DEL CURSO · solo Waygroup -->
+      <div data-reveal style="margin-top:24px; padding:40px; background:linear-gradient(135deg, color-mix(in srgb, var(--c-acento) 10%, var(--bg-surface)) 0%, var(--bg-surface) 60%); border:1px solid color-mix(in srgb, var(--c-acento) 30%, var(--border-c)); border-radius:var(--r-lg); position:relative; overflow:hidden;">
+        <!-- glow decorativo -->
+        <div aria-hidden="true" style="position:absolute; top:-60px; right:-60px; width:360px; height:360px; background: radial-gradient(circle, color-mix(in srgb, var(--c-acento) 14%, transparent) 0%, transparent 70%); pointer-events:none;"></div>
+
+        <h3 style="position:relative; z-index:1; font-family:var(--font-mono); font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:var(--c-acento); margin:0 0 24px; display:flex; align-items:center; gap:10px;">
+          <iconify-icon icon="mdi:account-group" style="font-size:1.1rem;"></iconify-icon>
+          Equipo del curso
+        </h3>
+
+        <div style="position:relative; z-index:1; display:flex; align-items:center; gap:28px; flex-wrap:wrap;">
+          <!-- Logo Waygroup -->
+          <div style="width:120px; flex-shrink:0;">
+            <img src="assets/img/curso/waygroup-logo-orange.svg" alt="Waygroup" style="width:100%; height:auto; display:block;" />
+          </div>
+
+          <!-- Info -->
+          <div style="flex:1; min-width:260px;">
+            <div style="font-family:var(--font-display); font-size:1.5rem; font-weight:800; color:var(--text-head); letter-spacing:-.02em; line-height:1.2;">
+              Waygroup
+            </div>
+            <div style="font-family:var(--font-mono); font-size:.74rem; letter-spacing:.16em; color:var(--text-mut); text-transform:uppercase; margin-top:6px;">
+              SST en la era digital
+            </div>
+            <p style="margin:16px 0 0; color:var(--text-pri); line-height:1.6; max-width:640px;">
+              Diseño y producción del curso. Especialistas en recursos formativos
+              inmersivos para Seguridad y Salud en el Trabajo.
+            </p>
+          </div>
         </div>
       </div>
     </article>
@@ -62,29 +95,5 @@
 </div>
 <script src="assets/js/course.js"></script>
 <script src="assets/js/core.js"></script>
-<script>
-  (function () {
-    const C = window.WG_COURSE; if (!C) return;
-    const refs = document.querySelector('[data-wg-refs]');
-    if (refs && C.referencias) refs.innerHTML = C.referencias.map(r => `<li>${r.texto}</li>`).join('');
-    const cred = document.querySelector('[data-wg-creditos]');
-    if (cred && C.creditos?.bloques) {
-      cred.innerHTML = C.creditos.bloques.map(b => `
-        <h3>— ${b.titulo}</h3>
-        <div class="wg-creditos__people">
-          ${b.personas.map(p => `
-            <div class="wg-creditos__person">
-              <strong>${p.nombre}</strong>
-              <span>${p.cargo}</span>
-              <span>${p.area || ''}</span>
-            </div>
-          `).join('')}
-        </div>
-      `).join('<hr style="border:none; border-top:1px dashed var(--border-c); margin:24px 0;">');
-    }
-    if (C.course?.iso) document.querySelector('[data-wg-iso]').textContent = C.course.iso;
-    if (C.course?.licencia) document.querySelector('[data-wg-licencia]').textContent = C.course.licencia;
-  })();
-</script>
 </body>
 </html>

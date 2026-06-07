@@ -3,101 +3,285 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Portada · RCP Básico</title>
+<title>Inicio · Reanimación Cardio Pulmonar (RCP)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
 <link rel="stylesheet" href="assets/css/core.css" />
 <style>
-  /* Portada con hero silueteado a la derecha · fundido con el fondo navy */
-  .wg-portada{ position:relative; overflow:hidden; }
-
-  .wg-portada__inner{
-    display:grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
-    gap: 32px;
-    align-items:end;
-    position:relative;
-    z-index: 2;
-    min-height: 620px;
-  }
-
-  /* Halo radial cálido detrás del personaje (genera el "fade" al fondo) */
-  .wg-portada__inner::before{
-    content:"";
-    position:absolute;
-    right:-5%;
-    top:50%;
-    transform: translateY(-50%);
-    width: 55%;
-    height: 110%;
-    background:
-      radial-gradient(ellipse at 50% 45%,
-        color-mix(in srgb, var(--c-acento) 22%, transparent) 0%,
-        color-mix(in srgb, var(--c-info)   12%, transparent) 35%,
-        transparent 70%);
-    filter: blur(20px);
-    z-index: 0;
-    pointer-events:none;
-  }
-
-  .wg-portada__text{ position:relative; z-index: 2; }
-
-  .wg-portada__hero{
+  /* =============================================================
+     PORTADA · fondo simulado con CSS (recrea el banner Waygroup)
+     - Dots pattern · curva decorativa · bokeh (modo claro) · logo
+     - Silueta del instructor encima a la derecha
+     ============================================================= */
+  .wg-portada{
     position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    /* Fondo del banner real: --c-deep + halo cyan --c-info
+       (mismo lenguaje cromático que el sidebar y el banner Waygroup) */
+    background:
+      /* Halo cyan superior-derecha · da vida al navy */
+      radial-gradient(ellipse 80% 70% at 78% 40%,
+        color-mix(in srgb, var(--c-info) 35%, transparent) 0%,
+        color-mix(in srgb, var(--c-info) 12%, transparent) 35%,
+        transparent 65%),
+      /* Capa base que oscurece esquinas */
+      radial-gradient(ellipse 110% 90% at 30% 50%,
+        color-mix(in srgb, var(--c-deep) 92%, #000) 0%,
+        var(--c-deep) 60%,
+        color-mix(in srgb, var(--c-deep) 75%, var(--c-info)) 100%);
+  }
+  [data-version="hibrida"] .wg-portada{
+    background:
+      radial-gradient(ellipse 80% 70% at 78% 40%,
+        color-mix(in srgb, var(--c-info) 35%, transparent) 0%,
+        color-mix(in srgb, var(--c-info) 12%, transparent) 35%,
+        transparent 65%),
+      radial-gradient(ellipse 110% 90% at 30% 50%,
+        color-mix(in srgb, var(--c-deep) 92%, #000) 0%,
+        var(--c-deep) 60%,
+        color-mix(in srgb, var(--c-deep) 75%, var(--c-info)) 100%);
+  }
+
+  /* DOTS PATTERN · solo en modo claro
+     (en oscuro queda fondo limpio sin grilla) */
+  .wg-portada::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: none;
+    background-size: 22px 22px;
+    background-position: 0 0;
+    -webkit-mask-image: linear-gradient(105deg, transparent 0%, #000 25%, #000 100%);
+            mask-image: linear-gradient(105deg, transparent 0%, #000 25%, #000 100%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* CURVA DECORATIVA · arco blanco/cyan abajo derecha (SVG inline en pseudo) */
+  .wg-portada::after{
+    content: "";
+    position: absolute;
+    right: -40px;
+    bottom: -80px;
+    width: 60%;
+    height: 320px;
+    background:
+      radial-gradient(ellipse at 100% 100%,
+        transparent 58%,
+        color-mix(in srgb, var(--c-info) 40%, transparent) 59%,
+        color-mix(in srgb, var(--c-info) 25%, transparent) 60%,
+        transparent 62%),
+      radial-gradient(ellipse at 100% 100%,
+        transparent 64%,
+        color-mix(in srgb, var(--sb-text) 18%, transparent) 65%,
+        transparent 67%);
+    filter: blur(.4px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: .9;
+  }
+
+  /* Logo Waygroup (SVG) esquina superior derecha */
+  .wg-portada__logo{
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+  }
+  .wg-portada__logo img{
+    display: block;
+    height: 70px;
+    width: auto;
+    /* En modo oscuro, el azul del logo se ve mal sobre navy.
+       Invertir + reducir saturación para que el azul se vuelva blanco
+       y el naranja se mantenga vivo */
+    filter: brightness(1.05) drop-shadow(0 4px 16px rgba(0,0,0,.25));
+  }
+  /* En modo oscuro (hibrida) · forzar logo en blanco para contraste */
+  [data-version="hibrida"] .wg-portada__logo img{
+    filter:
+      brightness(0) invert(1)
+      drop-shadow(0 4px 12px rgba(0,0,0,.35));
+  }
+  /* Truco visual: pintar el naranja del logo aparte vía mix-blend
+     usando un pseudo · pero más simple: en oscuro mantenemos blanco puro.
+     Si querés el naranja vivo, lo agregamos como svg externo. */
+  @media (max-width: 720px){
+    .wg-portada__logo{ top: 18px; right: 18px; }
+    .wg-portada__logo img{ height: 48px; }
+  }
+
+  /* Layout · texto ocupa ~55% izq, silueta anclada al fondo der absoluta */
+  .wg-portada__inner{
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    min-height: 640px;
+    /* dejar aire a la derecha donde queda la silueta absoluta */
+    padding-right: clamp(0px, 42vw, 720px);
+  }
+  .wg-portada__text{ position: relative; z-index: 2; }
+
+  /* SILUETA · enmarcada en círculo PERFECTO con borde acento + halo cyan */
+  .wg-portada__hero{
+    position: absolute;
+    top: 50%;
+    right: clamp(24px, 5vw, 80px);
+    transform: translateY(-50%);
+    /* Tamaño con UN SOLO valor para garantizar cuadrado real */
+    --wg-circle: clamp(280px, 28vw, 420px);
+    width: var(--wg-circle);
+    height: var(--wg-circle);
     z-index: 1;
-    align-self: end;
-    margin: 0 -40px -40px 0;     /* sangrado al borde derecho/inferior */
-    display:flex;
-    justify-content:flex-end;
-    align-items:flex-end;
+    pointer-events: none;
+    /* Borde naranja fino */
+    border: 2px solid color-mix(in srgb, var(--c-acento) 70%, transparent);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 50%,
+        color-mix(in srgb, var(--c-info) 14%, var(--c-deep)) 0%,
+        color-mix(in srgb, var(--c-deep) 92%, #000) 80%);
+    /* Glow cyan detrás del círculo */
+    box-shadow:
+      0 0 0 8px color-mix(in srgb, var(--c-acento) 12%, transparent),
+      0 30px 60px rgba(0,0,0,.55),
+      0 0 120px color-mix(in srgb, var(--c-info) 38%, transparent),
+      0 0 240px color-mix(in srgb, var(--c-info) 18%, transparent);
+    overflow: hidden;
   }
   .wg-portada__hero img{
-    display:block;
+    display: block;
     width: 100%;
-    height: auto;
-    max-height: 720px;
+    height: 100%;
     object-fit: contain;
-    object-position: bottom right;
-    /* Drop-shadow azul para integrar con el navy del fondo */
-    filter:
-      drop-shadow(0 30px 60px rgba(0,0,0,.45))
-      drop-shadow(0 0 80px color-mix(in srgb, var(--c-info) 35%, transparent));
+    object-position: center;
   }
 
-  /* Título del curso · cada línea bloque, "Cardio Pulmonar" en una sola */
+  /* Versión clara · ajustar el fondo interno del círculo */
+  [data-version="clara"] .wg-portada__hero{
+    background:
+      radial-gradient(circle at 50% 50%,
+        rgba(220, 235, 250, .9) 0%,
+        rgba(200, 220, 240, .7) 80%);
+    border-color: color-mix(in srgb, var(--c-acento) 80%, transparent);
+    box-shadow:
+      0 0 0 8px color-mix(in srgb, var(--c-acento) 14%, transparent),
+      0 30px 60px rgba(20, 50, 100, .25),
+      0 0 120px rgba(80, 140, 200, .35),
+      0 0 240px rgba(80, 140, 200, .18);
+  }
+
+  /* ===========  VERSIÓN CLARA  ============= */
+  [data-version="clara"] .wg-portada{
+    background:
+      /* Bokeh · círculos difusos de luz */
+      radial-gradient(circle at 15% 30%,  rgba(180,210,240,.55) 0%, transparent 8%),
+      radial-gradient(circle at 28% 60%,  rgba(190,220,245,.45) 0%, transparent 6%),
+      radial-gradient(circle at 8%  78%,  rgba(170,205,240,.40) 0%, transparent 10%),
+      radial-gradient(circle at 38% 18%,  rgba(200,225,250,.40) 0%, transparent 5%),
+      radial-gradient(circle at 22% 88%,  rgba(180,215,245,.35) 0%, transparent 7%),
+      radial-gradient(ellipse 60% 70% at 30% 50%,
+        rgba(220,235,250,.7) 0%, transparent 70%),
+      linear-gradient(120deg, #f3f7fc 0%, #e7eff8 60%, #dfeaf6 100%);
+  }
+  [data-version="clara"] .wg-portada::before{
+    background-image: radial-gradient(
+      circle,
+      rgba(60, 110, 170, .18) 1.4px,
+      transparent 1.6px
+    );
+  }
+  [data-version="clara"] .wg-portada::after{
+    background:
+      radial-gradient(ellipse at 100% 100%,
+        transparent 58%,
+        rgba(120, 165, 215, .55) 59%,
+        rgba(120, 165, 215, .35) 60%,
+        transparent 62%),
+      radial-gradient(ellipse at 100% 100%,
+        transparent 64%,
+        rgba(255,255,255,.75) 65%,
+        transparent 67%);
+    opacity: 1;
+  }
+  [data-version="clara"] .wg-portada__logo{ color: #0b2240; }
+  [data-version="clara"] .wg-portada__logo small{
+    color: rgba(11, 34, 64, .55);
+  }
+  [data-version="clara"] .wg-portada__hero img{
+    filter:
+      drop-shadow(0 30px 60px rgba(20, 50, 100, .25))
+      drop-shadow(0 0 80px rgba(80, 140, 200, .35));
+  }
+  [data-version="clara"] .wg-portada__title .outline{
+    color: rgba(11, 34, 64, .55);
+  }
+  [data-version="clara"] .wg-portada__title .line{
+    color: #0b2240;
+  }
+  [data-version="clara"] .wg-portada__intro{
+    color: rgba(11, 34, 64, .85);
+  }
+
+  /* Título del curso · Apple-style (SF Pro Display nativo en Mac/iOS,
+     Inter como fallback de calidad) — sin serifs, geométrico y limpio */
   .wg-portada__title{
     display: flex;
     flex-direction: column;
-    line-height: 1.02;
+    line-height: 1;
     margin: 0;
+    font-family:
+      -apple-system, BlinkMacSystemFont,
+      "SF Pro Display", "SF Pro Text",
+      'Inter', system-ui,
+      "Helvetica Neue", Arial, sans-serif;
+    font-feature-settings: "ss01" on, "cv11" on, "calt" on;
   }
   .wg-portada__title > span{
     display: block;
     white-space: nowrap;
   }
-  .wg-portada__title .line{
-    /* Tamaño que entra "Cardio Pulmonar" en una línea en col izquierda */
-    font-size: clamp(2.6rem, 5.8vw, 4.6rem);
-    font-weight: 700;
-    color: var(--sb-text);
-    letter-spacing: -.02em;
-  }
+  /* "Reanimación" · light, sólido pero sutil */
   .wg-portada__title .outline{
-    font-size: clamp(2.4rem, 5.4vw, 4.2rem);
-    font-weight: 600;
-    color: transparent;
-    -webkit-text-stroke: 1.5px color-mix(in srgb, var(--sb-text) 50%, transparent);
-    letter-spacing: -.02em;
+    font-size: clamp(2.4rem, 5.2vw, 4rem);
+    font-weight: 200;
+    color: color-mix(in srgb, var(--sb-text) 75%, transparent);
+    letter-spacing: -.025em;
+    margin-bottom: .04em;
   }
+  /* "Cardio Pulmonar" · heavy display tipo Apple Hero */
+  .wg-portada__title .line{
+    font-size: clamp(3rem, 6.4vw, 5.2rem);
+    font-weight: 800;
+    color: var(--sb-text);
+    letter-spacing: -.035em;
+  }
+  /* "(RCP)" · black peso máximo en acento */
   .wg-portada__title .accent{
-    font-size: clamp(2.8rem, 6.2vw, 5rem);
-    font-weight: 700;
+    font-size: clamp(3.2rem, 7vw, 5.8rem);
+    font-weight: 900;
     color: var(--c-acento);
-    letter-spacing: -.02em;
-    margin-top: .1em;
+    letter-spacing: -.045em;
+    margin-top: .04em;
+  }
+
+  /* Párrafo intro debajo del título */
+  .wg-portada__intro{
+    margin: 28px 0 0;
+    max-width: 38ch;
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    line-height: 1.55;
+    color: color-mix(in srgb, var(--sb-text) 88%, transparent);
+    border-left: 3px solid var(--c-acento);
+    padding: 6px 0 6px 18px;
   }
 
   /* Botón ghost sobre fondo navy de portada · legible */
@@ -115,15 +299,18 @@
 
   @media (max-width: 980px){
     .wg-portada__inner{
-      grid-template-columns: 1fr;
+      padding-right: 0;
       min-height: auto;
+      padding-bottom: 360px;
     }
     .wg-portada__hero{
-      order:-1;
-      margin: -24px -24px 0 -24px;
-      justify-content:center;
+      position: absolute;
+      top: auto;
+      bottom: 24px;
+      right: 50%;
+      transform: translateX(50%);
+      width: min(320px, 80vw);
     }
-    .wg-portada__hero img{ max-height: 360px; }
     .wg-portada__title > span{ white-space: normal; }
   }
 </style>
@@ -140,58 +327,40 @@
       <div class="wg-breadcrumb" data-wg-breadcrumb data-current="portada"></div>
       <div class="wg-topbar__actions">
         <div class="wg-version-switch" data-wg-version-switch></div>
-        <a href="#" class="wg-iconbtn" title="Descargar material"><iconify-icon icon="mdi:download"></iconify-icon></a>
-        <a href="bienvenida.html" class="wg-iconbtn wg-iconbtn--accent" title="Comenzar curso"><iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+        <a href="assets/downloads/Curso_RCP.pdf" class="wg-iconbtn" title="Descargar PDF del curso" download><iconify-icon icon="mdi:download"></iconify-icon></a>
+        <a class="wg-iconbtn wg-iconbtn--accent" data-wg-next-iconbtn title="Siguiente"><iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
       </div>
     </div>
 
     <section class="wg-portada">
       <div class="wg-portada__grid"></div>
+
+      <!-- Logo Waygroup (SVG oficial) esquina superior derecha -->
+      <div class="wg-portada__logo" aria-hidden="true">
+        <img src="assets/img/curso/waygroup-logo.svg" alt="Waygroup" />
+      </div>
+
       <div class="wg-portada__inner" data-reveal>
         <div class="wg-portada__text">
-          <div class="wg-portada__code">
-            <iconify-icon icon="mdi:heart-pulse"></iconify-icon>
-            CURSO RCP-2025 · ENTRENAMIENTO DEL PRIMER RESPONDIENTE
-          </div>
           <h1 class="wg-portada__title">
             <span class="outline">Reanimación</span>
             <span class="line">Cardio Pulmonar</span>
             <span class="accent">(RCP)</span>
           </h1>
 
-          <div class="wg-portada__stats">
-            <div class="wg-portada__stat">
-              <div class="value">8 <small>horas</small></div>
-              <div class="label">Duración</div>
-            </div>
-            <div class="wg-portada__stat-sep"></div>
-            <div class="wg-portada__stat">
-              <div class="value">25 <small>pantallas</small></div>
-              <div class="label">Estructura</div>
-            </div>
-            <div class="wg-portada__stat-sep"></div>
-            <div class="wg-portada__stat">
-              <div class="value">Primer<br/><small>respondiente</small></div>
-              <div class="label">Audiencia</div>
-            </div>
-            <div class="wg-portada__stat-sep"></div>
-            <div class="wg-portada__stat">
-              <div class="value">Teoría <small>+ simulador VR</small></div>
-              <div class="label">Modalidad</div>
-            </div>
-          </div>
+          <p class="wg-portada__intro">
+            En este curso aprenderás cómo actuar ante una persona que presenta una
+            posible parada cardíaca.
+          </p>
 
-          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:32px;">
             <a href="bienvenida.html" class="wg-btn wg-btn--primary">
               Comenzar el curso <iconify-icon icon="mdi:arrow-right" class="arrow"></iconify-icon>
             </a>
-            <a href="#" class="wg-btn wg-btn--ghost">
-              <iconify-icon icon="mdi:download"></iconify-icon> Material PDF
+            <a href="assets/downloads/Curso_RCP.pdf" class="wg-btn wg-btn--ghost" download title="Descargar PDF del curso">
+              <iconify-icon icon="mdi:file-pdf-box"></iconify-icon>
+              Material PDF
             </a>
-            <span style="font-family:var(--font-mono); font-size:.78rem; color:var(--sb-text-mut); display:flex; align-items:center; gap:8px;">
-              <iconify-icon icon="mdi:certificate-outline" style="color:var(--c-info); font-size:1.1rem;"></iconify-icon>
-              Recurso educativo · ISO 9001:2015
-            </span>
           </div>
         </div>
 
@@ -201,7 +370,6 @@
       </div>
     </section>
 
-    <nav class="wg-screen-nav" data-wg-screen-nav data-current="portada"></nav>
   </main>
 </div>
 
