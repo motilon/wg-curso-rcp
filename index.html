@@ -216,11 +216,9 @@
   [data-version="clara"] .wg-portada__logo small{
     color: rgba(11, 34, 64, .55);
   }
-  [data-version="clara"] .wg-portada__hero img{
-    filter:
-      drop-shadow(0 30px 60px rgba(20, 50, 100, .25))
-      drop-shadow(0 0 80px rgba(80, 140, 200, .35));
-  }
+  /* drop-shadow REMOVIDO de la imagen porque rompía el clipping del border-radius
+     en modo claro. El halo ahora vive en el box-shadow del contenedor (que sí
+     respeta el border-radius). */
   [data-version="clara"] .wg-portada__title .outline{
     color: rgba(11, 34, 64, .55);
   }
@@ -297,20 +295,13 @@
     color: var(--sb-text);
   }
 
-  @media (max-width: 980px){
+  /* Tablet y mobile · ocultar la figura para dar más respiro al texto */
+  @media (max-width: 1024px){
     .wg-portada__inner{
       padding-right: 0;
       min-height: auto;
-      padding-bottom: 360px;
     }
-    .wg-portada__hero{
-      position: absolute;
-      top: auto;
-      bottom: 24px;
-      right: 50%;
-      transform: translateX(50%);
-      width: min(320px, 80vw);
-    }
+    .wg-portada__hero{ display: none; }
     .wg-portada__title > span{ white-space: normal; }
   }
 </style>
