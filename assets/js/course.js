@@ -51,8 +51,9 @@ window.WG_COURSE = {
     { id: 'conclusiones',      num: '21', titulo: 'Buenas prácticas',              icon: 'mdi:check-decagram',         file: 'conclusiones.html' },
     { id: 'simulador',         num: '22', titulo: 'Simulador VR',                  icon: 'mdi:virtual-reality',        file: 'simulador.html' },
     { id: 'cierre',            num: '23', titulo: 'Cierre del curso',              icon: 'mdi:flag-checkered',         file: 'cierre.html' },
-    { id: 'glosario',          num: '24', titulo: 'Glosario',                      icon: 'mdi:format-list-bulleted',   file: 'glosario.html' },
-    { id: 'creditos',          num: '25', titulo: 'Referencias y créditos',        icon: 'mdi:award',                  file: 'creditos.html' },
+    { id: 'evaluacion',        num: '24', titulo: 'Evaluación',                    icon: 'mdi:clipboard-check-outline', file: 'evaluacion.html' },
+    { id: 'glosario',          num: '25', titulo: 'Glosario',                      icon: 'mdi:format-list-bulleted',   file: 'glosario.html' },
+    { id: 'creditos',          num: '26', titulo: 'Referencias y créditos',        icon: 'mdi:award',                  file: 'creditos.html' },
   ],
 
   /* GLOSARIO · términos clave del curso */

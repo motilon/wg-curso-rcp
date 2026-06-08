@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="es" data-version="hibrida">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Evaluación · Reanimación Cardio Pulmonar (RCP)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="stylesheet" href="assets/css/presets/theme-vital.css" />
+<link rel="stylesheet" href="assets/css/core.css" />
+</head>
+<body class="wg-body">
+<button class="wg-burger" data-wg-burger><iconify-icon icon="mdi:menu"></iconify-icon></button>
+<div class="wg-app">
+  <aside class="wg-sidebar" data-wg-sidebar data-current="evaluacion"></aside>
+  <main class="wg-main">
+    <div class="wg-topbar">
+      <div class="wg-breadcrumb" data-wg-breadcrumb data-current="evaluacion"></div>
+      <div class="wg-topbar__actions">
+        <div class="wg-version-switch" data-wg-version-switch></div>
+        <a href="index.html" class="wg-iconbtn" title="Volver al inicio"><iconify-icon icon="mdi:home"></iconify-icon></a>
+        <a href="assets/downloads/Curso_RCP.pdf" class="wg-iconbtn" title="Descargar PDF del curso" download><iconify-icon icon="mdi:download"></iconify-icon></a>
+        <a class="wg-iconbtn wg-iconbtn--accent" data-wg-next-iconbtn title="Siguiente"><iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+      </div>
+    </div>
+
+    <article class="wg-screen">
+      <header class="wg-screen__head" data-reveal>
+        <div class="wg-screen__eyebrow">24 · Práctica</div>
+        <h1 class="wg-screen__title">Evaluación</h1>
+        <p class="wg-screen__lead">
+          Pon a prueba lo aprendido con esta evaluación de práctica. Las respuestas
+          se verifican <strong>al instante</strong> y podés reintentar las veces que necesites.
+        </p>
+      </header>
+
+      <!-- =================================================================
+           QUIZ SINGLE-PAGE · navegación interna
+           ================================================================= -->
+      <div class="wg-evalquiz" data-wg-evalquiz>
+
+        <!-- HEADER · barra de progreso + indicador de tipo -->
+        <div class="wg-evalquiz__head" data-evalquiz-head>
+          <div class="wg-evalquiz__progress-bar">
+            <div class="wg-evalquiz__progress-fill" data-evalquiz-progress></div>
+          </div>
+          <div class="wg-evalquiz__meta">
+            <span class="wg-evalquiz__counter" data-evalquiz-counter>—</span>
+            <span class="wg-evalquiz__section" data-evalquiz-section>—</span>
+          </div>
+        </div>
+
+        <!-- ============== SLIDE 0 · INTRO ============== -->
+        <div class="wg-evalquiz__slide is-active" data-slide="intro">
+          <div style="text-align:center; padding: 32px 24px;">
+            <div style="width:80px; height:80px; margin:0 auto 20px; border-radius:24px; background:var(--grad-brand); display:grid; place-items:center; color:white; box-shadow:0 12px 28px color-mix(in srgb, var(--c-acento) 30%, transparent);">
+              <iconify-icon icon="mdi:clipboard-check-outline" style="font-size:2.4rem;"></iconify-icon>
+            </div>
+            <h2 style="font-size:clamp(1.4rem, 2.4vw, 1.9rem); font-weight:800; letter-spacing:-.025em; margin:0 0 12px;">
+              ¿Listo para empezar?
+            </h2>
+            <p style="color:var(--text-mut); max-width:540px; margin:0 auto 24px; line-height:1.6;">
+              Vas a encontrar <strong>9 actividades</strong> en 4 tipos distintos:
+              selección múltiple, emparejamiento, ordenar y arrastrar.
+              Sin nota, sin tiempo límite, podés reintentar.
+            </p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:28px;">
+              <span class="wg-evalquiz__chip" style="background:color-mix(in srgb, var(--c-acento) 12%, transparent); color:var(--c-acento);">2 · selección múltiple</span>
+              <span class="wg-evalquiz__chip" style="background:color-mix(in srgb, var(--c-info) 14%, transparent); color:var(--c-info);">2 · emparejamiento</span>
+              <span class="wg-evalquiz__chip" style="background:color-mix(in srgb, var(--success) 16%, transparent); color:var(--success);">2 · ordenar</span>
+              <span class="wg-evalquiz__chip" style="background:color-mix(in srgb, var(--warning) 18%, transparent); color:var(--warning);">3 · arrastrar y soltar</span>
+            </div>
+            <button class="wg-btn wg-btn--primary" data-evalquiz-go="1" style="padding:14px 28px; font-size:1rem;">
+              Comenzar evaluación <iconify-icon icon="mdi:arrow-right"></iconify-icon>
+            </button>
+          </div>
+        </div>
+
+        <!-- ============== SLIDE 1 · SM Pregunta 1 ============== -->
+        <div class="wg-evalquiz__slide" data-slide="sm-1" data-section="Selección múltiple" data-section-color="acento">
+          <div class="wg-quiz">
+            <div class="wg-quiz__question">
+              Te encuentras asistiendo a una persona que ha colapsado. Tras comprobar
+              que el área es segura, intentas establecer contacto verbal y físico,
+              pero no obtienes respuesta. Al observar el pecho y el abdomen, observas
+              que la persona no presenta una respiración efectiva, sino jadeos
+              esporádicos que no deben confundirse con ventilación normal. Ante la
+              ausencia de respuesta y la presencia de respiración ineficaz en la
+              víctima, <strong>debes:</strong>
+            </div>
+            <div class="wg-quiz__options">
+              <button class="wg-quiz__opt" data-correct="false">
+                <strong>A.</strong> Colocar al paciente en posición lateral de seguridad,
+                para facilitar la apertura de la vía aérea.
+              </button>
+              <button class="wg-quiz__opt" data-correct="true">
+                <strong>B.</strong> Solicitar apoyo de otras personas presentes, para
+                activar el sistema de emergencias y traer un DEA.
+              </button>
+              <button class="wg-quiz__opt" data-correct="false">
+                <strong>C.</strong> Realizar maniobras de estabilización del cuello, para
+                prevenir lesiones adicionales durante la valoración rápida.
+              </button>
+              <button class="wg-quiz__opt" data-correct="false">
+                <strong>D.</strong> Administrar ventilaciones de rescate antes de iniciar
+                el ciclo de compresiones torácicas profundas.
+              </button>
+            </div>
+            <div class="wg-quiz__feedback"
+                 data-correct="¡Correcto! Ante la ausencia de respuesta + jadeos, hay que activar emergencias y pedir DEA inmediatamente."
+                 data-wrong="La respuesta correcta es B. Ante la ausencia de respuesta y respiración ineficaz, lo primero es activar emergencias y pedir DEA.">
+            </div>
+          </div>
+        </div>
+
+        <!-- ============== SLIDE 2 · SM Pregunta 2 ============== -->
+        <div class="wg-evalquiz__slide" data-slide="sm-2" data-section="Selección múltiple" data-section-color="acento">
+          <div class="wg-quiz">
+            <div class="wg-quiz__question">
+              Durante una sesión de simulación, el instructor solicita realizar una
+              evaluación rápida pero precisa, de una víctima. Debes demostrar la
+              secuencia correcta de pasos para determinar si el paciente requiere o no
+              maniobras de reanimación cardiopulmonar, integrando el reconocimiento de
+              signos vitales básicos con una interacción clara. Para realizar una
+              evaluación efectiva de la respuesta del paciente, <strong>debes:</strong>
+            </div>
+            <div class="wg-quiz__options">
+              <button class="wg-quiz__opt" data-correct="false">
+                <strong>A.</strong> Verificar el pulso radial durante al menos treinta
+                segundos, de manera constante.
+              </button>
+              <button class="wg-quiz__opt" data-correct="false">
+                <strong>B.</strong> Sacudir vigorosamente los hombros del paciente, para
+                descartar un desmayo leve.
+              </button>
+              <button class="wg-quiz__opt" data-correct="false">
+                <strong>C.</strong> Observar el movimiento del cuello buscando señales
+                de una respiración profunda.
+              </button>
+              <button class="wg-quiz__opt" data-correct="true">
+                <strong>D.</strong> Llamar a la víctima en voz alta y tocar suavemente
+                sus hombros.
+              </button>
+            </div>
+            <div class="wg-quiz__feedback"
+                 data-correct="¡Correcto! La valoración inicial se hace llamando en voz alta + tocando suavemente los hombros."
+                 data-wrong="La respuesta correcta es D. No buscás pulso ni sacudís fuerte: llamás en voz alta y tocás los hombros suavemente.">
+            </div>
+          </div>
+        </div>
+
+        <!-- ============== SLIDE 3 · EMP 1 ============== -->
+        <div class="wg-evalquiz__slide" data-slide="emp-1" data-section="Emparejamiento" data-section-color="info">
+          <h2 style="font-size:clamp(1.3rem, 2vw, 1.6rem); margin:0 0 8px;">Conceptos básicos de RCP</h2>
+          <p style="color:var(--text-mut); margin-bottom:18px;">
+            Hacé click en un elemento de la columna izquierda y luego en su par de la derecha.
+          </p>
+          <div class="wg-empar">
+            <div class="wg-empar__col">
+              <div class="wg-empar__col-title">Columna A</div>
+              <button class="wg-empar__item" data-wg-match="m1-1">Parada cardíaca</button>
+              <button class="wg-empar__item" data-wg-match="m1-2">Infarto</button>
+              <button class="wg-empar__item" data-wg-match="m1-3">RCP</button>
+              <button class="wg-empar__item" data-wg-match="m1-4">DEA</button>
+              <button class="wg-empar__item" data-wg-match="m1-5">Retorno de circulación espontánea</button>
+            </div>
+            <div class="wg-empar__col">
+              <div class="wg-empar__col-title">Columna B</div>
+              <button class="wg-empar__item" data-wg-match="m1-3">Maniobras destinadas a mantener temporalmente la circulación y oxigenación.</button>
+              <button class="wg-empar__item" data-wg-match="m1-4">Dispositivo que analiza el ritmo cardíaco y puede indicar descarga.</button>
+              <button class="wg-empar__item" data-wg-match="m1-1">Ocurre cuando el corazón deja de bombear sangre de manera efectiva.</button>
+              <button class="wg-empar__item" data-wg-match="m1-5">Recuperación de signos de circulación tras RCP o desfibrilación.</button>
+              <button class="wg-empar__item" data-wg-match="m1-2">Bloqueo de una arteria del corazón que impide el paso de oxígeno al músculo cardíaco.</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============== SLIDE 4 · EMP 2 ============== -->
+        <div class="wg-evalquiz__slide" data-slide="emp-2" data-section="Emparejamiento" data-section-color="info">
+          <h2 style="font-size:clamp(1.3rem, 2vw, 1.6rem); margin:0 0 8px;">Interpretación de signos</h2>
+          <p style="color:var(--text-mut); margin-bottom:18px;">
+            Relacioná cada signo clínico con su interpretación correcta.
+          </p>
+          <div class="wg-empar">
+            <div class="wg-empar__col">
+              <div class="wg-empar__col-title">Columna A</div>
+              <button class="wg-empar__item" data-wg-match="m2-1">No responde al llamado.</button>
+              <button class="wg-empar__item" data-wg-match="m2-2">No respira normalmente.</button>
+              <button class="wg-empar__item" data-wg-match="m2-3">Jadeos o boqueadas.</button>
+              <button class="wg-empar__item" data-wg-match="m2-4">Respira normalmente, pero está inconsciente.</button>
+              <button class="wg-empar__item" data-wg-match="m2-5">Recupera tos, movimiento o respiración.</button>
+            </div>
+            <div class="wg-empar__col">
+              <div class="wg-empar__col-title">Columna B</div>
+              <button class="wg-empar__item" data-wg-match="m2-5">Señal de retorno de circulación espontánea.</button>
+              <button class="wg-empar__item" data-wg-match="m2-2">Signo de posible parada cardíaca.</button>
+              <button class="wg-empar__item" data-wg-match="m2-3">No debe considerarse respiración normal.</button>
+              <button class="wg-empar__item" data-wg-match="m2-4">Debe valorarse posición lateral de seguridad.</button>
+              <button class="wg-empar__item" data-wg-match="m2-1">Indica alteración del estado de conciencia.</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============== SLIDE 5 · ORD 1 ============== -->
+        <div class="wg-evalquiz__slide" data-slide="ord-1" data-section="Ordenar" data-section-color="success">
+          <h2 style="font-size:clamp(1.3rem, 2vw, 1.6rem); margin:0 0 8px;">Valoración inicial</h2>
+          <p style="color:var(--text-mut); margin-bottom:18px;">
+            Arrastrá los items para ordenarlos correctamente. Luego hacé click en "Verificar orden".
+          </p>
+          <ul class="wg-orden">
+            <li class="wg-orden__item" data-wg-order="4"><span class="wg-orden__num">1</span> Observar si respira normalmente.</li>
+            <li class="wg-orden__item" data-wg-order="1"><span class="wg-orden__num">2</span> Verificar seguridad de la escena.</li>
+            <li class="wg-orden__item" data-wg-order="2"><span class="wg-orden__num">3</span> Llamar a la persona en voz alta.</li>
+            <li class="wg-orden__item" data-wg-order="3"><span class="wg-orden__num">4</span> Tocar suavemente los hombros.</li>
+            <li class="wg-orden__item" data-wg-order="5"><span class="wg-orden__num">5</span> Decidir si se activa emergencia e inicia RCP.</li>
+          </ul>
+          <button class="wg-btn wg-btn--primary" data-wg-orden-check style="margin-top:14px;">
+            <iconify-icon icon="mdi:check-bold"></iconify-icon> Verificar orden
+          </button>
+        </div>
+
+        <!-- ============== SLIDE 6 · ORD 2 ============== -->
+        <div class="wg-evalquiz__slide" data-slide="ord-2" data-section="Ordenar" data-section-color="success">
+          <h2 style="font-size:clamp(1.3rem, 2vw, 1.6rem); margin:0 0 8px;">Activación del SEM</h2>
+          <p style="color:var(--text-mut); margin-bottom:18px;">
+            Ordená la secuencia lógica para activar el sistema de emergencias.
+          </p>
+          <ul class="wg-orden">
+            <li class="wg-orden__item" data-wg-order="5"><span class="wg-orden__num">1</span> Solicitar DEA.</li>
+            <li class="wg-orden__item" data-wg-order="1"><span class="wg-orden__num">2</span> Confirmar que la persona no responde y no respira normalmente.</li>
+            <li class="wg-orden__item" data-wg-order="3"><span class="wg-orden__num">3</span> Dar ubicación exacta.</li>
+            <li class="wg-orden__item" data-wg-order="2"><span class="wg-orden__num">4</span> Llamar o pedir que llamen a emergencias.</li>
+            <li class="wg-orden__item" data-wg-order="4"><span class="wg-orden__num">5</span> Informar el estado del paciente.</li>
+          </ul>
+          <button class="wg-btn wg-btn--primary" data-wg-orden-check style="margin-top:14px;">
+            <iconify-icon icon="mdi:check-bold"></iconify-icon> Verificar orden
+          </button>
+        </div>
+
+        <!-- ============== SLIDE 7 · DnD 1 ============== -->
+        <div class="wg-evalquiz__slide" data-slide="dnd-1" data-section="Arrastrar y soltar" data-section-color="warning">
+          <h2 style="font-size:clamp(1.3rem, 2vw, 1.6rem); margin:0 0 8px;">Calidad de las compresiones</h2>
+          <p style="color:var(--text-mut); margin-bottom:18px;">
+            Arrastrá cada concepto del banco a la zona correcta.
+          </p>
+          <div class="wg-dnd">
+            <div class="wg-dnd__bank">
+              <div class="wg-dnd__bank-title">Banco de conceptos</div>
+              <div class="wg-dnd__item" data-wg-correct="ok-1">5 a 6 cm de profundidad</div>
+              <div class="wg-dnd__item" data-wg-correct="err-1">Codos flexionados</div>
+              <div class="wg-dnd__item" data-wg-correct="ok-1">Retroceso completo del tórax</div>
+              <div class="wg-dnd__item" data-wg-correct="err-1">Pausas prolongadas</div>
+              <div class="wg-dnd__item" data-wg-correct="ok-1">100 a 120 por minuto</div>
+              <div class="wg-dnd__item" data-wg-correct="err-1">Manos mal ubicadas</div>
+            </div>
+            <div class="wg-dnd__zones">
+              <div class="wg-dnd__zone" data-wg-target="ok-1">
+                <h4><iconify-icon icon="mdi:check-circle" style="color:var(--success);"></iconify-icon> Compresiones correctas</h4>
+                <div class="wg-dnd__items"></div>
+              </div>
+              <div class="wg-dnd__zone" data-wg-target="err-1">
+                <h4><iconify-icon icon="mdi:close-octagon" style="color:var(--danger);"></iconify-icon> Errores frecuentes</h4>
+                <div class="wg-dnd__items"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============== SLIDE 8 · DnD 2 ============== -->
+        <div class="wg-evalquiz__slide" data-slide="dnd-2" data-section="Arrastrar y soltar" data-section-color="warning">
+          <h2 style="font-size:clamp(1.3rem, 2vw, 1.6rem); margin:0 0 8px;">DEA · uso y seguridad</h2>
+          <p style="color:var(--text-mut); margin-bottom:18px;">
+            Distinguí los pasos de uso del DEA de las medidas de seguridad durante la descarga.
+          </p>
+          <div class="wg-dnd">
+            <div class="wg-dnd__bank">
+              <div class="wg-dnd__bank-title">Banco de conceptos</div>
+              <div class="wg-dnd__item" data-wg-correct="dea-2">Encender el equipo</div>
+              <div class="wg-dnd__item" data-wg-correct="seg-2">Nadie toca al paciente</div>
+              <div class="wg-dnd__item" data-wg-correct="dea-2">Colocar parches</div>
+              <div class="wg-dnd__item" data-wg-correct="seg-2">Secar tórax húmedo</div>
+              <div class="wg-dnd__item" data-wg-correct="dea-2">Permitir análisis</div>
+              <div class="wg-dnd__item" data-wg-correct="seg-2">Verificar que todos estén alejados</div>
+            </div>
+            <div class="wg-dnd__zones">
+              <div class="wg-dnd__zone" data-wg-target="dea-2">
+                <h4><iconify-icon icon="mdi:flash" style="color:var(--c-acento);"></iconify-icon> Pasos de uso del DEA</h4>
+                <div class="wg-dnd__items"></div>
+              </div>
+              <div class="wg-dnd__zone" data-wg-target="seg-2">
+                <h4><iconify-icon icon="mdi:shield-check" style="color:var(--c-info);"></iconify-icon> Seguridad durante la desfibrilación</h4>
+                <div class="wg-dnd__items"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============== SLIDE 9 · DnD 3 ============== -->
+        <div class="wg-evalquiz__slide" data-slide="dnd-3" data-section="Arrastrar y soltar" data-section-color="warning">
+          <h2 style="font-size:clamp(1.3rem, 2vw, 1.6rem); margin:0 0 8px;">Buenas vs malas prácticas</h2>
+          <p style="color:var(--text-mut); margin-bottom:18px;">
+            Clasificá cada acción según corresponda.
+          </p>
+          <div class="wg-dnd">
+            <div class="wg-dnd__bank">
+              <div class="wg-dnd__bank-title">Banco de conceptos</div>
+              <div class="wg-dnd__item" data-wg-correct="ok-3">Verificar seguridad de la escena</div>
+              <div class="wg-dnd__item" data-wg-correct="err-3">No pedir DEA</div>
+              <div class="wg-dnd__item" data-wg-correct="ok-3">Iniciar RCP sin demora</div>
+              <div class="wg-dnd__item" data-wg-correct="err-3">Tocar al paciente durante la descarga</div>
+              <div class="wg-dnd__item" data-wg-correct="ok-3">Permitir retroceso completo del tórax</div>
+              <div class="wg-dnd__item" data-wg-correct="err-3">Abandonar al paciente antes de la llegada de ayuda</div>
+            </div>
+            <div class="wg-dnd__zones">
+              <div class="wg-dnd__zone" data-wg-target="ok-3">
+                <h4><iconify-icon icon="mdi:thumb-up" style="color:var(--success);"></iconify-icon> Buenas prácticas</h4>
+                <div class="wg-dnd__items"></div>
+              </div>
+              <div class="wg-dnd__zone" data-wg-target="err-3">
+                <h4><iconify-icon icon="mdi:thumb-down" style="color:var(--danger);"></iconify-icon> Malas prácticas</h4>
+                <div class="wg-dnd__items"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============== SLIDE 10 · CIERRE ============== -->
+        <div class="wg-evalquiz__slide" data-slide="cierre">
+          <div style="text-align:center; padding: 32px 24px;">
+            <div style="width:80px; height:80px; margin:0 auto 20px; border-radius:50%; background:var(--success); color:white; display:grid; place-items:center; box-shadow:0 12px 28px color-mix(in srgb, var(--success) 35%, transparent);">
+              <iconify-icon icon="mdi:trophy-outline" style="font-size:2.4rem;"></iconify-icon>
+            </div>
+            <h2 style="font-size:clamp(1.5rem, 2.4vw, 2rem); font-weight:800; letter-spacing:-.025em; margin:0 0 10px;">
+              ¡Terminaste la evaluación!
+            </h2>
+            <p style="color:var(--text-mut); max-width:540px; margin:0 auto 28px; line-height:1.6;">
+              Completaste las <strong>9 actividades de práctica</strong>. Si querés repasar
+              conceptos puntuales, andá al glosario. O reintentá la evaluación cuando quieras.
+            </p>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+              <button class="wg-btn wg-btn--outline" data-evalquiz-restart>
+                <iconify-icon icon="mdi:restart"></iconify-icon> Reintentar
+              </button>
+              <a href="glosario.html" class="wg-btn wg-btn--primary">
+                Ir al glosario <iconify-icon icon="mdi:arrow-right"></iconify-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAV INFERIOR · Anterior / Siguiente -->
+        <div class="wg-evalquiz__nav" data-evalquiz-nav>
+          <button class="wg-evalquiz__btn" data-evalquiz-prev disabled>
+            <iconify-icon icon="mdi:arrow-left"></iconify-icon> Anterior
+          </button>
+          <button class="wg-evalquiz__btn wg-evalquiz__btn--primary" data-evalquiz-next>
+            Siguiente <iconify-icon icon="mdi:arrow-right"></iconify-icon>
+          </button>
+        </div>
+
+      </div>
+    </article>
+    <nav class="wg-screen-nav" data-wg-screen-nav data-current="evaluacion"></nav>
+  </main>
+</div>
+
+<script src="assets/js/course.js"></script>
+<script src="assets/js/core.js"></script>
+
+<!-- ===================================================
+     COMPONENTE · Quiz single-page con navegación
+     =================================================== -->
+<style>
+  .wg-evalquiz{
+    position: relative;
+    margin-top: 8px;
+    padding-bottom: 100px; /* espacio para nav inferior fija */
+  }
+
+  /* Barra de progreso */
+  .wg-evalquiz__head{
+    position: sticky;
+    top: var(--topbar-h, 64px);
+    z-index: 30;
+    background: var(--bg-app);
+    padding: 16px 0 12px;
+    border-bottom: 1px solid var(--border-c);
+    margin: 0 -4px 24px;
+  }
+  .wg-evalquiz__progress-bar{
+    height: 6px;
+    background: var(--bg-muted);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .wg-evalquiz__progress-fill{
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--c-acento), color-mix(in srgb, var(--c-acento) 60%, var(--c-info)));
+    border-radius: 999px;
+    transition: width .35s cubic-bezier(.4,0,.2,1);
+  }
+  .wg-evalquiz__meta{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .wg-evalquiz__counter{ color: var(--text-mut); font-weight: 600; }
+  .wg-evalquiz__section{
+    color: var(--c-acento);
+    font-weight: 600;
+    margin-left: auto;
+    text-align: right;
+  }
+
+  /* Slides */
+  .wg-evalquiz__slide{
+    display: none;
+    animation: wgQuizFadeIn .35s ease-out;
+  }
+  .wg-evalquiz__slide.is-active{ display: block; }
+  @keyframes wgQuizFadeIn{
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .wg-evalquiz__chip{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Nav inferior · fijo abajo */
+  .wg-evalquiz__nav{
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-c);
+    border-radius: 999px;
+    box-shadow: 0 10px 32px rgba(0,0,0,.12);
+  }
+  .wg-evalquiz__btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--text-head);
+    font-family: inherit;
+    font-size: .92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .18s;
+  }
+  .wg-evalquiz__btn:hover{ background: var(--bg-muted); }
+  .wg-evalquiz__btn:disabled{
+    opacity: .35;
+    cursor: not-allowed;
+  }
+  .wg-evalquiz__btn:disabled:hover{ background: transparent; }
+  .wg-evalquiz__btn--primary{
+    background: var(--c-acento);
+    color: white;
+  }
+  .wg-evalquiz__btn--primary:hover{
+    background: color-mix(in srgb, var(--c-acento) 85%, #000);
+  }
+
+  /* Sección del header se tinta según color */
+  .wg-evalquiz[data-color="acento"]  .wg-evalquiz__section{ color: var(--c-acento); }
+  .wg-evalquiz[data-color="info"]    .wg-evalquiz__section{ color: var(--c-info); }
+  .wg-evalquiz[data-color="success"] .wg-evalquiz__section{ color: var(--success); }
+  .wg-evalquiz[data-color="warning"] .wg-evalquiz__section{ color: var(--warning); }
+  .wg-evalquiz[data-color="acento"]  .wg-evalquiz__progress-fill{
+    background: linear-gradient(90deg, var(--c-acento), color-mix(in srgb, var(--c-acento) 60%, white));
+  }
+  .wg-evalquiz[data-color="info"]    .wg-evalquiz__progress-fill{
+    background: linear-gradient(90deg, var(--c-info), color-mix(in srgb, var(--c-info) 60%, white));
+  }
+  .wg-evalquiz[data-color="success"] .wg-evalquiz__progress-fill{
+    background: linear-gradient(90deg, var(--success), color-mix(in srgb, var(--success) 60%, white));
+  }
+  .wg-evalquiz[data-color="warning"] .wg-evalquiz__progress-fill{
+    background: linear-gradient(90deg, var(--warning), color-mix(in srgb, var(--warning) 60%, white));
+  }
+
+  @media (max-width: 720px){
+    .wg-evalquiz__nav{
+      left: 12px; right: 12px;
+      bottom: 12px;
+      transform: none;
+      justify-content: space-between;
+    }
+    .wg-evalquiz__btn{ flex: 1; justify-content: center; padding: 12px 16px; }
+  }
+</style>
+
+<script>
+  (function() {
+    const root = document.querySelector('[data-wg-evalquiz]');
+    if (!root) return;
+
+    const slides = root.querySelectorAll('.wg-evalquiz__slide');
+    const total = slides.length;
+    const progressFill = root.querySelector('[data-evalquiz-progress]');
+    const counter = root.querySelector('[data-evalquiz-counter]');
+    const sectionLabel = root.querySelector('[data-evalquiz-section]');
+    const btnPrev = root.querySelector('[data-evalquiz-prev]');
+    const btnNext = root.querySelector('[data-evalquiz-next]');
+    const nav = root.querySelector('[data-evalquiz-nav]');
+    const head = root.querySelector('[data-evalquiz-head]');
+
+    let current = 0;
+
+    function update(){
+      slides.forEach((s, i) => s.classList.toggle('is-active', i === current));
+
+      const slide = slides[current];
+      const slideId = slide.dataset.slide;
+      const isIntro = slideId === 'intro';
+      const isCierre = slideId === 'cierre';
+
+      // Progress: 0% en intro, 100% en cierre, gradual entre medio
+      let pct;
+      if (isIntro) pct = 0;
+      else if (isCierre) pct = 100;
+      else pct = ((current) / (total - 1)) * 100;
+      progressFill.style.width = pct + '%';
+
+      // Counter y sección
+      if (isIntro){
+        counter.textContent = 'Bienvenida';
+        sectionLabel.textContent = '9 actividades';
+      } else if (isCierre) {
+        counter.textContent = 'Final';
+        sectionLabel.textContent = '¡Completado!';
+      } else {
+        // Slides 1..9 (índices 1..9, son las actividades 1 a 9)
+        const activityNum = current;
+        const total_activities = total - 2; // descartando intro y cierre
+        counter.textContent = `Actividad ${activityNum} de ${total_activities}`;
+        sectionLabel.textContent = slide.dataset.section || '—';
+        // Color global del head según sección
+        root.dataset.color = slide.dataset.sectionColor || 'acento';
+      }
+
+      // Si es intro o cierre, ocultar nav (intro tiene su propio botón Comenzar)
+      nav.style.display = (isIntro || isCierre) ? 'none' : 'flex';
+
+      // Estado de botones
+      btnPrev.disabled = current <= 1; // no puede volver a intro
+      // En la última actividad antes de cierre, el botón siguiente dice "Finalizar"
+      if (current === total - 2) { // penúltimo (última actividad)
+        btnNext.innerHTML = 'Finalizar <iconify-icon icon="mdi:flag-checkered"></iconify-icon>';
+      } else {
+        btnNext.innerHTML = 'Siguiente <iconify-icon icon="mdi:arrow-right"></iconify-icon>';
+      }
+
+      // Scroll al top del head (para que el usuario vea la actividad desde arriba)
+      head.scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+
+    function goTo(idx){
+      if (idx < 0 || idx >= total) return;
+      current = idx;
+      update();
+    }
+
+    function restart(){
+      // Recargar la página · simple y limpio
+      window.location.reload();
+    }
+
+    // Botón "Comenzar" en intro
+    root.querySelectorAll('[data-evalquiz-go]').forEach(b => {
+      b.addEventListener('click', () => goTo(parseInt(b.dataset.evalquizGo)));
+    });
+
+    btnPrev.addEventListener('click', () => goTo(current - 1));
+    btnNext.addEventListener('click', () => goTo(current + 1));
+    root.querySelectorAll('[data-evalquiz-restart]').forEach(b => {
+      b.addEventListener('click', restart);
+    });
+
+    // Keyboard: flechas ← →
+    document.addEventListener('keydown', e => {
+      if (e.target.matches('input, textarea, select')) return;
+      if (current === 0 || current === total - 1) return;
+      if (e.key === 'ArrowLeft' && !btnPrev.disabled) goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    // Inicializar
+    update();
+  })();
+</script>
+
+</body>
+</html>

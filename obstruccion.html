@@ -147,49 +147,66 @@
         Maniobra de Heimlich en adulto consciente
       </h3>
 
-      <div class="wg-stepper" data-reveal>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>01</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Paso 1</span>
-            <h3>Ubícate detrás de la persona.</h3>
-          </div>
+      <!-- TIMELINE HORIZONTAL · Heimlich consciente -->
+      <div class="wg-timeline-h" data-reveal data-wg-timeline="heimlich">
+        <div class="wg-timeline-h__track">
+          <button class="wg-step-card is-active" data-step="0">
+            <div class="wg-step-card__num">01</div>
+            <iconify-icon class="wg-step-card__icon" icon="mdi:account-supervisor"></iconify-icon>
+            <div class="wg-step-card__label">Ubicarse</div>
+          </button>
+          <button class="wg-step-card" data-step="1">
+            <div class="wg-step-card__num">02</div>
+            <iconify-icon class="wg-step-card__icon" icon="mdi:arrow-collapse"></iconify-icon>
+            <div class="wg-step-card__label">Rodear cintura</div>
+          </button>
+          <button class="wg-step-card" data-step="2">
+            <div class="wg-step-card__num">03</div>
+            <iconify-icon class="wg-step-card__icon" icon="ph:hand-fist"></iconify-icon>
+            <div class="wg-step-card__label">Puño cerrado</div>
+          </button>
+          <button class="wg-step-card" data-step="3">
+            <div class="wg-step-card__num">04</div>
+            <iconify-icon class="wg-step-card__icon" icon="ph:hand-grabbing"></iconify-icon>
+            <div class="wg-step-card__label">Sujetar puño</div>
+          </button>
+          <button class="wg-step-card" data-step="4">
+            <div class="wg-step-card__num">05</div>
+            <iconify-icon class="wg-step-card__icon" icon="mdi:arrow-collapse-up"></iconify-icon>
+            <div class="wg-step-card__label">Compresión</div>
+          </button>
+          <button class="wg-step-card" data-step="5">
+            <div class="wg-step-card__num">06</div>
+            <iconify-icon class="wg-step-card__icon" icon="mdi:autorenew"></iconify-icon>
+            <div class="wg-step-card__label">Continuar</div>
+          </button>
         </div>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>02</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Paso 2</span>
-            <h3>Rodea su cintura con ambos brazos.</h3>
-          </div>
-        </div>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>03</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Paso 3</span>
-            <h3>Coloca un puño cerrado por encima del ombligo y debajo del esternón.</h3>
-          </div>
-        </div>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>04</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Paso 4</span>
-            <h3>Sujeta el puño con la otra mano.</h3>
-          </div>
-        </div>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>05</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Paso 5</span>
-            <h3>Realiza compresiones rápidas hacia adentro y hacia arriba.</h3>
-          </div>
-        </div>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>06</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Paso 6</span>
-            <h3>Continúa hasta que el objeto salga o la persona pierda la conciencia.</h3>
-          </div>
-        </div>
+        <div class="wg-step-detail" data-wg-detail></div>
+        <script type="application/json" data-wg-steps>
+        [
+          {"tag":"Posicionamiento","icon":"mdi:account-supervisor",
+           "title":"Ubícate detrás de la persona.",
+           "desc":"Posicionate firme y centrado detrás de la víctima. Si la persona es más alta, ajustá tu postura para tener buen alcance al abdomen."},
+          {"tag":"Abrazo","icon":"mdi:arrow-collapse",
+           "title":"Rodea su cintura con ambos brazos.",
+           "desc":"Pasá ambos brazos por debajo de los brazos de la víctima y rodeala a la altura de la cintura."},
+          {"tag":"Puño","icon":"ph:hand-fist",
+           "title":"Coloca un puño cerrado por encima del ombligo y debajo del esternón.",
+           "desc":"El nudillo del pulgar debe estar contra el abdomen. Esta zona se llama epigastrio.",
+           "tip":"No coloques el puño sobre las costillas ni sobre el esternón directamente."},
+          {"tag":"Agarre","icon":"ph:hand-grabbing",
+           "title":"Sujeta el puño con la otra mano.",
+           "desc":"Envolvé tu puño con la palma de la otra mano para hacer una unidad firme."},
+          {"tag":"Compresión","icon":"mdi:arrow-collapse-up",
+           "title":"Realiza compresiones rápidas hacia adentro y hacia arriba.",
+           "desc":"El movimiento es en J: empujá hacia adentro y luego hacia arriba con fuerza. Cada compresión es independiente.",
+           "tip":"Cada compresión debe ser rápida y vigorosa, no acumulativa."},
+          {"tag":"Continuar","icon":"mdi:autorenew",
+           "title":"Continúa hasta que el objeto salga o la persona pierda la conciencia.",
+           "desc":"Si la persona pierde la conciencia, pasá inmediatamente al protocolo de inconsciencia.",
+           "tip":"Si está disponible un DEA y la persona pierde el conocimiento, pedilo de inmediato."}
+        ]
+        </script>
       </div>
 
       <!-- Nota sobre adaptación -->
@@ -217,56 +234,74 @@
         Si la persona pierde la conciencia durante un atragantamiento:
       </h2>
 
-      <div class="wg-stepper" data-reveal>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>01</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Acción 1</span>
-            <h3>Colócala cuidadosamente en el suelo.</h3>
-          </div>
+      <!-- TIMELINE HORIZONTAL · Si pierde la conciencia -->
+      <div class="wg-timeline-h" data-reveal data-wg-timeline="inconsciente">
+        <div class="wg-timeline-h__track">
+          <button class="wg-step-card is-active" data-step="0">
+            <div class="wg-step-card__num">01</div>
+            <iconify-icon class="wg-step-card__icon" icon="mdi:account-arrow-down"></iconify-icon>
+            <div class="wg-step-card__label">Al suelo</div>
+          </button>
+          <button class="wg-step-card" data-step="1">
+            <div class="wg-step-card__num">02</div>
+            <iconify-icon class="wg-step-card__icon" icon="mdi:phone-in-talk"></iconify-icon>
+            <div class="wg-step-card__label">Emergencias</div>
+          </button>
+          <button class="wg-step-card" data-step="2">
+            <div class="wg-step-card__num">03</div>
+            <iconify-icon class="wg-step-card__icon" icon="mdi:heart-flash"></iconify-icon>
+            <div class="wg-step-card__label">Pedir DEA</div>
+          </button>
+          <button class="wg-step-card" data-step="3">
+            <div class="wg-step-card__num">04</div>
+            <iconify-icon class="wg-step-card__icon" icon="mdi:heart-pulse"></iconify-icon>
+            <div class="wg-step-card__label">Iniciar RCP</div>
+          </button>
+          <button class="wg-step-card" data-step="4">
+            <div class="wg-step-card__num">05</div>
+            <iconify-icon class="wg-step-card__icon" icon="mdi:eye-check-outline"></iconify-icon>
+            <div class="wg-step-card__label">Revisar boca</div>
+          </button>
+          <button class="wg-step-card" data-step="5">
+            <div class="wg-step-card__num">06</div>
+            <iconify-icon class="wg-step-card__icon" icon="mdi:hand-back-right-off-outline"></iconify-icon>
+            <div class="wg-step-card__label">No a ciegas</div>
+          </button>
+          <button class="wg-step-card" data-step="6">
+            <div class="wg-step-card__num">07</div>
+            <iconify-icon class="wg-step-card__icon" icon="mdi:autorenew"></iconify-icon>
+            <div class="wg-step-card__label">Continuar</div>
+          </button>
         </div>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>02</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Acción 2</span>
-            <h3>Activa el sistema de emergencias o confirma que alguien lo haga.</h3>
-          </div>
-        </div>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>03</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Acción 3</span>
-            <h3>Pide un DEA si está disponible.</h3>
-          </div>
-        </div>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>04</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Acción 4</span>
-            <h3>Inicia RCP.</h3>
-          </div>
-        </div>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>05</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Acción 5</span>
-            <h3>Antes de ventilar o revisar la boca, retira el objeto solo si es visible y fácil de extraer.</h3>
-          </div>
-        </div>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>06</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Acción 6</span>
-            <h3>No introduzcas los dedos a ciegas.</h3>
-          </div>
-        </div>
-        <div class="wg-step">
-          <div class="wg-step__num"><span>07</span></div>
-          <div class="wg-step__card">
-            <span class="wg-step__tag">Acción 7</span>
-            <h3>Continúa RCP hasta que llegue ayuda, la persona respire normalmente o alguien capacitado te releve.</h3>
-          </div>
-        </div>
+        <div class="wg-step-detail" data-wg-detail></div>
+        <script type="application/json" data-wg-steps>
+        [
+          {"tag":"Posicionamiento","icon":"mdi:account-arrow-down",
+           "title":"Colócala cuidadosamente en el suelo.",
+           "desc":"Evitá movimientos bruscos. Si podés controlar la caída, mejor. Apoyala boca arriba sobre una superficie firme.",
+           "tip":"No dejes que la cabeza golpee el piso."},
+          {"tag":"Emergencias","icon":"mdi:phone-in-talk",
+           "title":"Activa el sistema de emergencias o confirma que alguien lo haga.",
+           "desc":"Si estás solo, llamá vos. Si hay otros presentes, asigná a alguien específico: \"Vos, llamá a emergencias y volvé a confirmarme\"."},
+          {"tag":"DEA","icon":"mdi:heart-flash",
+           "title":"Pide un DEA si está disponible.",
+           "desc":"En lugares públicos suele haber DEAs cerca: centros comerciales, aeropuertos, gimnasios, oficinas grandes."},
+          {"tag":"RCP","icon":"mdi:heart-pulse",
+           "title":"Inicia RCP.",
+           "desc":"Compresiones torácicas en el centro del pecho. 100-120 por minuto, profundidad 5-6 cm, permitiendo retroceso completo.",
+           "tip":"Las compresiones también pueden ayudar a expulsar el cuerpo extraño."},
+          {"tag":"Revisar","icon":"mdi:eye-check-outline",
+           "title":"Antes de ventilar, retira el objeto solo si es visible y fácil de extraer.",
+           "desc":"Mirá rápidamente la boca antes de cada ventilación. Si ves el objeto claramente, sacalo con cuidado.",
+           "tip":"No pierdas tiempo buscando: si no lo ves en 1-2 segundos, seguí con las compresiones."},
+          {"tag":"No hacer","icon":"mdi:hand-back-right-off-outline",
+           "title":"No introduzcas los dedos a ciegas.",
+           "desc":"El barrido digital a ciegas puede empujar el objeto más profundo y empeorar la obstrucción."},
+          {"tag":"Continuar","icon":"mdi:autorenew",
+           "title":"Continúa RCP hasta que llegue ayuda, la persona respire normalmente o alguien capacitado te releve.",
+           "desc":"No abandones a la víctima. Si llegás a estar agotado, podés alternar con otra persona cada 2 minutos."}
+        ]
+        </script>
       </div>
 
       <!-- RELACIÓN DIRECTA CON LA RCP -->
@@ -346,5 +381,297 @@
 </div>
 <script src="assets/js/course.js"></script>
 <script src="assets/js/core.js"></script>
+
+<!-- ============================================================
+     COMPONENTE · Timeline horizontal con detalle expandido
+     (Reutilizable · solo requiere data-wg-timeline en el contenedor)
+     ============================================================ -->
+<style>
+  .wg-timeline-h{ position: relative; margin: 24px 0; }
+  .wg-timeline-h__track{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 12px;
+    padding: 4px;
+    position: relative;
+  }
+  .wg-timeline-h__track::before{
+    content: "";
+    position: absolute;
+    top: 32px;
+    left: 4%;
+    right: 4%;
+    height: 2px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--border-c) 0,
+      var(--border-c) 8px,
+      transparent 8px,
+      transparent 14px
+    );
+    z-index: 0;
+  }
+  .wg-step-card{
+    position: relative;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-c);
+    border-radius: var(--r-md);
+    padding: 14px 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .2s ease;
+    z-index: 1;
+    font-family: inherit;
+    color: var(--text-pri);
+  }
+  .wg-step-card:hover{
+    transform: translateY(-3px);
+    border-color: var(--c-acento);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--c-acento) 15%, transparent);
+  }
+  .wg-step-card.is-active{
+    border-color: var(--c-acento);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--c-acento) 10%, var(--bg-surface)) 0%, var(--bg-surface) 100%);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--c-acento) 18%, transparent);
+    transform: translateY(-2px);
+  }
+  .wg-step-card.is-active .wg-step-card__num{
+    background: var(--c-acento);
+    color: white;
+    border-color: transparent;
+  }
+  .wg-step-card__num{
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: var(--bg-muted);
+    color: var(--c-acento);
+    display: grid; place-items: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: .85rem;
+    margin: 0 auto 8px;
+    transition: all .2s;
+    border: 1px solid var(--border-c);
+  }
+  .wg-step-card__icon{
+    font-size: 1.5rem;
+    color: var(--c-acento);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .wg-step-card__label{
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--text-head);
+    line-height: 1.2;
+  }
+
+  /* Mobile · scroll horizontal con snap */
+  @media (max-width: 720px){
+    .wg-timeline-h__track{
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+    }
+    .wg-step-card{
+      min-width: 130px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+    .wg-timeline-h__track::before{ display: none; }
+  }
+
+  /* Detalle expandido */
+  .wg-step-detail{
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-muted) 100%);
+    border: 1px solid var(--border-c);
+    border-radius: var(--r-md);
+    padding: 24px;
+    display: grid;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .wg-step-detail.is-loading{ display: none; }
+  @keyframes wgFadeUp{
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .wg-step-detail__icon{
+    width: 84px; height: 84px;
+    border-radius: 22px;
+    background: var(--grad-brand);
+    color: white;
+    display: grid; place-items: center;
+    font-size: 2.2rem;
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--c-acento) 30%, transparent);
+    flex-shrink: 0;
+  }
+  .wg-step-detail__body{ min-width: 0; }
+  .wg-step-detail__tag{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--c-acento);
+    background: color-mix(in srgb, var(--c-acento) 12%, transparent);
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .wg-step-detail__title{
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--text-head);
+    margin: 0 0 10px;
+    line-height: 1.3;
+  }
+  .wg-step-detail__desc{
+    color: var(--text-pri);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 14px;
+  }
+  .wg-step-detail__tip{
+    display: flex; gap: 10px;
+    padding: 12px 14px;
+    background: color-mix(in srgb, var(--c-info) 10%, var(--bg-surface));
+    border-left: 3px solid var(--c-info);
+    border-radius: 8px;
+    font-size: .9rem;
+    color: var(--text-pri);
+    margin-bottom: 14px;
+  }
+  .wg-step-detail__tip iconify-icon{
+    color: var(--c-info);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .wg-step-detail__nav{
+    display: flex; gap: 8px; align-items: center;
+    color: var(--text-mut);
+    font-size: .85rem;
+  }
+  .wg-step-detail__btn{
+    border: 1px solid var(--border-c);
+    background: var(--bg-surface);
+    border-radius: 8px;
+    padding: 7px 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: .85rem;
+    color: var(--text-head);
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all .15s;
+  }
+  .wg-step-detail__btn:hover{ background: var(--bg-muted); }
+  .wg-step-detail__btn:disabled{ opacity: .4; cursor: not-allowed; }
+  .wg-step-detail__btn--primary{
+    background: var(--c-acento);
+    color: white;
+    border-color: transparent;
+  }
+  .wg-step-detail__btn--primary:hover{
+    background: color-mix(in srgb, var(--c-acento) 85%, #000);
+  }
+  .wg-step-detail__progress{
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: .8rem;
+  }
+  @media (max-width: 720px){
+    .wg-step-detail{ grid-template-columns: 1fr; gap: 16px; padding: 18px; }
+    .wg-step-detail__icon{ width: 64px; height: 64px; font-size: 1.8rem; }
+  }
+</style>
+
+<script>
+  // Componente Timeline horizontal · auto-init para todos los [data-wg-timeline]
+  (function() {
+    function init(container){
+      const dataScript = container.querySelector('script[data-wg-steps]');
+      if (!dataScript) return;
+      const steps = JSON.parse(dataScript.textContent);
+      const track = container.querySelector('.wg-timeline-h__track');
+      const detail = container.querySelector('[data-wg-detail]');
+      if (!track || !detail) return;
+      const total = steps.length;
+      let current = 0;
+
+      function render(){
+        const s = steps[current];
+        detail.innerHTML = `
+          <div class="wg-step-detail__icon">
+            <iconify-icon icon="${s.icon}"></iconify-icon>
+          </div>
+          <div class="wg-step-detail__body">
+            <div class="wg-step-detail__tag">
+              <span>Paso ${String(current+1).padStart(2,'0')}</span>
+              <span style="opacity:.5">·</span>
+              <span>${s.tag}</span>
+            </div>
+            <h3 class="wg-step-detail__title">${s.title}</h3>
+            <p class="wg-step-detail__desc">${s.desc}</p>
+            ${s.tip ? `
+              <div class="wg-step-detail__tip">
+                <iconify-icon icon="mdi:lightbulb-on"></iconify-icon>
+                <span><strong>Tip:</strong> ${s.tip}</span>
+              </div>
+            ` : ''}
+            <div class="wg-step-detail__nav">
+              <button class="wg-step-detail__btn" ${current === 0 ? 'disabled' : ''} data-go="${current-1}">
+                <iconify-icon icon="mdi:arrow-left"></iconify-icon> Anterior
+              </button>
+              <button class="wg-step-detail__btn wg-step-detail__btn--primary" ${current === total-1 ? 'disabled' : ''} data-go="${current+1}">
+                Siguiente <iconify-icon icon="mdi:arrow-right"></iconify-icon>
+              </button>
+              <span class="wg-step-detail__progress">${current+1} / ${total}</span>
+            </div>
+          </div>
+        `;
+        detail.style.animation = 'none';
+        requestAnimationFrame(() => detail.style.animation = 'wgFadeUp .3s ease-out');
+
+        track.querySelectorAll('.wg-step-card').forEach((c, i) => {
+          c.classList.toggle('is-active', i === current);
+        });
+      }
+
+      function goTo(idx){
+        if (idx < 0 || idx >= total) return;
+        current = idx;
+        render();
+        if (window.innerWidth < 720) {
+          track.querySelectorAll('.wg-step-card')[idx]?.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+        }
+      }
+
+      track.addEventListener('click', e => {
+        const c = e.target.closest('.wg-step-card');
+        if (c) goTo(parseInt(c.dataset.step));
+      });
+      detail.addEventListener('click', e => {
+        const b = e.target.closest('[data-go]');
+        if (b && !b.disabled) goTo(parseInt(b.dataset.go));
+      });
+
+      render();
+    }
+
+    document.querySelectorAll('[data-wg-timeline]').forEach(init);
+  })();
+</script>
 </body>
 </html>
