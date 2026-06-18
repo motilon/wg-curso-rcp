@@ -3,7 +3,7 @@
    ---------------------------------------------------------
    Cliente:  [PENDIENTE · actualizar cuando se confirme]
    Audiencia: Primer respondiente (no profesional sanitario)
-   Duración: 8 horas
+   Duración: 4 horas
    Preset visual: vital
    Versión template: hibrida
    ========================================================= */
@@ -21,39 +21,41 @@ window.WG_COURSE = {
     code:     '',
     name:     'Reanimación Cardio Pulmonar (RCP)',
     subtitle: '',
-    duration: '8 horas',
+    duration: '4 horas',
     iso:      'ISO 9001:2015',
     licencia: 'Creative Commons BY-NC-SA 4.0',
   },
 
-  /* MENÚ · 25 pantallas en orden secuencial */
+  /* MENÚ · 28 pantallas en orden secuencial */
   menu: [
-    { id: 'portada',           num: '01', titulo: 'Inicio',                        icon: 'mdi:home',                   file: 'index.html' },
-    { id: 'bienvenida',        num: '02', titulo: 'Bienvenida',                    icon: 'mdi:play-circle',            file: 'bienvenida.html' },
-    { id: 'conceptos-basicos', num: '03', titulo: 'Conceptos básicos',             icon: 'mdi:book-open-page-variant', file: 'conceptos-basicos.html' },
-    { id: 'identificacion',    num: '04', titulo: 'Identificar parada cardíaca',   icon: 'mdi:magnify',                file: 'identificacion.html' },
-    { id: 'quien-puede',       num: '05', titulo: '¿Quién puede presentarla?',     icon: 'mdi:account-group',          file: 'quien-puede.html' },
-    { id: 'tipos-parada',      num: '06', titulo: 'Tipos de parada cardíaca',      icon: 'mdi:layers',                 file: 'tipos-parada.html' },
-    { id: 'importancia',       num: '07', titulo: 'Importancia de la RCP temprana', icon: 'mdi:clock-alert',           file: 'importancia.html' },
-    { id: 'seguridad-escena',  num: '08', titulo: 'Seguridad de la escena',        icon: 'mdi:shield-alert',           file: 'seguridad-escena.html' },
-    { id: 'valoracion',        num: '09', titulo: 'Valoración inicial',            icon: 'mdi:stethoscope',            file: 'valoracion.html' },
-    { id: 'cadena',            num: '10', titulo: 'Cadena de supervivencia',       icon: 'mdi:link-variant',           file: 'cadena.html' },
-    { id: 'rcp-calidad',       num: '11', titulo: 'RCP de alta calidad',           icon: 'mdi:heart-pulse',            file: 'rcp-calidad.html' },
-    { id: 'errores',           num: '12', titulo: 'Errores frecuentes',            icon: 'mdi:alert-circle',           file: 'errores.html' },
-    { id: 'relevos',           num: '13', titulo: 'Fatiga y relevos',              icon: 'mdi:account-switch',         file: 'relevos.html' },
-    { id: 'uso-dea',           num: '14', titulo: 'Uso del DEA',                   icon: 'mdi:flash',                  file: 'uso-dea.html' },
-    { id: 'seguridad-dea',     num: '15', titulo: 'Seguridad durante desfibrilación', icon: 'mdi:shield-lock',         file: 'seguridad-dea.html' },
-    { id: 'rcp-sin-dea',       num: '16', titulo: 'RCP sin DEA disponible',        icon: 'mdi:flash-off',              file: 'rcp-sin-dea.html' },
-    { id: 'rosc',              num: '17', titulo: 'Retorno de circulación',        icon: 'mdi:heart-flash',            file: 'rosc.html' },
-    { id: 'posicion-lateral',  num: '18', titulo: 'Posición lateral de seguridad', icon: 'mdi:human-handsdown',        file: 'posicion-lateral.html' },
-    { id: 'obstruccion',       num: '19', titulo: 'Obstrucción de vía aérea',      icon: 'mdi:lungs',                  file: 'obstruccion.html' },
-    { id: 'comunicacion',      num: '20', titulo: 'Comunicación y equipo',         icon: 'mdi:account-voice',          file: 'comunicacion.html' },
-    { id: 'conclusiones',      num: '21', titulo: 'Buenas prácticas',              icon: 'mdi:check-decagram',         file: 'conclusiones.html' },
-    { id: 'simulador',         num: '22', titulo: 'Simulador VR',                  icon: 'mdi:virtual-reality',        file: 'simulador.html' },
-    { id: 'cierre',            num: '23', titulo: 'Cierre del curso',              icon: 'mdi:flag-checkered',         file: 'cierre.html' },
-    { id: 'evaluacion',        num: '24', titulo: 'Evaluación',                    icon: 'mdi:clipboard-check-outline', file: 'evaluacion.html' },
-    { id: 'glosario',          num: '25', titulo: 'Glosario',                      icon: 'mdi:format-list-bulleted',   file: 'glosario.html' },
-    { id: 'creditos',          num: '26', titulo: 'Referencias y créditos',        icon: 'mdi:award',                  file: 'creditos.html' },
+    { id: 'portada',           num: '01', titulo: 'Inicio',                                                          icon: 'mdi:home',                   file: 'index.html' },
+    { id: 'bienvenida',        num: '02', titulo: 'Bienvenida',                                                      icon: 'mdi:play-circle',            file: 'bienvenida.html' },
+    { id: 'conceptos-basicos', num: '03', titulo: 'Conceptos básicos de RCP',                                        icon: 'mdi:book-open-page-variant', file: 'conceptos-basicos.html' },
+    { id: 'identificacion',    num: '04', titulo: '¿Cómo se identifica una posible parada cardíaca?',                icon: 'mdi:magnify',                file: 'identificacion.html' },
+    { id: 'quien-puede',       num: '05', titulo: '¿Quién puede presentar una parada cardíaca?',                     icon: 'mdi:account-group',          file: 'quien-puede.html' },
+    { id: 'tipos-parada',      num: '06', titulo: 'Tipos de parada cardíaca',                                        icon: 'mdi:layers',                 file: 'tipos-parada.html' },
+    { id: 'cadena',            num: '07', titulo: 'Cadena de supervivencia',                                         icon: 'mdi:link-variant',           file: 'cadena.html' },
+    { id: 'importancia',       num: '08', titulo: 'Importancia de la RCP temprana',                                  icon: 'mdi:clock-alert',            file: 'importancia.html' },
+    { id: 'seguridad-escena',  num: '09', titulo: 'Seguridad de la escena',                                          icon: 'mdi:shield-alert',           file: 'seguridad-escena.html' },
+    { id: 'valoracion',        num: '10', titulo: 'Valoración inicial del paciente',                                 icon: 'mdi:stethoscope',            file: 'valoracion.html' },
+    { id: 'emergencias',       num: '11', titulo: 'Activación del sistema de emergencias',                           icon: 'mdi:phone-in-talk',          file: 'emergencias.html' },
+    { id: 'rcp-calidad',       num: '12', titulo: 'RCP de alta calidad',                                             icon: 'mdi:heart-pulse',            file: 'rcp-calidad.html' },
+    { id: 'errores',           num: '13', titulo: 'Errores frecuentes en las compresiones',                          icon: 'mdi:alert-circle',           file: 'errores.html' },
+    { id: 'relevos',           num: '14', titulo: 'Fatiga del reanimador y relevos',                                 icon: 'mdi:account-switch',         file: 'relevos.html' },
+    { id: 'uso-dea',           num: '15', titulo: 'Uso del DEA',                                                     icon: 'mdi:flash',                  file: 'uso-dea.html' },
+    { id: 'seguridad-dea',     num: '16', titulo: 'Seguridad durante la desfibrilación',                             icon: 'mdi:shield-lock',            file: 'seguridad-dea.html' },
+    { id: 'rcp-sin-dea',       num: '17', titulo: 'RCP sin DEA disponible',                                          icon: 'mdi:flash-off',              file: 'rcp-sin-dea.html' },
+    { id: 'rosc',              num: '18', titulo: 'Retorno de circulación espontánea',                               icon: 'mdi:heart-flash',            file: 'rosc.html' },
+    { id: 'posicion-lateral',  num: '19', titulo: 'Posición lateral de seguridad y su relación con la RCP',         icon: 'mdi:human-handsdown',        file: 'posicion-lateral.html' },
+    { id: 'obstruccion',       num: '20', titulo: 'Obstrucción de vía aérea por cuerpo extraño y su relación con la RCP', icon: 'mdi:lungs',             file: 'obstruccion.html' },
+    { id: 'comunicacion',      num: '21', titulo: 'Comunicación y trabajo en equipo',                               icon: 'mdi:account-voice',          file: 'comunicacion.html' },
+    { id: 'conclusiones',      num: '22', titulo: 'Conclusiones generales, otros usos y buenas prácticas físicas',  icon: 'mdi:check-decagram',         file: 'conclusiones.html' },
+    { id: 'buenas-practicas',  num: '23', titulo: 'Buenas prácticas y malas prácticas',                             icon: 'mdi:scale-balance',          file: 'buenas-practicas.html' },
+    { id: 'simulador',         num: '24', titulo: 'Uso del simulador de realidad virtual',                          icon: 'mdi:virtual-reality',        file: 'simulador.html' },
+    { id: 'cierre',            num: '25', titulo: 'Cierre',                                                          icon: 'mdi:flag-checkered',         file: 'cierre.html' },
+    { id: 'evaluacion',        num: '26', titulo: 'Evaluación',                                                     icon: 'mdi:clipboard-check-outline', file: 'evaluacion.html' },
+    { id: 'glosario',          num: '27', titulo: 'Glosario',                                                       icon: 'mdi:format-list-bulleted',   file: 'glosario.html' },
+    { id: 'creditos',          num: '28', titulo: 'Referencias y créditos',                                         icon: 'mdi:award',                  file: 'creditos.html' },
   ],
 
   /* GLOSARIO · términos clave del curso */
