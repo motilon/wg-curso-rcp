@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Inicio · Reanimación Cardio Pulmonar (RCP)</title>
+<title>Inicio · Reanimación Cardiopulmonar Básico (RCP)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -96,25 +96,20 @@
   }
   .wg-portada__logo img{
     display: block;
-    height: 70px;
+    height: 96px;
     width: auto;
-    /* En modo oscuro, el azul del logo se ve mal sobre navy.
-       Invertir + reducir saturación para que el azul se vuelva blanco
-       y el naranja se mantenga vivo */
-    filter: brightness(1.05) drop-shadow(0 4px 16px rgba(0,0,0,.25));
+    filter: drop-shadow(0 6px 18px rgba(0,0,0,.3));
   }
-  /* En modo oscuro (hibrida) · forzar logo en blanco para contraste */
+  /* Logo "For Education" a color · la llama clara y el naranja resaltan sobre el navy */
   [data-version="hibrida"] .wg-portada__logo img{
-    filter:
-      brightness(0) invert(1)
-      drop-shadow(0 4px 12px rgba(0,0,0,.35));
+    filter: drop-shadow(0 6px 18px rgba(0,0,0,.35));
   }
   /* Truco visual: pintar el naranja del logo aparte vía mix-blend
      usando un pseudo · pero más simple: en oscuro mantenemos blanco puro.
      Si querés el naranja vivo, lo agregamos como svg externo. */
   @media (max-width: 720px){
     .wg-portada__logo{ top: 18px; right: 18px; }
-    .wg-portada__logo img{ height: 48px; }
+    .wg-portada__logo img{ height: 68px; }
   }
 
   /* Layout · texto ocupa ~55% izq, silueta anclada al fondo der absoluta */
@@ -255,7 +250,7 @@
     letter-spacing: -.025em;
     margin-bottom: .04em;
   }
-  /* "Cardio Pulmonar" · heavy display tipo Apple Hero */
+  /* "Cardiopulmonar" · heavy display tipo Apple Hero */
   .wg-portada__title .line{
     font-size: clamp(3rem, 6.4vw, 5.2rem);
     font-weight: 800;
@@ -328,14 +323,15 @@
 
       <!-- Logo Waygroup (SVG oficial) esquina superior derecha -->
       <div class="wg-portada__logo" aria-hidden="true">
-        <img src="assets/img/curso/waygroup-logo.svg" alt="Waygroup" />
+        <img src="assets/img/curso/waygroup-for-education.svg" alt="WAYGROUP for education" />
       </div>
 
       <div class="wg-portada__inner" data-reveal>
         <div class="wg-portada__text">
           <h1 class="wg-portada__title">
             <span class="outline">Reanimación</span>
-            <span class="line">Cardio Pulmonar</span>
+            <span class="line">Cardiopulmonar</span>
+            <span class="line">Básico</span>
             <span class="accent">(RCP)</span>
           </h1>
 
@@ -353,6 +349,8 @@
               Material PDF
             </a>
           </div>
+
+          <img src="assets/img/curso/sello-iso-9001.svg" alt="Certificación ISO 9001:2015" style="margin-top:36px; height:104px; width:auto; display:block;" />
         </div>
 
         <div class="wg-portada__hero" aria-hidden="true">

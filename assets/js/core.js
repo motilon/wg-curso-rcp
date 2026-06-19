@@ -30,7 +30,8 @@
 
     el.innerHTML = `
       <div class="wg-sidebar__brand">
-        <img src="${C.brand.logo}" alt="${C.brand.name || ''}" />
+        <img class="wg-brand-logo wg-brand-logo--desktop" src="${C.brand.logo}" alt="${C.brand.name || 'WAYGROUP'}" />
+        ${C.brand.logoMobile ? `<img class="wg-brand-logo wg-brand-logo--mobile" src="${C.brand.logoMobile}" alt="${C.brand.name || 'WAYGROUP'}" />` : ''}
         ${C.brand.name || C.brand.sub ? `
           <div>
             ${C.brand.name ? `<strong>${C.brand.name}</strong>` : ''}

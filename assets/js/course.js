@@ -11,15 +11,16 @@
 window.WG_COURSE = {
 
   brand: {
-    // Solo la "W" naranja; el texto va al lado en HTML
-    name: 'WAYGROUP',
-    sub:  'SST en la era digital',
-    logo: 'assets/img/curso/waygroup-w-only.svg',
+    // Logo responsive: horizontal (desktop) + W-only (mobile/colapsado). Ya traen marca → name/sub vacíos.
+    name: '',
+    sub:  '',
+    logo:       'assets/img/curso/waygroup-for-education-h.svg',
+    logoMobile: 'assets/img/curso/waygroup-w-only.svg',
   },
 
   course: {
     code:     '',
-    name:     'Reanimación Cardio Pulmonar (RCP)',
+    name:     'Reanimación Cardiopulmonar Básico (RCP)',
     subtitle: '',
     duration: '4 horas',
     iso:      'ISO 9001:2015',
